@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Healthcare AI System
 
 A comprehensive healthcare management system with AI-powered chatbot, appointment scheduling, and health prediction features.
@@ -266,3 +267,6 @@ For support and questions:
 ---
 
 **Note**: This is a healthcare application. Always consult with medical professionals for serious health concerns. The AI assistant provides general information and should not replace professional medical advice.
+=======
+# HealthTracketAi
+>>>>>>> 82428c59f206a4a98eaea621922865ff80951d94
