@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-chart-bar me-2"></i>System Analytics
+        </h2>
+    </div>
+</div>
+
+<!-- Key Metrics -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ total_users }}</h4>
+                        <p class="card-text">Total Users</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ total_appointments }}</h4>
+                        <p class="card-text">Total Appointments</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-calendar fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">${{ "%.2f"|format(total_revenue) }}</h4>
+                        <p class="card-text">Total Revenue</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-dollar-sign fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ active_chats }}</h4>
+                        <p class="card-text">Total Chats</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-comments fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Row -->
+<div class="row mb-4">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">User Growth (Last 6 Months)</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="userGrowthChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Appointment Trends (Last 7 Days)</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="appointmentChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Analytics -->
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">User Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="userDistributionChart" width="300" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Activity</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_activities %}
+                    <div class="list-group list-group-flush">
+                        {% for activity in recent_activities %}
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="{{ activity.icon }} me-3 text-primary"></i>
+                                        <div>
+                                            <h6 class="mb-1">{{ activity.title }}</h6>
+                                            <small class="text-muted">{{ activity.description }}</small>
+                                        </div>
+                                    </div>
+                                    <small class="text-muted">
+                                        {% if activity.timestamp %}
+                                            {{ activity.timestamp.strftime('%H:%M') }}
+                                        {% else %}
+                                            Just now
+                                        {% endif %}
+                                    </small>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-history fa-2x text-muted mb-3"></i>
+                        <p class="text-muted">No recent activity</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- System Health & Performance -->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">System Health</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-database fa-2x text-success mb-2"></i>
+                            <h6>Database</h6>
+                            <span class="badge bg-success">{{ system_health.database_status }}</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-robot fa-2x text-info mb-2"></i>
+                            <h6>AI Chatbot</h6>
+                            <span class="badge bg-success">{{ system_health.ai_chatbot_status }}</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-envelope fa-2x text-warning mb-2"></i>
+                            <h6>Email Service</h6>
+                            <span class="badge bg-success">{{ system_health.email_service_status }}</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                            <h6>Security</h6>
+                            <span class="badge bg-success">{{ system_health.security_status }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Performance Metrics</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <h4 class="text-primary">{{ performance_metrics.avg_response_time }}</h4>
+                            <small class="text-muted">Avg Response Time</small>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <h4 class="text-success">{{ performance_metrics.uptime }}</h4>
+                            <small class="text-muted">Uptime</small>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <h4 class="text-warning">{{ performance_metrics.error_rate }}</h4>
+                            <small class="text-muted">Error Rate</small>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="text-center">
+                            <h4 class="text-info">{{ performance_metrics.active_sessions }}</h4>
+                            <small class="text-muted">Active Sessions</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// User Growth Chart
+const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+new Chart(userGrowthCtx, {
+    type: 'line',
+    data: {
+        labels: {{ user_growth_labels | tojson }},
+        datasets: [{
+            label: 'New Users',
+            data: {{ user_growth_data | tojson }},
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(75, 192, 192, 0.1)',
+            tension: 0.1,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Appointment Chart
+const appointmentCtx = document.getElementById('appointmentChart').getContext('2d');
+new Chart(appointmentCtx, {
+    type: 'bar',
+    data: {
+        labels: {{ appointment_trends_labels | tojson }},
+        datasets: [{
+            label: 'Appointments',
+            data: {{ appointment_trends_data | tojson }},
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// User Distribution Chart
+const userDistributionCtx = document.getElementById('userDistributionChart').getContext('2d');
+new Chart(userDistributionCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Patients', 'Doctors', 'Admins'],
+        datasets: [{
+            data: [
+                {{ user_distribution.patients }},
+                {{ user_distribution.doctors }},
+                {{ user_distribution.admins }}
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 205, 86, 0.8)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 205, 86, 1)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

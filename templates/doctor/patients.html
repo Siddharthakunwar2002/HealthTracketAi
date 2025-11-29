@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block title %}My Patients - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-user-injured me-2"></i>My Patients
+        </h2>
+        <p class="text-muted">Manage your patient relationships and medical records</p>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.doctor_appointments') }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-calendar me-2"></i>View Appointments
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.doctor_prescriptions') }}" class="btn btn-outline-success w-100">
+                            <i class="fas fa-pills me-2"></i>Prescriptions
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.doctor_reports') }}" class="btn btn-outline-info w-100">
+                            <i class="fas fa-file-medical me-2"></i>Medical Reports
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.doctor_messages') }}" class="btn btn-outline-warning w-100">
+                            <i class="fas fa-envelope me-2"></i>Send Messages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Patients List -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-users me-2"></i>Patient Directory
+                </h5>
+                <div>
+                    <input type="text" class="form-control form-control-sm" id="searchPatients" placeholder="Search patients...">
+                </div>
+            </div>
+            <div class="card-body">
+                {% if patients %}
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="patientsTable">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Contact Information</th>
+                                    <th>Medical Information</th>
+                                    <th>Last Appointment</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for patient in patients %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-sm bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <div>
+                                                    <strong>{{ patient.get_full_name() }}</strong>
+                                                    <br>
+                                                    <small class="text-muted">Patient ID: {{ patient.id }}</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <i class="fas fa-envelope me-1 text-muted"></i>{{ patient.email }}
+                                                {% if patient.phone %}
+                                                    <br>
+                                                    <i class="fas fa-phone me-1 text-muted"></i>{{ patient.phone }}
+                                                {% endif %}
+                                                {% if patient.address %}
+                                                    <br>
+                                                    <i class="fas fa-map-marker-alt me-1 text-muted"></i>{{ patient.address[:50] }}{% if patient.address|length > 50 %}...{% endif %}
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {% if patient.blood_group %}
+                                                <span class="badge bg-danger me-1">{{ patient.blood_group }}</span>
+                                            {% endif %}
+                                            {% if patient.date_of_birth %}
+                                                <br>
+                                                <small class="text-muted">Age: {{ ((today - patient.date_of_birth).days // 365) if patient.date_of_birth else 'N/A' }} years</small>
+                                            {% endif %}
+                                            {% if patient.medical_history %}
+                                                <br>
+                                                <small class="text-muted">{{ patient.medical_history[:50] }}{% if patient.medical_history|length > 50 %}...{% endif %}</small>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">
+                                                {% if patient.appointments %}
+                                                    {{ patient.appointments[0].appointment_date.strftime('%B %d, %Y') if patient.appointments else 'No appointments' }}
+                                                {% else %}
+                                                    No appointments
+                                                {% endif %}
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ url_for('dashboard.doctor_message_patient', patient_id=patient.id) }}" class="btn btn-sm btn-outline-primary" title="Send Message">
+                                                    <i class="fas fa-envelope"></i>
+                                                </a>
+                                                <button class="btn btn-sm btn-outline-info" onclick="viewPatientHistory('{{ patient.id }}')" title="View History">
+                                                    <i class="fas fa-history"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-success" onclick="createPrescription('{{ patient.id }}')" title="Create Prescription">
+                                                    <i class="fas fa-pills"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-warning" onclick="scheduleAppointment('{{ patient.id }}')" title="Schedule Appointment">
+                                                    <i class="fas fa-calendar-plus"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-user-friends fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No Patients Found</h5>
+                        <p class="text-muted">You don't have any patients yet. Patients will appear here once they book appointments with you.</p>
+                        <a href="{{ url_for('dashboard.doctor_schedule') }}" class="btn btn-primary">
+                            <i class="fas fa-calendar me-2"></i>View Schedule
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Patient Statistics -->
+<div class="row mt-4">
+    <div class="col-md-3 mb-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ patients|length }}</h4>
+                        <p class="card-text">Total Patients</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ patients|selectattr('phone', 'defined')|list|length }}</h4>
+                        <p class="card-text">With Phone</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-phone fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ patients|selectattr('blood_group', 'defined')|list|length }}</h4>
+                        <p class="card-text">Blood Group Known</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-tint fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ patients|selectattr('medical_history', 'defined')|list|length }}</h4>
+                        <p class="card-text">With History</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-file-medical fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchPatients');
+    const table = document.getElementById('patientsTable');
+    
+    if (searchInput && table) {
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            }
+        });
+    }
+});
+
+function viewPatientHistory(patientId) {
+    // Redirect to patient history page
+    window.location.href = `/dashboard/doctor/patient/${patientId}/history`;
+}
+
+function createPrescription(patientId) {
+    // This would typically redirect to prescription creation page
+    window.location.href = `/dashboard/doctor/prescriptions/new?patient_id=${patientId}`;
+}
+
+function scheduleAppointment(patientId) {
+    // Redirect to schedule appointment page
+    window.location.href = `/dashboard/doctor/patient/${patientId}/schedule-appointment`;
+}
+</script>
+{% endblock %}
+
+

@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block title %}Account Settings - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-cog me-2"></i>Account Settings
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <!-- User Information -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="avatar-lg bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3">
+                                    <i class="fas fa-user fa-3x"></i>
+                                </div>
+                                <h5>{{ current_user.get_full_name() }}</h5>
+                                <span class="badge bg-{{ 'success' if current_user.role.value == 'doctor' else 'info' if current_user.role.value == 'patient' else 'primary' if current_user.role.value == 'admin' else 'secondary' }}">
+                                    {{ current_user.role.value.title() }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h6 class="text-primary mb-3">Account Information</h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                                    <p><strong>Username:</strong> {{ current_user.username }}</p>
+                                    <p><strong>Phone:</strong> {{ current_user.phone or 'Not provided' }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Member Since:</strong> {{ current_user.created_at.strftime('%B %d, %Y') if current_user.created_at else 'N/A' }}</p>
+                                    <p><strong>Last Login:</strong> {{ current_user.last_login.strftime('%B %d, %Y at %I:%M %p') if current_user.last_login else 'Never' }}</p>
+                                    <p><strong>Status:</strong> 
+                                        <span class="badge bg-{{ 'success' if current_user.is_active else 'danger' }}">
+                                            {{ 'Active' if current_user.is_active else 'Inactive' }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Change Password Section -->
+                    <div class="mb-4">
+                        <h5 class="text-primary mb-3">
+                            <i class="fas fa-key me-2"></i>Change Password
+                        </h5>
+                        <form method="POST" action="{{ url_for('auth.account_settings') }}">
+                            {{ form.hidden_tag() }}
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form.current_password.label(class="form-label") }}
+                                        {{ form.current_password(class="form-control" + (" is-invalid" if form.current_password.errors else "")) }}
+                                        {% if form.current_password.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.current_password.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form.new_password.label(class="form-label") }}
+                                        {{ form.new_password(class="form-control" + (" is-invalid" if form.new_password.errors else "")) }}
+                                        {% if form.new_password.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.new_password.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form.confirm_password.label(class="form-label") }}
+                                        {{ form.confirm_password(class="form-control" + (" is-invalid" if form.confirm_password.errors else "")) }}
+                                        {% if form.confirm_password.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.confirm_password.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">&nbsp;</label>
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-save me-2"></i>Update Password
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Security Settings -->
+                    <div class="mb-4">
+                        <h5 class="text-primary mb-3">
+                            <i class="fas fa-shield-alt me-2"></i>Security Settings
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card border-0 bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            <i class="fas fa-envelope me-2"></i>Email Verification
+                                        </h6>
+                                        <p class="card-text small">Your email is verified and secure.</p>
+                                        <span class="badge bg-success">Verified</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card border-0 bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            <i class="fas fa-mobile-alt me-2"></i>Two-Factor Authentication
+                                        </h6>
+                                        <p class="card-text small">Add an extra layer of security.</p>
+                                        <button class="btn btn-outline-primary btn-sm">Enable 2FA</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Danger Zone -->
+                    <div class="mb-4">
+                        <h5 class="text-danger mb-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Danger Zone
+                        </h5>
+                        <div class="card border-danger">
+                            <div class="card-body">
+                                <h6 class="card-title text-danger">Delete Account</h6>
+                                <p class="card-text">
+                                    Once you delete your account, there is no going back. Please be certain.
+                                </p>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                                    <i class="fas fa-trash me-2"></i>Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="{{ url_for('dashboard.dashboard_home') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Delete Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+                <p class="text-danger"><strong>This will permanently delete:</strong></p>
+                <ul class="text-danger">
+                    <li>Your profile and personal information</li>
+                    <li>All your appointments and medical records</li>
+                    <li>All your messages and notifications</li>
+                    <li>Your account settings and preferences</li>
+                </ul>
+                <div class="mb-3">
+                    <label for="confirmDelete" class="form-label">Type <strong>DELETE</strong> to confirm:</label>
+                    <input type="text" class="form-control" id="confirmDelete" placeholder="Type DELETE here">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{{ url_for('auth.delete_account') }}" style="display: inline;">
+                    <input type="hidden" name="confirm_delete" id="confirmDeleteHidden" value="">
+                    <button type="submit" class="btn btn-danger" id="deleteButton" disabled>
+                        <i class="fas fa-trash me-2"></i>Delete Account
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const confirmInput = document.getElementById('confirmDelete');
+    const deleteButton = document.getElementById('deleteButton');
+    const confirmHidden = document.getElementById('confirmDeleteHidden');
+    
+    confirmInput.addEventListener('input', function() {
+        if (this.value === 'DELETE') {
+            deleteButton.disabled = false;
+            confirmHidden.value = 'DELETE';
+        } else {
+            deleteButton.disabled = true;
+            confirmHidden.value = '';
+        }
+    });
+});
+</script>
+{% endblock %}

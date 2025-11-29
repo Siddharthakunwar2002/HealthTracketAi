@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Book Appointment - Patient{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-calendar-plus me-2"></i>Book New Appointment
+        </h2>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-calendar-check me-2"></i>Schedule Your Appointment
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.doctor_id.label(class="form-label") }}
+                            {{ form.doctor_id(class="form-select" + (" is-invalid" if form.doctor_id.errors else "")) }}
+                            {% if form.doctor_id.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.doctor_id.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">Select a doctor from the available specialists</small>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.duration.label(class="form-label") }}
+                            {{ form.duration(class="form-select" + (" is-invalid" if form.duration.errors else "")) }}
+                            {% if form.duration.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.duration.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">Choose the duration that best fits your needs</small>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.appointment_date.label(class="form-label") }}
+                            {{ form.appointment_date(class="form-control" + (" is-invalid" if form.appointment_date.errors else ""), type="date") }}
+                            {% if form.appointment_date.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.appointment_date.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.appointment_time.label(class="form-label") }}
+                            {{ form.appointment_time(class="form-control" + (" is-invalid" if form.appointment_time.errors else ""), type="time") }}
+                            {% if form.appointment_time.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.appointment_time.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.symptoms.label(class="form-label") }}
+                        {{ form.symptoms(class="form-control" + (" is-invalid" if form.symptoms.errors else ""), rows="4", placeholder="Describe your symptoms or reason for the visit...") }}
+                        {% if form.symptoms.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.symptoms.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">This helps the doctor prepare for your visit</small>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('dashboard.patient_appointments') }}" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Available Doctors</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. Sarah Johnson</h6>
+                                <small class="text-muted">Cardiologist</small>
+                            </div>
+                            <span class="badge bg-success">Available</span>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. Michael Brown</h6>
+                                <small class="text-muted">General Practitioner</small>
+                            </div>
+                            <span class="badge bg-success">Available</span>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. Emily Davis</h6>
+                                <small class="text-muted">Dermatologist</small>
+                            </div>
+                            <span class="badge bg-warning">Limited</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0">Appointment Tips</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-info-circle text-info me-2"></i>
+                        Arrive 15 minutes early
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-info-circle text-info me-2"></i>
+                        Bring your ID and insurance card
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-info-circle text-info me-2"></i>
+                        List your current medications
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-info-circle text-info me-2"></i>
+                        Prepare questions in advance
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

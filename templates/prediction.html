@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+
+{% block title %}Health Predictions - Healthcare AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .prediction-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .prediction-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .risk-indicator {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .risk-low { background-color: #28a745; }
+    .risk-medium { background-color: #ffc107; }
+    .risk-high { background-color: #dc3545; }
+    
+    .chart-container {
+        position: relative;
+        height: 300px;
+        margin: 20px 0;
+    }
+    
+    .prediction-form {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+    
+    .form-control {
+        border-radius: 10px;
+        border: none;
+        padding: 12px 15px;
+    }
+    
+    .btn-predict {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 30px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .btn-predict:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 text-primary mb-3">
+                    <i class="fas fa-chart-line me-2"></i>Health Predictions & Analytics
+                </h1>
+                <p class="lead text-muted">Get personalized health insights and predictions based on your data</p>
+            </div>
+            
+            <!-- Prediction Form -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="prediction-form">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-calculator me-2"></i>Health Risk Assessment
+                        </h3>
+                        <form id="predictionForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="number" class="form-control" id="age" name="age" min="1" max="120" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="height" class="form-label">Height (cm)</label>
+                                    <input type="number" class="form-control" id="height" name="height" min="100" max="250" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="weight" class="form-label">Weight (kg)</label>
+                                    <input type="number" class="form-control" id="weight" name="weight" min="20" max="300" step="0.1" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="blood_pressure" class="form-label">Blood Pressure (mmHg)</label>
+                                    <input type="text" class="form-control" id="blood_pressure" name="blood_pressure" placeholder="120/80" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cholesterol" class="form-label">Cholesterol Level</label>
+                                    <select class="form-control" id="cholesterol" name="cholesterol" required>
+                                        <option value="">Select Level</option>
+                                        <option value="normal">Normal (< 200)</option>
+                                        <option value="borderline">Borderline (200-239)</option>
+                                        <option value="high">High (≥ 240)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="exercise" class="form-label">Exercise Frequency</label>
+                                    <select class="form-control" id="exercise" name="exercise" required>
+                                        <option value="">Select Frequency</option>
+                                        <option value="none">No Exercise</option>
+                                        <option value="light">Light (1-2 times/week)</option>
+                                        <option value="moderate">Moderate (3-4 times/week)</option>
+                                        <option value="intense">Intense (5+ times/week)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="smoking" class="form-label">Smoking Status</label>
+                                    <select class="form-control" id="smoking" name="smoking" required>
+                                        <option value="">Select Status</option>
+                                        <option value="never">Never Smoked</option>
+                                        <option value="former">Former Smoker</option>
+                                        <option value="current">Current Smoker</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-predict">
+                                    <i class="fas fa-magic me-2"></i>Generate Health Prediction
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prediction Results -->
+            <div class="row" id="predictionResults" style="display: none;">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-header bg-success text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-chart-bar me-2"></i>Your Health Predictions
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row" id="predictionCards">
+                                <!-- Prediction cards will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Health Tips -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-header bg-info text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-lightbulb me-2"></i>Health Tips & Recommendations
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-utensils fa-3x text-success mb-3"></i>
+                                            <h5 class="card-title">Nutrition</h5>
+                                            <p class="card-text">Eat a balanced diet with plenty of fruits, vegetables, and whole grains. Limit processed foods and added sugars.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-running fa-3x text-primary mb-3"></i>
+                                            <h5 class="card-title">Exercise</h5>
+                                            <p class="card-text">Aim for at least 150 minutes of moderate-intensity exercise per week. Include both cardio and strength training.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-bed fa-3x text-warning mb-3"></i>
+                                            <h5 class="card-title">Sleep</h5>
+                                            <p class="card-text">Get 7-9 hours of quality sleep each night. Maintain a consistent sleep schedule and create a relaxing bedtime routine.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Disclaimer -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        <h6 class="alert-heading">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Important Disclaimer
+                        </h6>
+                        <p class="mb-0">
+                            These predictions are for informational purposes only and should not replace professional medical advice. 
+                            Always consult with healthcare professionals for medical concerns and decisions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('predictionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Calculate BMI
+        const height = parseFloat(data.height) / 100; // Convert cm to m
+        const weight = parseFloat(data.weight);
+        const bmi = weight / (height * height);
+        
+        // Generate mock predictions (in a real app, this would call an API)
+        const predictions = generatePredictions(data, bmi);
+        
+        // Display results
+        displayPredictions(predictions);
+    });
+    
+    function generatePredictions(data, bmi) {
+        const predictions = [];
+        
+        // BMI Analysis
+        let bmiCategory = 'Normal';
+        let bmiRisk = 'low';
+        if (bmi < 18.5) {
+            bmiCategory = 'Underweight';
+            bmiRisk = 'medium';
+        } else if (bmi >= 25 && bmi < 30) {
+            bmiCategory = 'Overweight';
+            bmiRisk = 'medium';
+        } else if (bmi >= 30) {
+            bmiCategory = 'Obese';
+            bmiRisk = 'high';
+        }
+        
+        predictions.push({
+            title: 'BMI Analysis',
+            value: bmi.toFixed(1),
+            category: bmiCategory,
+            risk: bmiRisk,
+            description: `Your BMI is ${bmi.toFixed(1)}, which falls in the ${bmiCategory} category.`
+        });
+        
+        // Cardiovascular Risk
+        let cardioRisk = 'low';
+        let cardioScore = 0;
+        
+        if (data.age >= 65) cardioScore += 3;
+        else if (data.age >= 45) cardioScore += 2;
+        else if (data.age >= 35) cardioScore += 1;
+        
+        if (data.smoking === 'current') cardioScore += 3;
+        else if (data.smoking === 'former') cardioScore += 1;
+        
+        if (data.exercise === 'none') cardioScore += 2;
+        else if (data.exercise === 'light') cardioScore += 1;
+        
+        if (data.cholesterol === 'high') cardioScore += 2;
+        else if (data.cholesterol === 'borderline') cardioScore += 1;
+        
+        if (cardioScore >= 6) cardioRisk = 'high';
+        else if (cardioScore >= 3) cardioRisk = 'medium';
+        
+        predictions.push({
+            title: 'Cardiovascular Risk',
+            value: cardioScore,
+            category: cardioRisk === 'high' ? 'High Risk' : cardioRisk === 'medium' ? 'Medium Risk' : 'Low Risk',
+            risk: cardioRisk,
+            description: `Based on your profile, you have a ${cardioRisk} risk of cardiovascular disease.`
+        });
+        
+        // Diabetes Risk
+        let diabetesRisk = 'low';
+        let diabetesScore = 0;
+        
+        if (bmi >= 30) diabetesScore += 3;
+        else if (bmi >= 25) diabetesScore += 2;
+        
+        if (data.age >= 45) diabetesScore += 2;
+        else if (data.age >= 35) diabetesScore += 1;
+        
+        if (data.exercise === 'none') diabetesScore += 2;
+        else if (data.exercise === 'light') diabetesScore += 1;
+        
+        if (diabetesScore >= 5) diabetesRisk = 'high';
+        else if (diabetesScore >= 3) diabetesRisk = 'medium';
+        
+        predictions.push({
+            title: 'Diabetes Risk',
+            value: diabetesScore,
+            category: diabetesRisk === 'high' ? 'High Risk' : diabetesRisk === 'medium' ? 'Medium Risk' : 'Low Risk',
+            risk: diabetesRisk,
+            description: `Your risk of developing type 2 diabetes is ${diabetesRisk}.`
+        });
+        
+        return predictions;
+    }
+    
+    function displayPredictions(predictions) {
+        const resultsDiv = document.getElementById('predictionResults');
+        const cardsDiv = document.getElementById('predictionCards');
+        
+        cardsDiv.innerHTML = '';
+        
+        predictions.forEach(prediction => {
+            const card = document.createElement('div');
+            card.className = 'col-md-4 mb-4';
+            card.innerHTML = `
+                <div class="card prediction-card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <span class="risk-indicator risk-${prediction.risk}"></span>
+                            <h5 class="card-title d-inline">${prediction.title}</h5>
+                        </div>
+                        <h2 class="text-primary mb-3">${prediction.value}</h2>
+                        <h6 class="text-muted mb-3">${prediction.category}</h6>
+                        <p class="card-text small">${prediction.description}</p>
+                    </div>
+                </div>
+            `;
+            cardsDiv.appendChild(card);
+        });
+        
+        resultsDiv.style.display = 'block';
+        resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+{% endblock %}

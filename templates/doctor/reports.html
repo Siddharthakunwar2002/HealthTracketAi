@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Doctor Reports - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="fas fa-file-medical me-2"></i>My Medical Reports</h2>
+            </div>
+
+            <!-- Create New Report Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-plus me-2"></i>Create New Medical Report
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.patient_id.label(class="form-label") }}
+                                    {{ form.patient_id(class="form-select") }}
+                                    {% if form.patient_id.errors %}
+                                        {% for error in form.patient_id.errors %}
+                                            <div class="text-danger small">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.report_type.label(class="form-label") }}
+                                    {{ form.report_type(class="form-select") }}
+                                    {% if form.report_type.errors %}
+                                        {% for error in form.report_type.errors %}
+                                            <div class="text-danger small">{{ error }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control") }}
+                            {% if form.title.errors %}
+                                {% for error in form.title.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.description.label(class="form-label") }}
+                            {{ form.description(class="form-control", rows=4) }}
+                            {% if form.description.errors %}
+                                {% for error in form.description.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.file.label(class="form-label") }}
+                            {{ form.file(class="form-control") }}
+                            <div class="form-text">
+                                Upload a PDF, DOC, or image file (optional)
+                            </div>
+                            {% if form.file.errors %}
+                                {% for error in form.file.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>Create Report
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Existing Reports -->
+            {% if reports %}
+                <div class="row">
+                    {% for report in reports %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-info text-white">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-file-medical me-1"></i>
+                                    {{ report.title }}
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <strong>Type:</strong> {{ report.report_type.value.replace('_', ' ').title() }}<br>
+                                    <strong>Date:</strong> {{ report.created_at.strftime('%B %d, %Y') }}<br>
+                                    <strong>Patient:</strong> {{ report.user.get_full_name() }}
+                                </p>
+
+                                {% if report.description %}
+                                    <div class="mb-3">
+                                        <strong>Description:</strong><br>
+                                        <small class="text-muted">{{ report.description[:150] }}{% if report.description|length > 150 %}...{% endif %}</small>
+                                    </div>
+                                {% endif %}
+
+                                {% if report.file_path %}
+                                    <div class="mb-3">
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-file me-1"></i>File Available
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="card-footer">
+                                <div class="btn-group w-100" role="group">
+                                    <a href="{{ url_for('dashboard.view_report', report_id=report.id) }}" class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </a>
+                                    {% if report.file_path %}
+                                        <button type="button" class="btn btn-outline-success btn-sm" onclick="downloadReport('{{ report.id }}')">
+                                            <i class="fas fa-download me-1"></i>Download
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-file-medical fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">No Medical Reports Found</h4>
+                    <p class="text-muted">
+                        You haven't created any reports yet. Use the form above to create your first report.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function downloadReport(reportId) {
+    // This would trigger a download of the report file
+    alert('Download report for ID: ' + reportId);
+}
+</script>
+{% endblock %}
+
+

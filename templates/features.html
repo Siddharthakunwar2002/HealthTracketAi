@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Features - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 text-primary mb-3">Platform Features</h1>
+                <p class="lead text-muted">Discover the powerful tools and capabilities that make our healthcare platform unique</p>
+            </div>
+            
+            <!-- AI Chatbot Section -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h2 class="text-primary mb-3">
+                                        <i class="fas fa-robot me-2"></i>AI Health Assistant
+                                    </h2>
+                                    <p class="lead mb-4">Our intelligent chatbot provides instant, reliable health information and guidance 24/7.</p>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Natural language processing for easy communication</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Comprehensive health topic coverage</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Personalized recommendations</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multilingual support</li>
+                                    </ul>
+                                    <a href="{{ url_for('chat') }}" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-comments me-2"></i>Try Chatbot
+                                    </a>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <i class="fas fa-robot fa-10x text-primary opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Appointment Management -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 text-center order-md-2">
+                                    <i class="fas fa-calendar-check fa-10x text-info opacity-50"></i>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <h2 class="text-info mb-3">
+                                        <i class="fas fa-calendar-alt me-2"></i>Smart Appointment System
+                                    </h2>
+                                    <p class="lead mb-4">Streamlined scheduling and management for patients and healthcare providers.</p>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Real-time availability checking</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Automated reminders and notifications</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Integration with calendar systems</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Waitlist management</li>
+                                    </ul>
+                                    <a href="{{ url_for('auth.register') }}" class="btn btn-info btn-lg">
+                                        <i class="fas fa-calendar-plus me-2"></i>Book Appointment
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Health Analytics -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h2 class="text-success mb-3">
+                                        <i class="fas fa-chart-line me-2"></i>Health Analytics & Insights
+                                    </h2>
+                                    <p class="lead mb-4">Comprehensive health tracking and predictive analytics for better care outcomes.</p>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Health trend analysis</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Predictive health modeling</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Personalized health reports</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Risk assessment tools</li>
+                                    </ul>
+                                    <a href="{{ url_for('prediction_page') }}" class="btn btn-success btn-lg">
+                                        <i class="fas fa-chart-bar me-2"></i>View Analytics
+                                    </a>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <i class="fas fa-chart-line fa-10x text-success opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security & Privacy -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 text-center order-md-2">
+                                    <i class="fas fa-shield-alt fa-10x text-warning opacity-50"></i>
+                                </div>
+                                <div class="col-md-6 order-md-1">
+                                    <h2 class="text-warning mb-3">
+                                        <i class="fas fa-lock me-2"></i>Security & Privacy
+                                    </h2>
+                                    <p class="lead mb-4">Enterprise-grade security measures to protect your sensitive health information.</p>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>End-to-end encryption</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>HIPAA compliance</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-factor authentication</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Regular security audits</li>
+                                    </ul>
+                                    <a href="{{ url_for('about') }}" class="btn btn-warning btn-lg">
+                                        <i class="fas fa-info-circle me-2"></i>Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Features Grid -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="text-center mb-4">Additional Features</h2>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Mobile Responsive</h5>
+                            <p class="card-text">Access all features seamlessly on any device, anywhere, anytime.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-users fa-3x text-info mb-3"></i>
+                            <h5 class="card-title">Multi-User Support</h5>
+                            <p class="card-text">Support for patients, doctors, and administrators with role-based access.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-cloud fa-3x text-success mb-3"></i>
+                            <h5 class="card-title">Cloud-Based</h5>
+                            <p class="card-text">Scalable cloud infrastructure ensures reliability and performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-primary text-white border-0">
+                        <div class="card-body text-center p-5">
+                            <h3 class="card-title mb-3">Ready to Experience the Future of Healthcare?</h3>
+                            <p class="card-text lead mb-4">Join thousands of users who trust our AI-powered healthcare platform.</p>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+                                    <i class="fas fa-user-plus me-2"></i>Get Started Free
+                                </a>
+                                <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-phone me-2"></i>Contact Sales
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

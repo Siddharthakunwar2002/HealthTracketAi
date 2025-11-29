@@ -1,0 +1,434 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Menu - Healthcare AI System{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-user-injured me-2"></i>Patient Menu
+            </h1>
+            <p class="text-muted">Welcome back, {{ current_user.get_full_name() }}! Access your healthcare services here.</p>
+        </div>
+    </div>
+
+    <!-- Main Patient Cards -->
+    <div class="row">
+        <!-- Dashboard -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_dashboard') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-primary text-white mb-3">
+                        <i class="fas fa-tachometer-alt fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Dashboard</h5>
+                    <p class="card-text text-muted">View your health overview and upcoming appointments.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary">Overview</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Appointment -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_book_appointment') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-success text-white mb-3">
+                        <i class="fas fa-calendar-plus fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Book Appointment</h5>
+                    <p class="card-text text-muted">Schedule appointments with healthcare providers.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-success">Booking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Appointments -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_appointments') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-info text-white mb-3">
+                        <i class="fas fa-calendar-check fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">My Appointments</h5>
+                    <p class="card-text text-muted">View and manage your scheduled appointments.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-info">Appointments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical History -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_history') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-warning text-white mb-3">
+                        <i class="fas fa-history fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Medical History</h5>
+                    <p class="card-text text-muted">Access your complete medical records and history.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-warning">Records</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secondary Patient Cards -->
+    <div class="row">
+        <!-- Prescriptions -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_prescriptions') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-secondary text-white mb-3">
+                        <i class="fas fa-pills fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Prescriptions</h5>
+                    <p class="card-text text-muted">View your current and past medication prescriptions.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-secondary">Medication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_reports') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-danger text-white mb-3">
+                        <i class="fas fa-file-medical fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Reports</h5>
+                    <p class="card-text text-muted">Access your medical reports and test results.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-danger">Results</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payments -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_payments') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-dark text-white mb-3">
+                        <i class="fas fa-credit-card fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Payments</h5>
+                    <p class="card-text text-muted">Manage billing, payments, and insurance information.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-dark">Billing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('chat') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-purple text-white mb-3">
+                        <i class="fas fa-robot fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">AI Assistant</h5>
+                    <p class="card-text text-muted">Get AI-powered health advice and support.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #6f42c1;">AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Communication & Settings -->
+    <div class="row">
+        <!-- Messages -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_messages') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-light text-dark mb-3">
+                        <i class="fas fa-envelope fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Messages</h5>
+                    <p class="card-text text-muted">Communicate with your healthcare providers.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_notifications') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-orange text-white mb-3">
+                        <i class="fas fa-bell fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Notifications</h5>
+                    <p class="card-text text-muted">View important updates and reminders.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #fd7e14;">Alerts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_profile') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-teal text-white mb-3">
+                        <i class="fas fa-user-edit fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Profile</h5>
+                    <p class="card-text text-muted">Update your personal and medical information.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #20c997;">Profile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chats -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_chats') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-indigo text-white mb-3">
+                        <i class="fas fa-comments fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Chats</h5>
+                    <p class="card-text text-muted">Real-time chat with healthcare providers.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #6610f2;">Chat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health & Wellness -->
+    <div class="row">
+        <!-- Predictions -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.patient_predictions') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-pink text-white mb-3">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Health Predictions</h5>
+                    <p class="card-text text-muted">AI-powered health risk assessments and predictions.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #e83e8c;">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card border-danger" onclick="showEmergencyModal()">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-danger text-white mb-3">
+                        <i class="fas fa-ambulance fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Emergency</h5>
+                    <p class="card-text text-muted">Quick access to emergency contacts and services.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-danger">Urgent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Tips -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('health_tips') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-cyan text-white mb-3">
+                        <i class="fas fa-heartbeat fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Health Tips</h5>
+                    <p class="card-text text-muted">Daily health tips and wellness advice.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #17a2b8;">Wellness</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Telemedicine -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 menu-card" onclick="window.location.href='{{ url_for('dashboard.calls') }}'">
+                <div class="card-body text-center">
+                    <div class="menu-icon bg-lime text-white mb-3">
+                        <i class="fas fa-video fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Telemedicine</h5>
+                    <p class="card-text text-muted">Virtual consultations and video calls.</p>
+                    <div class="mt-3">
+                        <span class="badge" style="background-color: #28a745;">Virtual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats Footer -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <h4 class="text-primary">{{ upcoming_appointments.count() if upcoming_appointments else 0 }}</h4>
+                            <p class="text-muted mb-0">Upcoming Appointments</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-success">{{ recent_prescriptions.count() if recent_prescriptions else 0 }}</h4>
+                            <p class="text-muted mb-0">Active Prescriptions</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-info">{{ recent_reports.count() if recent_reports else 0 }}</h4>
+                            <p class="text-muted mb-0">Recent Reports</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-warning">{{ unread_messages or 0 }}</h4>
+                            <p class="text-muted mb-0">Unread Messages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Emergency Modal -->
+<div class="modal fade" id="emergencyModal" tabindex="-1" aria-labelledby="emergencyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="emergencyModalLabel">
+                    <i class="fas fa-ambulance me-2"></i>Emergency Services
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>Emergency:</strong> If you are experiencing a medical emergency, call emergency services immediately.
+                </div>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <a href="tel:911" class="btn btn-danger btn-lg">
+                            <i class="fas fa-phone fa-2x d-block mb-2"></i>
+                            Call 911
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="tel:{{ current_user.emergency_contact or '911' }}" class="btn btn-warning btn-lg">
+                            <i class="fas fa-user-friends fa-2x d-block mb-2"></i>
+                            Emergency Contact
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-muted">Your emergency contact: {{ current_user.emergency_contact or 'Not set' }}</p>
+                <p class="text-muted">Blood type: {{ current_user.blood_group or 'Not specified' }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.menu-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 15px;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.menu-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.bg-purple {
+    background-color: #6f42c1 !important;
+}
+
+.bg-orange {
+    background-color: #fd7e14 !important;
+}
+
+.bg-teal {
+    background-color: #20c997 !important;
+}
+
+.bg-indigo {
+    background-color: #6610f2 !important;
+}
+
+.bg-pink {
+    background-color: #e83e8c !important;
+}
+
+.bg-cyan {
+    background-color: #17a2b8 !important;
+}
+
+.bg-lime {
+    background-color: #28a745 !important;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Add click animation
+document.querySelectorAll('.menu-card').forEach(card => {
+    card.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
+});
+
+function showEmergencyModal() {
+    const modal = new bootstrap.Modal(document.getElementById('emergencyModal'));
+    modal.show();
+}
+</script>
+{% endblock %}

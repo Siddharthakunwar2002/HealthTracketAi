@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}System Management - Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-cog me-2"></i>System Management
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">System Overview</h5>
+                    <div class="btn-group" role="group" aria-label="System Quick Access">
+                        <a href="{{ url_for('dashboard.admin_notifications') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-bell me-1"></i>Notifications
+                        </a>
+                        <a href="{{ url_for('dashboard.admin_messages') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-envelope me-1"></i>My Messages
+                        </a>
+                        <a href="{{ url_for('dashboard.messages') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-comments me-1"></i>Messages
+                        </a>
+                        <a href="{{ url_for('dashboard.admin_chats') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-comment-dots me-1"></i>Chats
+                        </a>
+                        <a href="{{ url_for('dashboard.admin_system_logs') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-file-alt me-1"></i>System Logs
+                        </a>
+                        <a href="{{ url_for('dashboard.admin_settings') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-sliders-h me-1"></i>Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="fas fa-bell fa-3x text-warning mb-3"></i>
+                                <h5>Notifications</h5>
+                                <p class="text-muted">Manage system notifications and alerts</p>
+                                <a href="{{ url_for('dashboard.admin_notifications') }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-right me-1"></i>View Notifications
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope fa-3x text-info mb-3"></i>
+                                <h5>Messages</h5>
+                                <p class="text-muted">Handle messaging system and communications</p>
+                                <a href="{{ url_for('dashboard.admin_messages') }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-right me-1"></i>View Messages
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="fas fa-comment-dots fa-3x text-success mb-3"></i>
+                                <h5>Chats</h5>
+                                <p class="text-muted">Monitor and manage chat conversations</p>
+                                <a href="{{ url_for('dashboard.admin_chats') }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-right me-1"></i>View Chats
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="fas fa-file-alt fa-3x text-danger mb-3"></i>
+                                <h5>System Logs</h5>
+                                <p class="text-muted">View system activity and error logs</p>
+                                <a href="{{ url_for('dashboard.admin_system_logs') }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-right me-1"></i>View Logs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <i class="fas fa-sliders-h fa-3x text-secondary mb-3"></i>
+                                <h5>Settings</h5>
+                                <p class="text-muted">Configure system settings and preferences</p>
+                                <a href="{{ url_for('dashboard.admin_settings') }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-right me-1"></i>View Settings
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>System Statistics
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6">
+                        <h3 class="text-primary">{{ total_users or 0 }}</h3>
+                        <p class="text-muted">Total Users</p>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-success">{{ active_sessions or 0 }}</h3>
+                        <p class="text-muted">Active Sessions</p>
+                    </div>
+                </div>
+                <div class="row text-center mt-3">
+                    <div class="col-6">
+                        <h3 class="text-info">{{ total_messages or 0 }}</h3>
+                        <p class="text-muted">Total Messages</p>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-warning">{{ system_alerts or 0 }}</h3>
+                        <p class="text-muted">System Alerts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-server me-2"></i>System Health
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Database Status</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 100%">Online</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Server Status</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 100%">Running</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Memory Usage</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" style="width: {{ memory_usage or 45 }}%">{{ memory_usage or 45 }}%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Disk Usage</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" style="width: {{ disk_usage or 60 }}%">{{ disk_usage or 60 }}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-clock me-2"></i>Recent System Activity
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Activity</th>
+                                <th>User</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for activity in recent_activities or [] %}
+                                <tr>
+                                    <td>{{ activity.timestamp.strftime('%H:%M:%S') if activity.timestamp else 'N/A' }}</td>
+                                    <td>{{ activity.description or 'System activity' }}</td>
+                                    <td>{{ activity.user or 'System' }}</td>
+                                    <td>
+                                        <span class="badge bg-{{ 'success' if activity.status == 'success' else 'warning' if activity.status == 'warning' else 'danger' }}">
+                                            {{ activity.status or 'info' }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">No recent activity</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

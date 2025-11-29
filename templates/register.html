@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 text-primary mb-3">
+                    <i class="fas fa-user-plus me-2"></i>Create Your Account
+                </h1>
+                <p class="lead text-muted">Join our healthcare platform and choose your role</p>
+            </div>
+            
+            <div class="row">
+                <!-- Patient Registration -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-success text-white text-center">
+                            <i class="fas fa-user fa-3x mb-3"></i>
+                            <h4 class="mb-0">Patient</h4>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title">For Patients</h5>
+                            <p class="card-text">Access healthcare services, book appointments, and manage your health records.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Book appointments</li>
+                                <li><i class="fas fa-check text-success me-2"></i>View medical records</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Chat with doctors</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Health predictions</li>
+                            </ul>
+                            <a href="{{ url_for('auth.register_patient') }}" class="btn btn-success btn-lg w-100">
+                                <i class="fas fa-user me-2"></i>Register as Patient
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Doctor Registration -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-info text-white text-center">
+                            <i class="fas fa-user-md fa-3x mb-3"></i>
+                            <h4 class="mb-0">Doctor</h4>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title">For Healthcare Providers</h5>
+                            <p class="card-text">Manage patients, schedule appointments, and provide healthcare services.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-info me-2"></i>Manage patients</li>
+                                <li><i class="fas fa-check text-info me-2"></i>Schedule appointments</li>
+                                <li><i class="fas fa-check text-info me-2"></i>Create prescriptions</li>
+                                <li><i class="fas fa-check text-info me-2"></i>Medical reports</li>
+                            </ul>
+                            <a href="{{ url_for('auth.register_doctor') }}" class="btn btn-info btn-lg w-100">
+                                <i class="fas fa-user-md me-2"></i>Register as Doctor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Admin Registration -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-danger text-white text-center">
+                            <i class="fas fa-user-shield fa-3x mb-3"></i>
+                            <h4 class="mb-0">Administrator</h4>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title">For System Administrators</h5>
+                            <p class="card-text">Manage the platform, users, and system settings.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-danger me-2"></i>Manage users</li>
+                                <li><i class="fas fa-check text-danger me-2"></i>System analytics</li>
+                                <li><i class="fas fa-check text-danger me-2"></i>Platform settings</li>
+                                <li><i class="fas fa-check text-danger me-2"></i>Admin tools</li>
+                            </ul>
+                            <a href="{{ url_for('auth.register_admin') }}" class="btn btn-danger btn-lg w-100">
+                                <i class="fas fa-user-shield me-2"></i>Register as Admin
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <p class="text-muted">
+                    Already have an account? 
+                    <a href="{{ url_for('auth.login') }}" class="text-primary">
+                        <i class="fas fa-sign-in-alt me-1"></i>Sign in here
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

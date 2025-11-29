@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-lg border-danger">
+                <div class="card-header bg-danger text-white text-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-shield-alt me-2"></i>Admin Login
+                    </h4>
+                    <p class="mb-0 mt-2 small">Secure Administrator Access</p>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Security Notice -->
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Security Notice:</strong> This is a restricted area. Only authorized administrators are allowed.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('auth.admin_login') }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""), placeholder="Enter admin email") }}
+                            {% if form.email.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.password.label(class="form-label") }}
+                            {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""), placeholder="Enter admin password") }}
+                            {% if form.password.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            {{ form.remember_me(class="form-check-input") }}
+                            {{ form.remember_me.label(class="form-check-label") }}
+                        </div>
+                        
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-danger btn-lg") }}
+                        </div>
+                    </form>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="text-center">
+                        <a href="{{ url_for('auth.forgot_password') }}" class="text-decoration-none">
+                            <i class="fas fa-key me-1"></i>Forgot Password?
+                        </a>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <p class="text-muted small mb-2">Need regular access?</p>
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-sm mb-2">
+                            <i class="fas fa-sign-in-alt me-1"></i>Regular Login
+                        </a>
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('auth.doctor_login') }}" class="btn btn-outline-info btn-sm">Doctor Login</a>
+                            <a href="{{ url_for('auth.patient_login') }}" class="btn btn-outline-success btn-sm">Patient Login</a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <p class="text-muted small">
+                            Need help? <a href="{{ url_for('contact') }}" class="text-primary">Contact Support</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Info Card -->
+            <div class="card mt-3 border-info">
+                <div class="card-body p-3">
+                    <h6 class="card-title text-info">
+                        <i class="fas fa-info-circle me-2"></i>Admin Access Information
+                    </h6>
+                    <p class="card-text small mb-2">
+                        <strong>Default Admin Credentials:</strong><br>
+                        Email: admin@healthcare.com<br>
+                        Password: admin123
+                    </p>
+                    <p class="card-text small text-muted">
+                        <i class="fas fa-exclamation-triangle me-1"></i>
+                        Change default credentials after first login for security.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Enhanced security features for admin login
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-focus on email field
+    document.querySelector('input[name="email"]').focus();
+    
+    // Add security warning for failed attempts
+    let failedAttempts = 0;
+    const maxAttempts = 3;
+    
+    // Monitor form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+        
+        // Basic validation
+        if (!email || !password) {
+            e.preventDefault();
+            alert('Please enter both email and password.');
+            return;
+        }
+        
+        // Check for suspicious patterns
+        if (email.includes('script') || password.includes('script')) {
+            e.preventDefault();
+            alert('Invalid characters detected. Please try again.');
+            return;
+        }
+    });
+    
+    // Add visual feedback for security
+    const passwordField = document.querySelector('input[name="password"]');
+    passwordField.addEventListener('input', function() {
+        if (this.value.length > 0) {
+            this.style.borderColor = '#dc3545';
+        } else {
+            this.style.borderColor = '';
+        }
+    });
+});
+</script>
+{% endblock %}

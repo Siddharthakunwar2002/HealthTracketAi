@@ -1,0 +1,445 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-user-md me-2"></i>Doctor Profile
+        </h2>
+        <p class="text-muted">Manage your professional information and practice details</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-edit me-2"></i>Personal Information
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.first_name.label(class="form-label") }}
+                            {{ form.first_name(class="form-control" + (" is-invalid" if form.first_name.errors else "")) }}
+                            {% if form.first_name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.first_name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.last_name.label(class="form-label") }}
+                            {{ form.last_name(class="form-control" + (" is-invalid" if form.last_name.errors else "")) }}
+                            {% if form.last_name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.last_name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.phone.label(class="form-label") }}
+                            {{ form.phone(class="form-control" + (" is-invalid" if form.phone.errors else "")) }}
+                            {% if form.phone.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.phone.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.specialization.label(class="form-label") }}
+                            {{ form.specialization(class="form-control" + (" is-invalid" if form.specialization.errors else "")) }}
+                            {% if form.specialization.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.specialization.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.address.label(class="form-label") }}
+                        {{ form.address(class="form-control" + (" is-invalid" if form.address.errors else ""), rows="3") }}
+                        {% if form.address.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.address.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.bio.label(class="form-label") }}
+                        {{ form.bio(class="form-control" + (" is-invalid" if form.bio.errors else ""), rows="4", placeholder="Tell patients about your medical expertise...") }}
+                        {% if form.bio.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.bio.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.profile_picture.label(class="form-label") }}
+                        {{ form.profile_picture(class="form-control" + (" is-invalid" if form.profile_picture.errors else "")) }}
+                        {% if form.profile_picture.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.profile_picture.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">Upload a professional profile picture (JPG, PNG, GIF)</small>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('dashboard.doctor_dashboard') }}" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Cancel
+                        </a>
+                        <button type="button" class="btn btn-info" onclick="saveProfile()">
+                            <i class="fas fa-save me-2"></i>Save Profile
+                        </button>
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Professional Information -->
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-stethoscope me-2"></i>Professional Information
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ form.license_number.label(class="form-label") }}
+                        {{ form.license_number(class="form-control" + (" is-invalid" if form.license_number.errors else "")) }}
+                        {% if form.license_number.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.license_number.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ form.experience_years.label(class="form-label") }}
+                        {{ form.experience_years(class="form-control" + (" is-invalid" if form.experience_years.errors else ""), type="number", min="0") }}
+                        {% if form.experience_years.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.experience_years.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ form.consultation_fee.label(class="form-label") }}
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            {{ form.consultation_fee(class="form-control" + (" is-invalid" if form.consultation_fee.errors else ""), type="number", step="0.01", min="0") }}
+                        </div>
+                        {% if form.consultation_fee.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.consultation_fee.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ form.available_days.label(class="form-label") }}
+                        {{ form.available_days(class="form-select" + (" is-invalid" if form.available_days.errors else "")) }}
+                        {% if form.available_days.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.available_days.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.available_hours.label(class="form-label") }}
+                    {{ form.available_hours(class="form-control" + (" is-invalid" if form.available_hours.errors else ""), placeholder="e.g., 9:00 AM - 5:00 PM") }}
+                    {% if form.available_hours.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.available_hours.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <small class="form-text text-muted">Enter your available hours (e.g., 9:00 AM - 5:00 PM)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <!-- Profile Summary -->
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-md me-2"></i>Doctor Profile
+                </h5>
+            </div>
+            <div class="card-body text-center">
+                {% if current_user.profile_picture %}
+                    <img src="{{ url_for('static', filename=current_user.profile_picture) }}" 
+                         class="rounded-circle mb-3" width="120" height="120" alt="Profile Picture">
+                {% else %}
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 120px; height: 120px; font-size: 3rem;">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                {% endif %}
+                
+                <h4>Dr. {{ current_user.get_full_name() }}</h4>
+                <p class="text-muted">{{ current_user.email }}</p>
+                
+                <div class="mt-3">
+                    <span class="badge bg-primary me-2">{{ current_user.role.value.title() }}</span>
+                    {% if current_user.specialization %}
+                        <span class="badge bg-info">{{ current_user.specialization }}</span>
+                    {% endif %}
+                </div>
+                
+                {% if current_user.phone %}
+                    <div class="mt-3">
+                        <i class="fas fa-phone me-2"></i>{{ current_user.phone }}
+                    </div>
+                {% endif %}
+                
+                {% if current_user.consultation_fee %}
+                    <div class="mt-2">
+                        <i class="fas fa-dollar-sign me-2 text-success"></i>
+                        <strong>Consultation Fee: ${{ "%.2f"|format(current_user.consultation_fee) }}</strong>
+                    </div>
+                {% endif %}
+                
+                {% if current_user.experience_years %}
+                    <div class="mt-2">
+                        <i class="fas fa-briefcase me-2 text-info"></i>
+                        <small>{{ current_user.experience_years }} years experience</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('dashboard.doctor_appointments') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-calendar-check me-2"></i>My Appointments
+                    </a>
+                    <a href="{{ url_for('dashboard.doctor_patients') }}" class="btn btn-outline-info">
+                        <i class="fas fa-user-injured me-2"></i>My Patients
+                    </a>
+                    <a href="{{ url_for('dashboard.doctor_prescriptions') }}" class="btn btn-outline-success">
+                        <i class="fas fa-pills me-2"></i>Prescriptions
+                    </a>
+                    <a href="{{ url_for('dashboard.doctor_new_prescription') }}" class="btn btn-outline-warning">
+                        <i class="fas fa-plus me-2"></i>New Prescription
+                    </a>
+                    <a href="{{ url_for('dashboard.doctor_schedule') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-clock me-2"></i>Schedule
+                    </a>
+                    <a href="{{ url_for('auth.change_password') }}" class="btn btn-outline-dark">
+                        <i class="fas fa-key me-2"></i>Change Password
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Form validation
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('is-invalid');
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+            }
+        });
+    });
+    
+    // Real-time validation
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.hasAttribute('required') && !this.value.trim()) {
+                this.classList.add('is-invalid');
+            } else {
+                this.classList.remove('is-invalid');
+            }
+        });
+    });
+    
+    // Number input validation
+    const numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            if (this.min && parseFloat(this.value) < parseFloat(this.min)) {
+                this.value = this.min;
+            }
+        });
+    });
+    
+    // Auto-save functionality
+    setupAutoSave();
+    
+    // Profile picture preview
+    setupProfilePicturePreview();
+});
+
+function saveProfile() {
+    const form = document.querySelector('form');
+    if (form) {
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Saving...';
+        submitBtn.disabled = true;
+        
+        // Simulate save
+        setTimeout(() => {
+            form.submit();
+        }, 1000);
+    }
+}
+
+function setupAutoSave() {
+    const inputs = document.querySelectorAll('input, select, textarea');
+    let autoSaveTimeout;
+    
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            clearTimeout(autoSaveTimeout);
+            autoSaveTimeout = setTimeout(() => {
+                // Auto-save logic would go here
+                console.log('Auto-saving profile...');
+            }, 2000);
+        });
+    });
+}
+
+function setupProfilePicturePreview() {
+    const fileInput = document.querySelector('input[type="file"]');
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update profile picture preview
+                    const preview = document.querySelector('.profile-picture-preview');
+                    if (preview) {
+                        preview.src = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+}
+
+function validatePhoneNumber(input) {
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    if (!phoneRegex.test(input.value)) {
+        input.classList.add('is-invalid');
+        return false;
+    } else {
+        input.classList.remove('is-invalid');
+        return true;
+    }
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function calculateExperience() {
+    const startDate = document.getElementById('experience_start_date');
+    const experienceYears = document.getElementById('experience_years');
+    
+    if (startDate && experienceYears) {
+        const start = new Date(startDate.value);
+        const now = new Date();
+        const years = Math.floor((now - start) / (365.25 * 24 * 60 * 60 * 1000));
+        experienceYears.value = years;
+    }
+}
+
+function updateConsultationFee() {
+    const specialization = document.getElementById('specialization');
+    const consultationFee = document.getElementById('consultation_fee');
+    
+    if (specialization && consultationFee) {
+        const fees = {
+            'Cardiologist': 200,
+            'Neurologist': 180,
+            'Dermatologist': 150,
+            'Pediatrician': 120,
+            'General Practice': 100
+        };
+        
+        const suggestedFee = fees[specialization.value] || 100;
+        if (!consultationFee.value) {
+            consultationFee.value = suggestedFee;
+        }
+    }
+}
+</script>
+{% endblock %}
+
+

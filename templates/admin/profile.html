@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-user me-2"></i>Admin Profile
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Profile Information</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.first_name.label(class="form-label") }}
+                            {{ form.first_name(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.last_name.label(class="form-label") }}
+                            {{ form.last_name(class="form-control") }}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="{{ current_user.email }}" disabled>
+                            <div class="form-text">Email cannot be changed.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.phone.label(class="form-label") }}
+                            {{ form.phone(class="form-control") }}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.bio.label(class="form-label") }}
+                        {{ form.bio(class="form-control", rows="4") }}
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Update Profile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Profile Picture</h5>
+            </div>
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    <div class="avatar-lg bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center">
+                        <i class="fas fa-user fa-3x"></i>
+                    </div>
+                </div>
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-camera me-2"></i>Change Picture
+                </button>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0">Account Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <strong>Role:</strong> 
+                    <span class="badge bg-primary">Administrator</span>
+                </div>
+                <div class="mb-3">
+                    <strong>Member Since:</strong> 
+                    {{ current_user.created_at.strftime('%B %d, %Y') if current_user.created_at else 'N/A' }}
+                </div>
+                <div class="mb-3">
+                    <strong>Last Login:</strong> 
+                    {{ current_user.last_login.strftime('%B %d, %Y at %I:%M %p') if current_user.last_login else 'Never' }}
+                </div>
+                <div class="mb-3">
+                    <strong>Status:</strong> 
+                    <span class="badge bg-success">Active</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0">Security</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('auth.change_password') }}" class="btn btn-outline-warning">
+                        <i class="fas fa-key me-2"></i>Change Password
+                    </a>
+                    <button class="btn btn-outline-info">
+                        <i class="fas fa-shield-alt me-2"></i>Two-Factor Auth
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}Schedule Appointment - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2><i class="fas fa-calendar-plus me-2"></i>Schedule Appointment</h2>
+                    <p class="text-muted mb-0">Schedule a new appointment for {{ patient.get_full_name() }}</p>
+                </div>
+                <a href="{{ url_for('dashboard.doctor_patients') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Patients
+                </a>
+            </div>
+
+            <!-- Patient Information -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user me-2"></i>Patient Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Name:</strong> {{ patient.get_full_name() }}</p>
+                            <p><strong>Email:</strong> {{ patient.email }}</p>
+                            <p><strong>Phone:</strong> {{ patient.phone or 'Not provided' }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Date of Birth:</strong> {{ patient.date_of_birth.strftime('%B %d, %Y') if patient.date_of_birth else 'Not provided' }}</p>
+                            <p><strong>Blood Group:</strong> {{ patient.blood_group or 'Not provided' }}</p>
+                            <p><strong>Medical History:</strong> {{ patient.medical_history or 'Not provided' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointment Form -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-calendar-alt me-2"></i>Appointment Details
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" id="appointmentForm">
+                        {{ form.hidden_tag() }}
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="appointment_date" class="form-label">Appointment Date *</label>
+                                {{ form.appointment_date(class="form-control", id="appointment_date", required=True) }}
+                                {% if form.appointment_date.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.appointment_date.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="appointment_time" class="form-label">Appointment Time *</label>
+                                {{ form.appointment_time(class="form-control", id="appointment_time", required=True) }}
+                                {% if form.appointment_time.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.appointment_time.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="doctor_id" class="form-label">Doctor *</label>
+                                {{ form.doctor_id(class="form-control", id="doctor_id", required=True, disabled=True) }}
+                                {% if form.doctor_id.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.doctor_id.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="duration" class="form-label">Duration (minutes) *</label>
+                                {{ form.duration(class="form-control", id="duration", placeholder="30", required=True) }}
+                                {% if form.duration.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.duration.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="symptoms" class="form-label">Symptoms/Reason for Visit *</label>
+                            {{ form.symptoms(class="form-control", id="symptoms", rows="3", placeholder="Describe the patient's symptoms or reason for the appointment", required=True) }}
+                            {% if form.symptoms.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.symptoms.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="{{ url_for('dashboard.doctor_patients') }}" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-calendar-plus me-2"></i>Schedule Appointment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('appointment_date').setAttribute('min', today);
+
+    // Form validation
+    const form = document.getElementById('appointmentForm');
+    form.addEventListener('submit', function(e) {
+        const dateInput = document.getElementById('appointment_date');
+        const timeInput = document.getElementById('appointment_time');
+        const symptomsInput = document.getElementById('symptoms');
+
+        let isValid = true;
+
+        // Check if date is selected
+        if (!dateInput.value) {
+            showError(dateInput, 'Please select an appointment date');
+            isValid = false;
+        }
+
+        // Check if time is selected
+        if (!timeInput.value) {
+            showError(timeInput, 'Please select an appointment time');
+            isValid = false;
+        }
+
+        // Check if symptoms are provided
+        if (!symptomsInput.value.trim()) {
+            showError(symptomsInput, 'Please describe the symptoms or reason for visit');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+
+    function showError(input, message) {
+        // Remove existing error
+        const existingError = input.parentNode.querySelector('.text-danger');
+        if (existingError) {
+            existingError.remove();
+        }
+
+        // Add new error
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'text-danger';
+        errorDiv.innerHTML = `<small>${message}</small>`;
+        input.parentNode.appendChild(errorDiv);
+        input.classList.add('is-invalid');
+    }
+
+    // Clear errors on input
+    document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', function() {
+            this.classList.remove('is-invalid');
+            const error = this.parentNode.querySelector('.text-danger');
+            if (error) {
+                error.remove();
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,1087 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": ["Hi", "Hello", "Hey", "How are you", "Good day", "Good morning", "Good afternoon", "Good evening", "What's up", "Greetings"],
+            "responses": [
+                "Hello! 👋 I'm your AI health assistant. I'm here to help you with any health-related questions you might have. What would you like to know about today?",
+                "Hi there! 🌟 I'm your virtual health companion. I can help you with nutrition, exercise, mental health, sleep, and general wellness. What's on your mind?",
+                "Hello! 💪 I'm excited to help you on your health journey. Whether you have questions about diet, fitness, or overall wellness, I'm here to guide you. What would you like to discuss?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "Take care", "See you", "Bye bye", "Farewell", "Until next time"],
+            "responses": [
+                "Goodbye! 👋 Remember to stay hydrated and take care of your health! Feel free to come back anytime you have questions.",
+                "See you later! 🌟 Don't forget to maintain a healthy lifestyle and get enough rest. Take care!",
+                "Take care! 💪 Keep up the great work on your health journey. Remember, small steps lead to big changes!"
+            ]
+        },
+        {
+            "tag": "general_health",
+            "patterns": [
+                "How to stay healthy",
+                "What are good health habits",
+                "Tips for good health",
+                "How to maintain good health",
+                "What should I do to be healthy",
+                "General health advice",
+                "Health tips",
+                "Wellness tips",
+                "Healthy lifestyle"
+            ],
+            "responses": [
+                "Here's a comprehensive guide to maintaining good health: 🌟\n\n1. **Physical Health**\n   - Regular Exercise: 150 minutes of moderate activity weekly\n   - Balanced Diet: Include all food groups in proper portions\n   - Stay Hydrated: 8-10 glasses of water daily\n   - Get Enough Sleep: 7-9 hours per night\n\n2. **Mental Health**\n   - Practice mindfulness and meditation\n   - Maintain social connections\n   - Manage stress effectively\n   - Take regular breaks\n\n3. **Preventive Care**\n   - Regular health check-ups\n   - Vaccinations up to date\n   - Screenings as recommended\n   - Dental and vision care\n\n4. **Lifestyle Choices**\n   - Avoid smoking and limit alcohol\n   - Maintain healthy weight\n   - Practice good hygiene\n   - Stay active throughout the day\n\n5. **Environmental Health**\n   - Clean living space\n   - Good air quality\n   - Safe food handling\n   - Proper waste disposal\n\nRemember: Small changes can lead to big improvements in your overall health! 💪",
+                
+                "Living a healthy lifestyle involves several key aspects: 🌱\n\n1. **Daily Habits**\n   - Start with a healthy breakfast\n   - Take regular movement breaks\n   - Practice good posture\n   - Stay hydrated\n\n2. **Weekly Goals**\n   - Exercise 3-5 times\n   - Plan healthy meals\n   - Get adequate rest\n   - Social activities\n\n3. **Monthly Check-ins**\n   - Track progress\n   - Adjust goals\n   - Review habits\n   - Celebrate achievements\n\n4. **Long-term Health**\n   - Regular medical check-ups\n   - Maintain healthy relationships\n   - Continue learning\n   - Stay positive\n\nWould you like more specific information about any of these areas? 🤔"
+            ]
+        },
+        {
+            "tag": "nutrition",
+            "patterns": [
+                "What should I eat",
+                "Healthy diet tips",
+                "Nutrition advice",
+                "What foods are good for me",
+                "How to eat healthy",
+                "Diet recommendations",
+                "Healthy eating habits",
+                "Meal planning",
+                "Balanced diet"
+            ],
+            "responses": [
+                "Here's a detailed nutrition guide: 🥗\n\n1. **Essential Food Groups**\n   - Fruits & Vegetables: 5+ servings daily\n   - Whole Grains: Brown rice, quinoa, oats\n   - Lean Proteins: Fish, chicken, legumes\n   - Healthy Fats: Avocados, nuts, olive oil\n   - Dairy/Alternatives: Milk, yogurt, fortified plant milk\n\n2. **Meal Planning Tips**\n   - Plan meals ahead\n   - Prepare healthy snacks\n   - Portion control\n   - Regular meal times\n\n3. **Healthy Cooking Methods**\n   - Steaming\n   - Grilling\n   - Baking\n   - Stir-frying\n\n4. **Hydration**\n   - Water: 8-10 glasses daily\n   - Herbal teas\n   - Limit sugary drinks\n   - Monitor urine color\n\n5. **Smart Shopping**\n   - Read labels\n   - Choose whole foods\n   - Buy seasonal produce\n   - Plan grocery list\n\nRemember: A balanced diet is key to good health! 🌟",
+                
+                "Nutrition for Optimal Health: 🍎\n\n1. **Daily Nutrition Goals**\n   - 5+ servings of fruits/vegetables\n   - 3 servings of whole grains\n   - 2-3 servings of protein\n   - 2-3 servings of dairy/alternatives\n   - Healthy fats in moderation\n\n2. **Meal Timing**\n   - Breakfast within 2 hours of waking\n   - Regular meal intervals\n   - Light dinner 2-3 hours before bed\n   - Healthy snacks as needed\n\n3. **Portion Control**\n   - Use smaller plates\n   - Measure servings\n   - Mindful eating\n   - Stop when 80% full\n\n4. **Special Considerations**\n   - Food allergies\n   - Dietary restrictions\n   - Health conditions\n   - Activity level\n\nWould you like specific meal ideas or recipes? 🥘"
+            ]
+        },
+        {
+            "tag": "exercise",
+            "patterns": [
+                "Exercise tips",
+                "How to stay fit",
+                "Workout recommendations",
+                "Physical activity advice",
+                "Fitness tips",
+                "How to exercise properly",
+                "Best exercises for health",
+                "Workout plan",
+                "Fitness routine"
+            ],
+            "responses": [
+                "Comprehensive Exercise Guide: 💪\n\n1. **Cardio Exercise (150 minutes weekly)**\n   - Brisk walking\n   - Running/jogging\n   - Cycling\n   - Swimming\n   - Dancing\n   - HIIT workouts\n\n2. **Strength Training (2-3 times weekly)**\n   - Bodyweight exercises\n   - Weight lifting\n   - Resistance bands\n   - Yoga\n   - Pilates\n\n3. **Flexibility & Balance**\n   - Stretching\n   - Yoga\n   - Tai Chi\n   - Balance exercises\n\n4. **Exercise Tips**\n   - Start slowly\n   - Warm up properly\n   - Stay hydrated\n   - Use correct form\n   - Listen to your body\n   - Rest between sessions\n\n5. **Benefits**\n   - Improved heart health\n   - Stronger muscles\n   - Better mood\n   - Weight management\n   - Reduced stress\n\nRemember: Consistency is key! 🌟",
+                
+                "Creating Your Fitness Plan: 🏃‍♂️\n\n1. **Getting Started**\n   - Set realistic goals\n   - Choose enjoyable activities\n   - Start with 10-15 minutes\n   - Gradually increase duration\n\n2. **Weekly Schedule**\n   - 3-5 cardio sessions\n   - 2-3 strength training\n   - Daily stretching\n   - Active rest days\n\n3. **Progress Tracking**\n   - Keep a workout log\n   - Track improvements\n   - Celebrate milestones\n   - Adjust as needed\n\n4. **Safety Tips**\n   - Proper warm-up\n   - Correct form\n   - Adequate rest\n   - Stay hydrated\n\nWould you like a specific workout plan? 🎯"
+            ]
+        },
+        {
+            "tag": "mental_health",
+            "patterns": [
+                "How to reduce stress",
+                "Mental health tips",
+                "How to stay positive",
+                "Dealing with anxiety",
+                "Stress management",
+                "How to be happy",
+                "Mental wellness",
+                "Emotional health",
+                "Mindfulness"
+            ],
+            "responses": [
+                "Mental Health & Wellness Guide: 🧠\n\n1. **Stress Management**\n   - Deep breathing exercises\n   - Meditation practice\n   - Progressive muscle relaxation\n   - Regular exercise\n   - Adequate sleep\n\n2. **Emotional Well-being**\n   - Practice gratitude\n   - Journaling\n   - Social connections\n   - Hobbies and interests\n   - Self-care routines\n\n3. **Anxiety Management**\n   - Mindfulness techniques\n   - Regular exercise\n   - Healthy sleep habits\n   - Limit caffeine\n   - Professional support if needed\n\n4. **Positive Mindset**\n   - Positive self-talk\n   - Goal setting\n   - Celebrate small wins\n   - Learn from challenges\n   - Practice acceptance\n\n5. **Professional Support**\n   - Therapy\n   - Counseling\n   - Support groups\n   - Mental health apps\n   - Crisis hotlines\n\nRemember: Your mental health matters! 💚",
+                
+                "Daily Mental Wellness Practices: 🌟\n\n1. **Morning Routine**\n   - 5 minutes meditation\n   - Gratitude journaling\n   - Light exercise\n   - Healthy breakfast\n\n2. **During Day**\n   - Regular breaks\n   - Deep breathing\n   - Stay hydrated\n   - Connect with others\n\n3. **Evening Routine**\n   - Digital sunset\n   - Relaxing activity\n   - Reflection time\n   - Prepare for sleep\n\n4. **Weekly Practices**\n   - Social activities\n   - Hobby time\n   - Nature connection\n   - Self-reflection\n\nWould you like specific techniques for any of these areas? 🤔"
+            ]
+        },
+        {
+            "tag": "sleep",
+            "patterns": [
+                "How to sleep better",
+                "Sleep tips",
+                "Insomnia help",
+                "Better sleep habits",
+                "Sleep problems",
+                "Can't sleep",
+                "Sleep hygiene",
+                "Sleep schedule",
+                "Sleep quality"
+            ],
+            "responses": [
+                "Comprehensive Sleep Guide: 😴\n\n1. **Sleep Schedule**\n   - Consistent bedtime and wake time\n   - 7-9 hours of sleep\n   - Regular sleep routine\n   - Avoid weekend oversleeping\n\n2. **Bedroom Environment**\n   - Cool temperature (65-68°F)\n   - Dark room\n   - Quiet environment\n   - Comfortable mattress\n   - Supportive pillow\n\n3. **Pre-Sleep Routine**\n   - Relaxing activities\n   - Warm bath\n   - Reading\n   - Meditation\n   - Light stretching\n\n4. **Sleep Hygiene**\n   - Limit screen time before bed\n   - Avoid caffeine after 2 PM\n   - No alcohol before sleep\n   - Regular exercise (not before bed)\n   - Light dinner\n\n5. **Sleep Disorders**\n   - Track symptoms\n   - Consult healthcare provider\n   - Consider sleep study\n   - Follow treatment plan\n\nSweet dreams! 🌙",
+                
+                "Sleep Optimization Tips: 🌛\n\n1. **Evening Routine**\n   - Digital sunset 1 hour before bed\n   - Relaxing activities\n   - Light stretching\n   - Reading physical books\n\n2. **Sleep Environment**\n   - Blackout curtains\n   - White noise machine\n   - Comfortable bedding\n   - Cool temperature\n\n3. **Nutrition for Sleep**\n   - Light dinner\n   - Sleep-promoting foods\n   - Limit fluids before bed\n   - Avoid stimulants\n\n4. **Stress Management**\n   - Journaling\n   - Meditation\n   - Deep breathing\n   - Worry time earlier in day\n\nWould you like specific techniques for better sleep? 💤"
+            ]
+        },
+        {
+            "tag": "emergency",
+            "patterns": [
+                "Emergency help",
+                "Medical emergency",
+                "Urgent care",
+                "Need immediate help",
+                "Serious symptoms",
+                "Emergency situation",
+                "Life threatening"
+            ],
+            "responses": [
+                "For medical emergencies:\n\n1. Call Emergency Services (911) immediately if you experience:\n   - Chest pain or pressure\n   - Difficulty breathing\n   - Severe bleeding\n   - Loss of consciousness\n   - Stroke symptoms (FAST):\n     * Face drooping\n     * Arm weakness\n     * Speech difficulty\n     * Time to call 911\n\n2. While waiting for help:\n   - Stay calm\n   - Keep the person comfortable\n   - Don't give food or drink\n   - Follow dispatcher instructions\n   - Have medical information ready\n\n3. Emergency Kit:\n   - First aid supplies\n   - Emergency contacts\n   - Medical information\n   - Insurance cards\n   - Medications list",
+                "Emergency response steps:\n1. Call emergency services\n2. Stay calm and assess situation\n3. Follow dispatcher instructions\n4. Keep person comfortable\n5. Have medical information ready"
+            ]
+        },
+        {
+            "tag": "preventive_care",
+            "patterns": [
+                "Preventive health",
+                "Health screenings",
+                "Regular check-ups",
+                "Preventive care",
+                "Health maintenance",
+                "Routine health care",
+                "Preventive measures"
+            ],
+            "responses": [
+                "Preventive healthcare guide:\n\n1. Regular Check-ups:\n   - Annual physical exam\n   - Blood pressure check\n   - Cholesterol screening\n   - Blood sugar test\n   - Cancer screenings\n\n2. Vaccinations:\n   - Flu shot\n   - COVID-19 vaccine\n   - Tetanus booster\n   - Age-appropriate vaccines\n\n3. Health Monitoring:\n   - Weight management\n   - Blood pressure\n   - Blood sugar\n   - Cholesterol levels\n   - Mental health\n\n4. Lifestyle Prevention:\n   - Regular exercise\n   - Healthy diet\n   - Stress management\n   - Adequate sleep\n   - Avoid smoking\n   - Limit alcohol\n\n5. Age-Specific Screenings:\n   - Mammograms\n   - Colonoscopy\n   - Prostate exam\n   - Bone density\n   - Vision and hearing",
+                "Preventive care recommendations:\n1. Regular health check-ups\n2. Stay up to date with vaccinations\n3. Monitor vital signs\n4. Maintain healthy lifestyle\n5. Get age-appropriate screenings"
+            ]
+        },
+        {
+            "tag": "medication",
+            "patterns": [
+                "Medication tips",
+                "How to take medicine",
+                "Medicine safety",
+                "Prescription advice",
+                "Medication management",
+                "Drug interactions",
+                "Medicine schedule"
+            ],
+            "responses": [
+                "Medication safety guide:\n\n1. Medication Management:\n   - Follow prescription exactly\n   - Use pill organizer\n   - Set reminders\n   - Keep medication list\n   - Check expiration dates\n\n2. Safety Tips:\n   - Read labels carefully\n   - Check for interactions\n   - Store properly\n   - Keep out of reach of children\n   - Don't share medications\n\n3. Taking Medications:\n   - Take with/without food as directed\n   - Complete full course\n   - Don't skip doses\n   - Report side effects\n   - Ask questions\n\n4. Organization:\n   - Use medication schedule\n   - Set phone reminders\n   - Keep instructions\n   - Track refills\n   - Maintain records",
+                "Medication safety tips:\n1. Follow prescription instructions\n2. Use medication organizer\n3. Set reminders\n4. Check for interactions\n5. Store properly\n6. Keep records\n7. Report side effects"
+            ]
+        },
+        {
+            "tag": "covid",
+            "patterns": ["covid symptoms", "coronavirus", "covid-19", "covid prevention", "covid vaccine", "covid protection"],
+            "responses": [
+                "Common COVID-19 symptoms include:\n1. Fever or chills\n2. Cough\n3. Shortness of breath\n4. Fatigue\n5. Muscle/body aches\n6. Loss of taste/smell\n7. Sore throat\nIf you experience symptoms, please:\n- Get tested\n- Self-isolate\n- Contact your healthcare provider",
+                "To prevent COVID-19:\n1. Get vaccinated and boosted\n2. Wear masks in crowded spaces\n3. Maintain good hand hygiene\n4. Keep spaces well-ventilated\n5. Stay home if sick\n6. Follow local health guidelines"
+            ]
+        },
+        {
+            "tag": "nutrition_specific",
+            "patterns": ["best foods for immunity", "anti-inflammatory foods", "foods for energy", "brain food", "heart healthy diet", "foods for weight loss"],
+            "responses": [
+                "Here are some immune-boosting foods:\n1. Citrus fruits (Vitamin C)\n2. Red bell peppers\n3. Broccoli\n4. Garlic\n5. Ginger\n6. Spinach\n7. Yogurt (probiotics)\n8. Almonds (Vitamin E)\n9. Turmeric\n10. Green tea",
+                "Heart-healthy foods include:\n1. Fatty fish (omega-3)\n2. Oats and whole grains\n3. Berries\n4. Nuts and seeds\n5. Avocados\n6. Olive oil\n7. Leafy greens\n8. Legumes\nLimit: processed foods, saturated fats, and sodium"
+            ]
+        },
+        {
+            "tag": "exercise_specific",
+            "patterns": ["home workout", "exercise without equipment", "best cardio", "strength training", "beginner exercise", "weight loss exercise"],
+            "responses": [
+                "No-equipment home workout:\n1. Warm-up (5 mins):\n   - Jumping jacks\n   - Arm circles\n   - High knees\n2. Main workout (20 mins):\n   - Push-ups: 10 reps\n   - Squats: 15 reps\n   - Lunges: 10 each leg\n   - Plank: 30 seconds\n   - Mountain climbers: 30 seconds\n3. Cool-down (5 mins):\n   - Light stretching\nRepeat circuit 3 times!",
+                "Beginner's exercise plan:\n1. Start with walking (15-30 mins daily)\n2. Add basic strength exercises:\n   - Wall push-ups\n   - Chair squats\n   - Assisted lunges\n3. Gradually increase:\n   - Duration\n   - Intensity\n   - Frequency\nRemember: Listen to your body!"
+            ]
+        },
+        {
+            "tag": "mental_health_specific",
+            "patterns": ["feeling anxious", "can't sleep", "feeling depressed", "stress relief", "meditation tips", "mental health exercises"],
+            "responses": [
+                "Quick anxiety relief techniques:\n1. 4-7-8 Breathing:\n   - Inhale for 4 seconds\n   - Hold for 7 seconds\n   - Exhale for 8 seconds\n2. Grounding exercise (5-4-3-2-1):\n   - Name 5 things you see\n   - 4 things you feel\n   - 3 things you hear\n   - 2 things you smell\n   - 1 thing you taste\n3. Progressive muscle relaxation\n4. Take a mindful walk\n5. Call a supportive friend",
+                "Daily mental wellness practices:\n1. Morning routine:\n   - 5 minutes meditation\n   - Gratitude journaling\n   - Light exercise\n2. During day:\n   - Regular breaks\n   - Deep breathing\n   - Stay hydrated\n3. Evening routine:\n   - Digital sunset\n   - Relaxing activity\n   - Reflection time"
+            ]
+        },
+        {
+            "tag": "sleep_hygiene",
+            "patterns": ["can't fall asleep", "better sleep", "sleep schedule", "insomnia help", "sleep quality", "night routine"],
+            "responses": [
+                "Create a sleep-friendly environment:\n1. Bedroom setup:\n   - Temperature: 65-68°F (18-20°C)\n   - Complete darkness\n   - White noise (if helpful)\n   - Comfortable mattress/pillows\n2. Evening routine:\n   - No screens 1 hour before bed\n   - Dim lights\n   - Light stretching\n   - Reading or meditation\n3. Avoid before bed:\n   - Caffeine (after 2 PM)\n   - Heavy meals\n   - Intense exercise",
+                "Natural sleep remedies:\n1. Calming teas:\n   - Chamomile\n   - Valerian root\n   - Lavender\n2. Relaxation techniques:\n   - Deep breathing\n   - Body scan meditation\n   - Gentle yoga\n3. Schedule tips:\n   - Consistent sleep/wake times\n   - Morning sunlight exposure\n   - Regular exercise (not late)"
+            ]
+        },
+        {
+            "tag": "hydration",
+            "patterns": ["how much water", "staying hydrated", "dehydration symptoms", "water intake", "hydration tips"],
+            "responses": [
+                "Hydration guidelines:\n1. Daily water intake:\n   - Men: ~15.5 cups (3.7 L)\n   - Women: ~11.5 cups (2.7 L)\n2. Signs of dehydration:\n   - Dark urine\n   - Thirst\n   - Dry mouth\n   - Fatigue\n   - Headache\n3. Tips to stay hydrated:\n   - Carry a water bottle\n   - Set reminders\n   - Eat water-rich foods",
+                "Creative hydration ideas:\n1. Infused water combinations:\n   - Lemon + cucumber\n   - Mint + lime\n   - Berries + orange\n2. Hydrating foods:\n   - Watermelon (92% water)\n   - Cucumber (95% water)\n   - Celery (95% water)\n   - Oranges (87% water)\n3. Hydration tracking:\n   - Apps\n   - Smart bottles\n   - Daily goals"
+            ]
+        },
+        {
+            "tag": "first_aid",
+            "patterns": ["first aid basics", "minor injury", "cuts and scrapes", "burn treatment", "first aid kit"],
+            "responses": [
+                "Basic first aid for common injuries:\n1. Cuts and scrapes:\n   - Clean with soap and water\n   - Apply antibiotic ointment\n   - Cover with sterile bandage\n2. Minor burns:\n   - Cool under running water\n   - Don't use ice\n   - Cover loosely\n3. Sprains:\n   - RICE method:\n     * Rest\n     * Ice\n     * Compression\n     * Elevation",
+                "Essential first aid kit items:\n1. Basic supplies:\n   - Bandages (various sizes)\n   - Gauze pads\n   - Adhesive tape\n   - Scissors\n2. Medications:\n   - Pain relievers\n   - Antihistamines\n   - Hydrocortisone cream\n3. Emergency items:\n   - First aid manual\n   - Emergency contacts\n   - Flashlight"
+            ]
+        },
+        {
+            "tag": "seasonal_health",
+            "patterns": ["summer health tips", "winter wellness", "seasonal allergies", "cold and flu", "seasonal health advice"],
+            "responses": [
+                "Summer health tips:\n1. Sun protection:\n   - SPF 30+ sunscreen\n   - Protective clothing\n   - Seek shade (10am-4pm)\n2. Heat safety:\n   - Stay hydrated\n   - Light, loose clothing\n   - Indoor exercise during peak heat\n3. Food safety:\n   - Proper food storage\n   - Clean grill practices\n   - Safe picnic tips",
+                "Winter wellness:\n1. Cold prevention:\n   - Regular hand washing\n   - Vitamin D supplements\n   - Flu vaccination\n2. Skin care:\n   - Moisturize regularly\n   - Use humidifier\n   - Warm (not hot) showers\n3. Exercise:\n   - Indoor alternatives\n   - Proper warm-up\n   - Layer clothing"
+            ]
+        },
+        {
+            "tag": "sleep_advanced",
+            "patterns": [
+                "sleep better more details",
+                "advanced sleep tips",
+                "detailed sleep advice",
+                "sleep hygiene details",
+                "sleep quality improvement",
+                "sleep optimization",
+                "sleep schedule details",
+                "sleep routine details"
+            ],
+            "responses": [
+                "Advanced Sleep Optimization Guide:\n\n1. Sleep Schedule Optimization:\n   - Go to bed and wake up at the same time daily (even weekends)\n   - Calculate your sleep cycles (90-minute intervals)\n   - Plan for 5-6 complete sleep cycles (7.5-9 hours)\n   - Use sleep cycle apps to track patterns\n\n2. Bedroom Environment:\n   - Temperature: 65-68°F (18-20°C)\n   - Humidity: 30-50%\n   - Complete darkness (use blackout curtains)\n   - White noise machine (40-60 dB)\n   - Memory foam mattress (medium firmness)\n   - Hypoallergenic pillows\n\n3. Pre-Sleep Routine (2-3 hours before bed):\n   - Dim lights gradually\n   - Take a warm bath (98-100°F)\n   - Practice progressive muscle relaxation\n   - Read physical books (not e-books)\n   - Listen to calming music (60 BPM)\n   - Journal thoughts and worries\n\n4. Nutrition for Better Sleep:\n   - Last meal: 2-3 hours before bed\n   - Sleep-promoting foods:\n     * Tart cherries (melatonin)\n     * Kiwi (serotonin)\n     * Almonds (magnesium)\n     * Chamomile tea\n     * Warm milk\n   - Avoid:\n     * Caffeine (after 2 PM)\n     * Alcohol (3 hours before bed)\n     * Heavy meals\n     * Spicy foods\n\n5. Exercise and Activity:\n   - Morning exercise (boosts melatonin)\n   - Evening light stretching\n   - Yoga poses for sleep:\n     * Child's pose\n     * Legs up the wall\n     * Corpse pose\n   - Avoid intense exercise 3 hours before bed\n\n6. Technology Management:\n   - Blue light filters after sunset\n   - No screens 1 hour before bed\n   - Use night mode on devices\n   - Keep phones outside bedroom\n   - Use smart bulbs with warm light\n\n7. Stress Management:\n   - 4-7-8 breathing technique\n   - Body scan meditation\n   - Gratitude journaling\n   - Worry time (earlier in day)\n   - Aromatherapy (lavender, chamomile)\n\n8. Sleep Disorders Awareness:\n   - Track symptoms:\n     * Snoring\n     * Gasping for air\n     * Restless legs\n     * Frequent waking\n   - Consider sleep study if needed\n   - Consult sleep specialist if:\n     * Chronic insomnia\n     * Excessive daytime sleepiness\n     * Sleep apnea symptoms\n\n9. Morning Routine:\n   - Natural light exposure\n   - Cold water splash\n   - Light breakfast\n   - Morning exercise\n   - Consistent wake time\n\n10. Sleep Tracking:\n    - Use sleep apps\n    - Monitor:\n      * Sleep duration\n      * Sleep quality\n      * Heart rate\n      * Movement\n    - Adjust based on data",
+                
+                "Sleep Science and Best Practices:\n\n1. Circadian Rhythm Management:\n   - Morning sunlight exposure (10-30 minutes)\n   - Evening light reduction\n   - Consistent meal times\n   - Regular exercise timing\n   - Temperature regulation\n\n2. Sleep Environment Optimization:\n   - Mattress selection guide:\n     * Side sleepers: Medium-soft\n     * Back sleepers: Medium-firm\n     * Stomach sleepers: Firm\n   - Pillow height based on sleep position\n   - Bedding materials:\n     * Cotton for breathability\n     * Silk for temperature regulation\n     * Wool for moisture control\n\n3. Advanced Sleep Techniques:\n   - Military sleep method\n   - 4-7-8 breathing\n   - Progressive muscle relaxation\n   - Autogenic training\n   - Biofeedback training\n\n4. Sleep Supplements (consult doctor):\n   - Melatonin (0.5-5mg)\n   - Magnesium (200-400mg)\n   - L-theanine (100-200mg)\n   - Valerian root\n   - GABA\n\n5. Sleep Position Optimization:\n   - Back sleeping: Best for spine\n   - Side sleeping: Good for snoring\n   - Stomach sleeping: Use thin pillow\n   - Pregnancy: Left side recommended\n\n6. Sleep Technology:\n   - Smart mattresses\n   - Sleep tracking devices\n   - Smart lighting systems\n   - White noise machines\n   - Temperature control devices\n\n7. Sleep and Diet Timing:\n   - Last caffeine: 2 PM\n   - Last meal: 2-3 hours before bed\n   - Last alcohol: 3 hours before bed\n   - Last water: 1 hour before bed\n\n8. Sleep and Exercise Timing:\n   - Morning: Cardio\n   - Afternoon: Strength training\n   - Evening: Light stretching\n   - Avoid: High-intensity 3 hours before bed\n\n9. Sleep and Stress Management:\n   - Daily meditation\n   - Journaling\n   - Therapy if needed\n   - Stress reduction techniques\n   - Worry time management\n\n10. Sleep Monitoring:\n    - Track sleep metrics\n    - Analyze sleep patterns\n    - Adjust based on data\n    - Consult professionals if needed"
+            ]
+        },
+        {
+            "tag": "chronic_conditions",
+            "patterns": [
+                "diabetes management",
+                "hypertension tips",
+                "heart disease prevention",
+                "managing chronic pain",
+                "arthritis care",
+                "asthma management",
+                "chronic condition tips"
+            ],
+            "responses": [
+                "Chronic Condition Management Guide:\n\n1. Diabetes Management:\n   - Blood sugar monitoring\n   - Medication adherence\n   - Diet control:\n     * Low glycemic foods\n     * Portion control\n     * Regular meal timing\n   - Exercise guidelines:\n     * 150 minutes weekly\n     * Monitor blood sugar\n     * Stay hydrated\n\n2. Hypertension Control:\n   - Blood pressure monitoring\n   - DASH diet principles:\n     * Low sodium\n     * Rich in fruits/vegetables\n     * Lean proteins\n   - Lifestyle modifications:\n     * Regular exercise\n     * Stress management\n     * Limit alcohol\n     * Quit smoking\n\n3. Heart Disease Prevention:\n   - Regular check-ups\n   - Heart-healthy diet:\n     * Omega-3 rich foods\n     * Fiber-rich foods\n     * Limited saturated fats\n   - Exercise program:\n     * Cardio activities\n     * Strength training\n     * Flexibility exercises\n\n4. Chronic Pain Management:\n   - Pain tracking\n   - Medication schedule\n   - Physical therapy\n   - Alternative therapies:\n     * Acupuncture\n     * Massage\n     * Heat/cold therapy\n   - Stress reduction\n\n5. Arthritis Care:\n   - Joint protection\n   - Exercise modifications\n   - Pain management\n   - Diet recommendations:\n     * Anti-inflammatory foods\n     * Omega-3 rich foods\n     * Vitamin D sources\n\n6. Asthma Management:\n   - Trigger identification\n   - Medication adherence\n   - Peak flow monitoring\n   - Action plan:\n     * Daily controller meds\n     * Rescue inhaler use\n     * Emergency protocol\n\n7. General Tips:\n   - Regular medical follow-up\n   - Medication management\n   - Lifestyle modifications\n   - Support system\n   - Emergency plan",
+                
+                "Living with Chronic Conditions:\n\n1. Daily Management:\n   - Medication schedule\n   - Symptom tracking\n   - Regular monitoring\n   - Exercise routine\n   - Diet plan\n\n2. Lifestyle Adjustments:\n   - Stress management\n   - Sleep hygiene\n   - Activity modifications\n   - Social support\n   - Work-life balance\n\n3. Emergency Preparedness:\n   - Emergency contacts\n   - Medication list\n   - Action plan\n   - Insurance information\n   - Medical history"
+            ]
+        },
+        {
+            "tag": "women_health",
+            "patterns": [
+                "women's health",
+                "pregnancy tips",
+                "menstrual health",
+                "breast health",
+                "women's wellness",
+                "female health",
+                "prenatal care"
+            ],
+            "responses": [
+                "Women's Health Guide:\n\n1. Reproductive Health:\n   - Regular gynecological exams\n   - Pap smears (21-65 years)\n   - Breast self-exams\n   - STI screening\n   - Contraception options\n\n2. Pregnancy Care:\n   - Prenatal vitamins\n   - Regular check-ups\n   - Diet guidelines:\n     * Folic acid\n     * Iron-rich foods\n     * Calcium sources\n   - Exercise recommendations\n   - Warning signs to watch\n\n3. Menstrual Health:\n   - Cycle tracking\n   - Symptom management\n   - Nutrition during periods\n   - Exercise modifications\n   - When to seek help\n\n4. Breast Health:\n   - Self-examination\n   - Mammogram guidelines\n   - Risk factors\n   - Prevention tips\n   - Warning signs\n\n5. Bone Health:\n   - Calcium intake\n   - Vitamin D\n   - Weight-bearing exercise\n   - Osteoporosis prevention\n   - Bone density testing\n\n6. Heart Health:\n   - Risk factors\n   - Prevention strategies\n   - Exercise guidelines\n   - Diet recommendations\n   - Stress management\n\n7. Mental Health:\n   - Stress management\n   - Depression awareness\n   - Anxiety management\n   - Self-care practices\n   - Support resources",
+                
+                "Women's Wellness Tips:\n\n1. Preventive Care:\n   - Annual physical\n   - Dental check-ups\n   - Eye exams\n   - Skin checks\n   - Vaccinations\n\n2. Lifestyle Management:\n   - Balanced diet\n   - Regular exercise\n   - Stress reduction\n   - Sleep hygiene\n   - Social connections\n\n3. Health Monitoring:\n   - Blood pressure\n   - Cholesterol\n   - Blood sugar\n   - Weight management\n   - Mental health"
+            ]
+        },
+        {
+            "tag": "men_health",
+            "patterns": [
+                "men's health",
+                "prostate health",
+                "male wellness",
+                "men's fitness",
+                "men's nutrition",
+                "male health tips",
+                "men's preventive care"
+            ],
+            "responses": [
+                "Men's Health Guide:\n\n1. Preventive Care:\n   - Annual physical exam\n   - Prostate screening\n   - Testicular self-exam\n   - Colonoscopy (45+)\n   - Blood pressure check\n   - Cholesterol screening\n\n2. Heart Health:\n   - Risk factors:\n     * High blood pressure\n     * High cholesterol\n     * Smoking\n     * Obesity\n   - Prevention:\n     * Regular exercise\n     * Heart-healthy diet\n     * Stress management\n\n3. Prostate Health:\n   - Regular screening\n   - Symptoms to watch\n   - Risk factors\n   - Prevention tips\n   - Treatment options\n\n4. Mental Health:\n   - Stress management\n   - Depression awareness\n   - Anxiety management\n   - Work-life balance\n   - Support seeking\n\n5. Fitness and Nutrition:\n   - Exercise program:\n     * Cardio\n     * Strength training\n     * Flexibility\n   - Diet guidelines:\n     * Protein needs\n     * Healthy fats\n     * Micronutrients\n\n6. Sexual Health:\n   - Regular check-ups\n   - STI screening\n   - Erectile health\n   - Fertility awareness\n   - Safe practices\n\n7. Lifestyle Management:\n   - Sleep hygiene\n   - Stress reduction\n   - Work-life balance\n   - Social connections\n   - Hobby maintenance",
+                
+                "Men's Wellness Tips:\n\n1. Daily Health Practices:\n   - Regular exercise\n   - Balanced diet\n   - Stress management\n   - Adequate sleep\n   - Hydration\n\n2. Preventive Measures:\n   - Regular check-ups\n   - Screenings\n   - Vaccinations\n   - Safety practices\n   - Risk management\n\n3. Long-term Health:\n   - Heart health\n   - Cancer prevention\n   - Bone health\n   - Mental wellness\n   - Social support"
+            ]
+        },
+        {
+            "tag": "senior_health",
+            "patterns": [
+                "senior health",
+                "elderly care",
+                "aging well",
+                "senior wellness",
+                "elderly nutrition",
+                "senior exercise",
+                "aging health tips"
+            ],
+            "responses": [
+                "Senior Health Guide:\n\n1. Physical Health:\n   - Regular check-ups\n   - Medication management\n   - Chronic condition care\n   - Mobility maintenance\n   - Fall prevention\n\n2. Exercise Program:\n   - Low-impact activities:\n     * Walking\n     * Swimming\n     * Tai Chi\n     * Yoga\n   - Strength training\n   - Balance exercises\n   - Flexibility work\n\n3. Nutrition Needs:\n   - Calcium-rich foods\n   - Vitamin D sources\n   - Fiber intake\n   - Protein requirements\n   - Hydration needs\n\n4. Mental Health:\n   - Social engagement\n   - Cognitive activities\n   - Stress management\n   - Sleep hygiene\n   - Depression awareness\n\n5. Safety Measures:\n   - Home modifications\n   - Fall prevention\n   - Emergency response\n   - Medication safety\n   - Transportation options\n\n6. Preventive Care:\n   - Vaccinations\n   - Screenings\n   - Dental care\n   - Vision checks\n   - Hearing tests\n\n7. Lifestyle Management:\n   - Social activities\n   - Hobby maintenance\n   - Volunteer opportunities\n   - Family connections\n   - Community engagement",
+                
+                "Aging Well Tips:\n\n1. Daily Activities:\n   - Regular exercise\n   - Balanced meals\n   - Social interaction\n   - Mental stimulation\n   - Rest and relaxation\n\n2. Health Monitoring:\n   - Vital signs\n   - Medication effects\n   - Pain management\n   - Sleep quality\n   - Mental health\n\n3. Quality of Life:\n   - Social connections\n   - Meaningful activities\n   - Independence support\n   - Safety measures\n   - Emergency planning"
+            ]
+        },
+        {
+            "tag": "pediatric_health",
+            "patterns": [
+                "child health",
+                "pediatric care",
+                "children's nutrition",
+                "child development",
+                "pediatric wellness",
+                "children's health",
+                "child safety"
+            ],
+            "responses": [
+                "Pediatric Health Guide:\n\n1. Developmental Milestones:\n   - Physical development\n   - Cognitive growth\n   - Social skills\n   - Emotional development\n   - Language acquisition\n\n2. Nutrition Guidelines:\n   - Age-appropriate diet\n   - Portion sizes\n   - Food groups:\n     * Fruits/vegetables\n     * Whole grains\n     * Protein sources\n     * Dairy/alternatives\n   - Healthy snacks\n   - Hydration needs\n\n3. Physical Activity:\n   - Age-appropriate exercise\n   - Outdoor play\n   - Sports activities\n   - Family activities\n   - Screen time limits\n\n4. Safety Measures:\n   - Childproofing home\n   - Car seat safety\n   - Water safety\n   - Food safety\n   - Emergency preparedness\n\n5. Preventive Care:\n   - Vaccination schedule\n   - Regular check-ups\n   - Dental care\n   - Vision screening\n   - Hearing tests\n\n6. Sleep Guidelines:\n   - Age-appropriate sleep\n   - Bedtime routine\n   - Sleep environment\n   - Napping schedule\n   - Sleep problems\n\n7. Mental Health:\n   - Emotional support\n   - Stress management\n   - Social skills\n   - Behavioral guidance\n   - Professional help",
+                
+                "Children's Wellness Tips:\n\n1. Daily Health:\n   - Balanced meals\n   - Regular exercise\n   - Adequate sleep\n   - Hygiene practices\n   - Safety measures\n\n2. Development Support:\n   - Learning activities\n   - Social interaction\n   - Physical play\n   - Creative expression\n   - Family time\n\n3. Health Monitoring:\n   - Growth tracking\n   - Development milestones\n   - Behavioral changes\n   - Health concerns\n   - Professional guidance"
+            ]
+        },
+        {
+            "tag": "weight_management",
+            "patterns": [
+                "weight loss tips",
+                "healthy weight gain",
+                "weight management",
+                "diet plan",
+                "weight control",
+                "healthy weight",
+                "weight goals"
+            ],
+            "responses": [
+                "Weight Management Guide: ⚖️\n\n1. **Healthy Weight Loss**\n   - Calorie deficit (500-750 calories/day)\n   - Protein-rich meals\n   - Regular exercise\n   - Portion control\n   - Track food intake\n\n2. **Nutrition Tips**\n   - Eat whole foods\n   - Stay hydrated\n   - Plan meals ahead\n   - Healthy snacks\n   - Mindful eating\n\n3. **Exercise Plan**\n   - Cardio 3-5 times/week\n   - Strength training 2-3 times/week\n   - Daily movement\n   - Active lifestyle\n\n4. **Lifestyle Changes**\n   - Sleep 7-9 hours\n   - Stress management\n   - Regular meal times\n   - Social support\n\n5. **Progress Tracking**\n   - Weekly weigh-ins\n   - Body measurements\n   - Progress photos\n   - Food journal\n   - Exercise log\n\nRemember: Sustainable changes take time! 🌟",
+                
+                "Weight Management Strategies: 🎯\n\n1. **Setting Goals**\n   - Realistic targets\n   - Time-bound objectives\n   - Measurable outcomes\n   - Actionable steps\n\n2. **Meal Planning**\n   - Weekly menu\n   - Grocery list\n   - Meal prep\n   - Healthy recipes\n\n3. **Exercise Routine**\n   - Mix of activities\n   - Progressive overload\n   - Rest days\n   - Enjoyable workouts\n\n4. **Support System**\n   - Accountability partner\n   - Support group\n   - Professional guidance\n   - Family involvement\n\nWould you like specific meal plans or workout routines? 💪"
+            ]
+        },
+        {
+            "tag": "skin_health",
+            "patterns": [
+                "skin care tips",
+                "healthy skin",
+                "skin problems",
+                "skin routine",
+                "acne treatment",
+                "skin care products",
+                "skin health"
+            ],
+            "responses": [
+                "Skin Health Guide: ✨\n\n1. **Daily Skincare Routine**\n   - Gentle cleansing\n   - Moisturizing\n   - Sun protection (SPF 30+)\n   - Night care\n\n2. **Skin Types & Care**\n   - Dry skin: Rich moisturizers\n   - Oily skin: Oil-free products\n   - Combination: Balanced care\n   - Sensitive: Fragrance-free\n\n3. **Common Concerns**\n   - Acne: Gentle treatment\n   - Aging: Antioxidants\n   - Dark spots: Brightening\n   - Redness: Soothing\n\n4. **Lifestyle Factors**\n   - Stay hydrated\n   - Healthy diet\n   - Adequate sleep\n   - Stress management\n\n5. **Professional Care**\n   - Regular check-ups\n   - Dermatologist visits\n   - Skin cancer screening\n   - Treatment plans\n\nRemember: Healthy skin starts from within! 🌟",
+                
+                "Advanced Skincare Tips: 🌸\n\n1. **Morning Routine**\n   - Cleanse\n   - Tone\n   - Serum\n   - Moisturize\n   - SPF\n\n2. **Evening Routine**\n   - Double cleanse\n   - Exfoliate (2-3 times/week)\n   - Treatment products\n   - Night cream\n\n3. **Weekly Treatments**\n   - Face masks\n   - Deep cleansing\n   - Exfoliation\n   - Hydration boost\n\n4. **Seasonal Care**\n   - Summer: Light products\n   - Winter: Rich moisturizers\n   - Spring: Renewal\n   - Fall: Protection\n\nWould you like specific product recommendations? 🧴"
+            ]
+        },
+        {
+            "tag": "dental_health",
+            "patterns": [
+                "dental care",
+                "oral health",
+                "teeth care",
+                "dental hygiene",
+                "gum health",
+                "dental tips",
+                "oral hygiene"
+            ],
+            "responses": [
+                "Dental Health Guide: 🦷\n\n1. **Daily Oral Care**\n   - Brush twice daily\n   - Floss daily\n   - Mouthwash\n   - Tongue cleaning\n\n2. **Proper Technique**\n   - 2 minutes brushing\n   - Circular motions\n   - All surfaces\n   - Gentle pressure\n\n3. **Diet & Dental Health**\n   - Limit sugary foods\n   - Calcium-rich foods\n   - Crunchy vegetables\n   - Water intake\n\n4. **Preventive Care**\n   - Regular check-ups\n   - Professional cleaning\n   - X-rays as needed\n   - Sealants if recommended\n\n5. **Common Issues**\n   - Cavity prevention\n   - Gum disease\n   - Bad breath\n   - Sensitivity\n\nRemember: Healthy teeth, healthy life! 😁",
+                
+                "Advanced Dental Care Tips: 🦷\n\n1. **Brushing Technique**\n   - 45-degree angle\n   - Short strokes\n   - All surfaces\n   - Don't forget gums\n\n2. **Flossing Guide**\n   - 18 inches of floss\n   - C-shape around teeth\n   - Gentle motion\n   - Clean sections\n\n3. **Mouthwash Use**\n   - After brushing\n   - 30 seconds swish\n   - Don't rinse after\n   - Choose right type\n\n4. **Professional Care**\n   - 6-month check-ups\n   - Deep cleaning\n   - Early detection\n   - Treatment plans\n\nWould you like specific product recommendations? 🪥"
+            ]
+        },
+        {
+            "tag": "eye_health",
+            "patterns": [
+                "eye care",
+                "vision health",
+                "eye strain",
+                "eye exercises",
+                "eye protection",
+                "vision tips",
+                "eye health"
+            ],
+            "responses": [
+                "Eye Health Guide: 👁️\n\n1. **Daily Eye Care**\n   - Regular breaks (20-20-20 rule)\n   - Proper lighting\n   - Screen distance\n   - Blink regularly\n\n2. **Eye Exercises**\n   - Focus changes\n   - Eye rolls\n   - Figure 8\n   - Palming\n\n3. **Protection**\n   - UV protection\n   - Safety glasses\n   - Screen filters\n   - Proper lighting\n\n4. **Nutrition**\n   - Vitamin A\n   - Omega-3\n   - Lutein\n   - Zeaxanthin\n\n5. **Regular Check-ups**\n   - Annual eye exam\n   - Vision testing\n   - Pressure check\n   - Retina exam\n\nRemember: Your eyes are precious! 👓",
+                
+                "Digital Eye Strain Prevention: 💻\n\n1. **Screen Time Management**\n   - Take regular breaks\n   - Adjust brightness\n   - Use night mode\n   - Proper distance\n\n2. **Workstation Setup**\n   - Screen at eye level\n   - Proper lighting\n   - Anti-glare screen\n   - Ergonomic setup\n\n3. **Eye Care Routine**\n   - Warm compress\n   - Eye massage\n   - Artificial tears\n   - Rest periods\n\n4. **Lifestyle Tips**\n   - Stay hydrated\n   - Healthy diet\n   - Adequate sleep\n   - Outdoor time\n\nWould you like specific exercise routines? 🎯"
+            ]
+        },
+        {
+            "tag": "hair_health",
+            "patterns": [
+                "hair care",
+                "healthy hair",
+                "hair loss",
+                "hair tips",
+                "hair routine",
+                "hair problems",
+                "hair health"
+            ],
+            "responses": [
+                "Hair Health Guide: 💇‍♀️\n\n1. **Daily Hair Care**\n   - Gentle washing\n   - Proper conditioning\n   - Heat protection\n   - Regular trimming\n\n2. **Hair Types & Care**\n   - Dry hair: Deep conditioning\n   - Oily hair: Regular cleansing\n   - Curly hair: Moisture focus\n   - Fine hair: Volume care\n\n3. **Common Issues**\n   - Hair loss prevention\n   - Dandruff control\n   - Split ends\n   - Breakage\n\n4. **Nutrition for Hair**\n   - Protein-rich foods\n   - Biotin sources\n   - Iron-rich foods\n   - Omega-3\n\n5. **Lifestyle Factors**\n   - Stress management\n   - Adequate sleep\n   - Regular exercise\n   - Hydration\n\nRemember: Healthy hair starts from within! 🌟",
+                
+                "Advanced Hair Care Tips: 💆‍♀️\n\n1. **Washing Routine**\n   - Pre-shampoo treatment\n   - Proper shampooing\n   - Deep conditioning\n   - Leave-in products\n\n2. **Styling Tips**\n   - Heat protection\n   - Proper tools\n   - Gentle techniques\n   - Style variety\n\n3. **Weekly Treatments**\n   - Hair masks\n   - Scalp massage\n   - Oil treatment\n   - Deep conditioning\n\n4. **Professional Care**\n   - Regular trims\n   - Color maintenance\n   - Treatment plans\n   - Stylist consultation\n\nWould you like specific product recommendations? 🧴"
+            ]
+        },
+        {
+            "tag": "stress_management",
+            "patterns": [
+                "stress relief",
+                "managing stress",
+                "stress reduction",
+                "stress tips",
+                "stress management",
+                "reduce stress",
+                "stress control"
+            ],
+            "responses": [
+                "Stress Management Guide: 🧘‍♀️\n\n1. **Quick Stress Relief**\n   - Deep breathing (4-7-8 technique)\n   - Progressive muscle relaxation\n   - Mindful meditation\n   - Quick exercise\n\n2. **Daily Stress Management**\n   - Regular exercise\n   - Healthy sleep routine\n   - Balanced diet\n   - Time management\n\n3. **Lifestyle Changes**\n   - Set boundaries\n   - Practice self-care\n   - Social connections\n   - Hobby time\n\n4. **Work Stress**\n   - Take regular breaks\n   - Prioritize tasks\n   - Delegate when possible\n   - Set realistic goals\n\n5. **Long-term Strategies**\n   - Regular exercise\n   - Therapy if needed\n   - Support system\n   - Stress journaling\n\nRemember: You can't pour from an empty cup! 🌟",
+                
+                "Advanced Stress Management: 🎯\n\n1. **Mindfulness Practices**\n   - Daily meditation\n   - Body scan\n   - Mindful walking\n   - Gratitude journal\n\n2. **Physical Activities**\n   - Yoga\n   - Tai Chi\n   - Nature walks\n   - Dancing\n\n3. **Social Support**\n   - Talk to friends\n   - Join support groups\n   - Family time\n   - Community activities\n\n4. **Professional Help**\n   - Therapy\n   - Counseling\n   - Stress management classes\n   - Wellness programs\n\nWould you like specific techniques for any of these areas? 💆‍♀️"
+            ]
+        },
+        {
+            "tag": "immune_system",
+            "patterns": [
+                "boost immunity",
+                "immune system",
+                "immune health",
+                "strengthen immunity",
+                "immune support",
+                "immune boost",
+                "immune system tips"
+            ],
+            "responses": [
+                "Immune System Guide: 🛡️\n\n1. **Nutrition for Immunity**\n   - Vitamin C rich foods\n   - Zinc sources\n   - Probiotic foods\n   - Antioxidant-rich foods\n\n2. **Lifestyle Factors**\n   - Adequate sleep (7-9 hours)\n   - Regular exercise\n   - Stress management\n   - Hydration\n\n3. **Healthy Habits**\n   - Hand washing\n   - Regular check-ups\n   - Vaccinations\n   - Clean environment\n\n4. **Supplements**\n   - Vitamin D\n   - Vitamin C\n   - Zinc\n   - Probiotics\n\n5. **Preventive Measures**\n   - Regular exercise\n   - Healthy diet\n   - Stress reduction\n   - Good hygiene\n\nRemember: Prevention is better than cure! 🌟",
+                
+                "Advanced Immune Support: 💪\n\n1. **Superfoods for Immunity**\n   - Citrus fruits\n   - Berries\n   - Garlic\n   - Ginger\n   - Turmeric\n\n2. **Exercise Routine**\n   - Moderate cardio\n   - Strength training\n   - Yoga\n   - Outdoor activities\n\n3. **Sleep Optimization**\n   - Consistent schedule\n   - Dark room\n   - Cool temperature\n   - No screens before bed\n\n4. **Stress Management**\n   - Meditation\n   - Deep breathing\n   - Nature time\n   - Social connections\n\nWould you like specific meal plans or exercise routines? 🥗"
+            ]
+        },
+        {
+            "tag": "gut_health",
+            "patterns": [
+                "gut health",
+                "digestive health",
+                "gut bacteria",
+                "digestive system",
+                "gut microbiome",
+                "digestive tips",
+                "gut care"
+            ],
+            "responses": [
+                "Gut Health Guide: 🦠\n\n1. **Gut-Friendly Foods**\n   - Fermented foods\n   - Fiber-rich foods\n   - Prebiotic foods\n   - Probiotic foods\n\n2. **Digestive Health**\n   - Regular meal times\n   - Mindful eating\n   - Proper chewing\n   - Hydration\n\n3. **Lifestyle Factors**\n   - Regular exercise\n   - Stress management\n   - Adequate sleep\n   - No smoking\n\n4. **Common Issues**\n   - Bloating\n   - Constipation\n   - Diarrhea\n   - Food intolerances\n\n5. **Professional Care**\n   - Regular check-ups\n   - Specialist consultation\n   - Testing if needed\n   - Treatment plans\n\nRemember: A healthy gut means a healthy you! 🌟",
+                
+                "Advanced Gut Health Tips: 🥗\n\n1. **Probiotic Foods**\n   - Yogurt\n   - Kefir\n   - Sauerkraut\n   - Kimchi\n   - Kombucha\n\n2. **Prebiotic Foods**\n   - Garlic\n   - Onions\n   - Bananas\n   - Asparagus\n   - Oats\n\n3. **Digestive Support**\n   - Herbal teas\n   - Digestive enzymes\n   - Fiber supplements\n   - Water intake\n\n4. **Lifestyle Changes**\n   - Regular exercise\n   - Stress reduction\n   - Sleep hygiene\n   - Meal timing\n\nWould you like specific meal plans or supplement recommendations? 💊"
+            ]
+        },
+        {
+            "tag": "heart_health",
+            "patterns": [
+                "heart health",
+                "cardiovascular health",
+                "heart disease prevention",
+                "heart care",
+                "heart tips",
+                "heart health tips",
+                "heart wellness"
+            ],
+            "responses": [
+                "Heart Health Guide: ❤️\n\n1. **Heart-Healthy Diet**\n   - Omega-3 rich foods\n   - Fiber-rich foods\n   - Low sodium\n   - Limited saturated fats\n\n2. **Exercise Plan**\n   - Cardio 150 mins/week\n   - Strength training\n   - Flexibility exercises\n   - Active lifestyle\n\n3. **Risk Factors**\n   - Blood pressure\n   - Cholesterol\n   - Blood sugar\n   - Weight management\n\n4. **Lifestyle Changes**\n   - No smoking\n   - Limit alcohol\n   - Stress management\n   - Regular sleep\n\n5. **Preventive Care**\n   - Regular check-ups\n   - Blood pressure monitoring\n   - Cholesterol testing\n   - Heart health screening\n\nRemember: Your heart is your life! 🌟",
+                
+                "Advanced Heart Health Tips: 💓\n\n1. **Superfoods for Heart**\n   - Fatty fish\n   - Nuts and seeds\n   - Berries\n   - Dark chocolate\n   - Olive oil\n\n2. **Exercise Routine**\n   - Walking\n   - Swimming\n   - Cycling\n   - Dancing\n\n3. **Stress Management**\n   - Meditation\n   - Deep breathing\n   - Yoga\n   - Nature walks\n\n4. **Monitoring**\n   - Blood pressure\n   - Heart rate\n   - Weight\n   - Sleep quality\n\nWould you like specific meal plans or exercise routines? 🏃‍♂️"
+            ]
+        },
+        {
+            "tag": "bone_health",
+            "patterns": [
+                "bone health",
+                "strong bones",
+                "bone density",
+                "bone care",
+                "bone tips",
+                "bone health tips",
+                "bone wellness"
+            ],
+            "responses": [
+                "Bone Health Guide: 🦴\n\n1. **Bone-Building Nutrition**\n   - Calcium-rich foods\n   - Vitamin D sources\n   - Protein foods\n   - Magnesium sources\n\n2. **Exercise Plan**\n   - Weight-bearing exercises\n   - Strength training\n   - Balance exercises\n   - Flexibility work\n\n3. **Lifestyle Factors**\n   - Regular exercise\n   - No smoking\n   - Limit alcohol\n   - Healthy weight\n\n4. **Preventive Care**\n   - Bone density testing\n   - Regular check-ups\n   - Fall prevention\n   - Safety measures\n\n5. **Common Issues**\n   - Osteoporosis\n   - Arthritis\n   - Joint pain\n   - Fracture prevention\n\nRemember: Strong bones, strong life! 🌟",
+                
+                "Advanced Bone Health Tips: 💪\n\n1. **Calcium-Rich Foods**\n   - Dairy products\n   - Leafy greens\n   - Fortified foods\n   - Nuts and seeds\n\n2. **Exercise Routine**\n   - Walking\n   - Dancing\n   - Weight lifting\n   - Yoga\n\n3. **Vitamin D Sources**\n   - Sunlight\n   - Fatty fish\n   - Fortified foods\n   - Supplements\n\n4. **Safety Measures**\n   - Fall prevention\n   - Home safety\n   - Proper footwear\n   - Balance training\n\nWould you like specific meal plans or exercise routines? 🥛"
+            ]
+        },
+        {
+            "tag": "joint_health",
+            "patterns": [
+                "joint health",
+                "joint pain",
+                "joint care",
+                "joint tips",
+                "joint health tips",
+                "joint wellness",
+                "arthritis"
+            ],
+            "responses": [
+                "Joint Health Guide: 🦵\n\n1. **Joint-Friendly Exercise**\n   - Low-impact cardio\n   - Swimming\n   - Cycling\n   - Yoga\n\n2. **Pain Management**\n   - Heat/cold therapy\n   - Gentle stretching\n   - Proper posture\n   - Rest periods\n\n3. **Lifestyle Changes**\n   - Weight management\n   - Regular movement\n   - Proper footwear\n   - Ergonomic setup\n\n4. **Nutrition Support**\n   - Anti-inflammatory foods\n   - Omega-3 sources\n   - Turmeric\n   - Ginger\n\n5. **Professional Care**\n   - Physical therapy\n   - Regular check-ups\n   - Specialist consultation\n   - Treatment plans\n\nRemember: Move it or lose it! 🌟",
+                
+                "Advanced Joint Care Tips: 🧘‍♀️\n\n1. **Exercise Routine**\n   - Water aerobics\n   - Tai Chi\n   - Pilates\n   - Walking\n\n2. **Pain Relief**\n   - Epsom salt baths\n   - Massage\n   - Acupuncture\n   - CBD products\n\n3. **Dietary Support**\n   - Anti-inflammatory diet\n   - Joint supplements\n   - Hydration\n   - Balanced nutrition\n\n4. **Daily Habits**\n   - Proper posture\n   - Regular breaks\n   - Stretching\n   - Movement variety\n\nWould you like specific exercise routines or pain management techniques? 💆‍♂️"
+            ]
+        },
+        {
+            "tag": "brain_health",
+            "patterns": [
+                "brain health",
+                "memory improvement",
+                "brain function",
+                "cognitive health",
+                "brain tips",
+                "mental clarity",
+                "brain wellness"
+            ],
+            "responses": [
+                "Brain Health Guide: 🧠\n\n1. **Brain-Boosting Foods**\n   - Omega-3 rich foods\n   - Antioxidant foods\n   - B vitamins\n   - Healthy fats\n\n2. **Mental Exercise**\n   - Puzzles\n   - Reading\n   - Learning new skills\n   - Memory games\n\n3. **Lifestyle Factors**\n   - Regular exercise\n   - Quality sleep\n   - Stress management\n   - Social connections\n\n4. **Brain Protection**\n   - Head safety\n   - Stress reduction\n   - Sleep hygiene\n   - Regular check-ups\n\n5. **Cognitive Health**\n   - Memory exercises\n   - Focus training\n   - Problem-solving\n   - Creative activities\n\nRemember: Use it or lose it! 🌟",
+                
+                "Advanced Brain Health Tips: 🎯\n\n1. **Mental Activities**\n   - Crosswords\n   - Sudoku\n   - Chess\n   - Language learning\n\n2. **Physical Exercise**\n   - Aerobic exercise\n   - Coordination activities\n   - Balance training\n   - Dance\n\n3. **Nutrition Plan**\n   - Mediterranean diet\n   - Brain-boosting foods\n   - Hydration\n   - Regular meals\n\n4. **Sleep Optimization**\n   - Consistent schedule\n   - Deep sleep\n   - Dream journaling\n   - Power naps\n\nWould you like specific brain exercises or meal plans? 🧩"
+            ]
+        },
+        {
+            "tag": "respiratory_health",
+            "patterns": [
+                "lung health",
+                "breathing tips",
+                "respiratory health",
+                "lung care",
+                "breathing exercises",
+                "lung tips",
+                "respiratory wellness"
+            ],
+            "responses": [
+                "Respiratory Health Guide: 🫁\n\n1. **Breathing Exercises**\n   - Deep breathing\n   - Diaphragmatic breathing\n   - Pursed lip breathing\n   - Box breathing\n\n2. **Lung Health Tips**\n   - No smoking\n   - Clean air\n   - Regular exercise\n   - Proper posture\n\n3. **Exercise Plan**\n   - Cardio activities\n   - Swimming\n   - Walking\n   - Yoga\n\n4. **Environmental Factors**\n   - Air quality\n   - Humidity control\n   - Allergen reduction\n   - Ventilation\n\n5. **Preventive Care**\n   - Regular check-ups\n   - Vaccinations\n   - Allergy testing\n   - Lung function tests\n\nRemember: Breathe easy! 🌟",
+                
+                "Advanced Respiratory Tips: 💨\n\n1. **Breathing Techniques**\n   - 4-7-8 breathing\n   - Alternate nostril breathing\n   - Belly breathing\n   - Resonance breathing\n\n2. **Exercise Routine**\n   - Interval training\n   - Swimming\n   - Cycling\n   - Walking\n\n3. **Air Quality**\n   - Air purifiers\n   - House plants\n   - Regular cleaning\n   - Ventilation\n\n4. **Lifestyle Changes**\n   - No smoking\n   - Regular exercise\n   - Stress management\n   - Proper hydration\n\nWould you like specific breathing exercises or air quality tips? 🌿"
+            ]
+        },
+        {
+            "tag": "liver_health",
+            "patterns": [
+                "liver health",
+                "liver care",
+                "liver tips",
+                "liver function",
+                "liver wellness",
+                "liver health tips",
+                "liver support"
+            ],
+            "responses": [
+                "Liver Health Guide: 🫀\n\n1. **Liver-Friendly Foods**\n   - Leafy greens\n   - Cruciferous vegetables\n   - Berries\n   - Green tea\n\n2. **Lifestyle Changes**\n   - Limit alcohol\n   - No smoking\n   - Regular exercise\n   - Healthy weight\n\n3. **Detox Support**\n   - Stay hydrated\n   - Fiber-rich foods\n   - Regular exercise\n   - Adequate sleep\n\n4. **Preventive Care**\n   - Regular check-ups\n   - Liver function tests\n   - Vaccinations\n   - Safe practices\n\n5. **Common Issues**\n   - Fatty liver\n   - Hepatitis\n   - Cirrhosis\n   - Liver function\n\nRemember: Your liver is your body's filter! 🌟",
+                
+                "Advanced Liver Health Tips: 🥗\n\n1. **Superfoods for Liver**\n   - Turmeric\n   - Garlic\n   - Beetroot\n   - Grapefruit\n   - Walnuts\n\n2. **Exercise Routine**\n   - Cardio exercise\n   - Strength training\n   - Yoga\n   - Walking\n\n3. **Lifestyle Changes**\n   - Alcohol moderation\n   - Healthy diet\n   - Regular exercise\n   - Stress management\n\n4. **Monitoring**\n   - Regular check-ups\n   - Blood tests\n   - Weight management\n   - Symptom tracking\n\nWould you like specific meal plans or detox routines? 🍵"
+            ]
+        },
+        {
+            "tag": "kidney_health",
+            "patterns": [
+                "kidney health",
+                "kidney care",
+                "kidney tips",
+                "kidney function",
+                "kidney wellness",
+                "kidney health tips",
+                "kidney support"
+            ],
+            "responses": [
+                "Kidney Health Guide: 🫘\n\n1. **Kidney-Friendly Diet**\n   - Low sodium\n   - Limited protein\n   - Potassium control\n   - Phosphorus management\n\n2. **Lifestyle Changes**\n   - Stay hydrated\n   - Regular exercise\n   - No smoking\n   - Limit alcohol\n\n3. **Preventive Care**\n   - Regular check-ups\n   - Blood pressure monitoring\n   - Blood sugar control\n   - Urine tests\n\n4. **Common Issues**\n   - Kidney stones\n   - Urinary tract infections\n   - Chronic kidney disease\n   - Protein in urine\n\n5. **Risk Factors**\n   - High blood pressure\n   - Diabetes\n   - Family history\n   - Age\n\nRemember: Your kidneys are vital! 🌟",
+                
+                "Advanced Kidney Health Tips: 💧\n\n1. **Hydration Guide**\n   - Water intake\n   - Herbal teas\n   - Limit caffeine\n   - Monitor urine color\n\n2. **Exercise Routine**\n   - Walking\n   - Swimming\n   - Yoga\n   - Light cardio\n\n3. **Dietary Support**\n   - Low-sodium foods\n   - Fresh vegetables\n   - Limited processed foods\n   - Portion control\n\n4. **Monitoring**\n   - Blood pressure\n   - Blood sugar\n   - Urine tests\n   - Weight management\n\nWould you like specific meal plans or hydration tips? 🥤"
+            ]
+        },
+        {
+            "tag": "vitamin_guide",
+            "patterns": [
+                "vitamins",
+                "vitamin guide",
+                "vitamin supplements",
+                "vitamin deficiency",
+                "vitamin tips",
+                "vitamin health",
+                "vitamin needs"
+            ],
+            "responses": [
+                "Vitamin Guide: 💊\n\n1. **Essential Vitamins**\n   - Vitamin A: Vision, immune system\n   - Vitamin B: Energy, brain function\n   - Vitamin C: Immunity, skin health\n   - Vitamin D: Bone health, immunity\n   - Vitamin E: Antioxidant, skin health\n   - Vitamin K: Blood clotting, bones\n\n2. **Food Sources**\n   - A: Carrots, sweet potatoes\n   - B: Whole grains, meat\n   - C: Citrus fruits, berries\n   - D: Fatty fish, sunlight\n   - E: Nuts, seeds\n   - K: Leafy greens\n\n3. **Deficiency Signs**\n   - Fatigue\n   - Weak immunity\n   - Skin issues\n   - Bone problems\n\n4. **Supplementation**\n   - Consult doctor\n   - Quality brands\n   - Proper dosage\n   - Timing matters\n\nRemember: Food first, supplements second! 🌟",
+                
+                "Advanced Vitamin Tips: 🥗\n\n1. **Vitamin Combinations**\n   - D with calcium\n   - C with iron\n   - B vitamins together\n   - E with healthy fats\n\n2. **Absorption Tips**\n   - Take with food\n   - Proper timing\n   - Avoid interactions\n   - Storage conditions\n\n3. **Special Needs**\n   - Pregnancy\n   - Age groups\n   - Health conditions\n   - Lifestyle factors\n\n4. **Natural Sources**\n   - Seasonal foods\n   - Local produce\n   - Organic options\n   - Fresh choices\n\nWould you like specific meal plans or supplement recommendations? 💊"
+            ]
+        },
+        {
+            "tag": "mineral_guide",
+            "patterns": [
+                "minerals",
+                "mineral guide",
+                "mineral supplements",
+                "mineral deficiency",
+                "mineral tips",
+                "mineral health",
+                "mineral needs"
+            ],
+            "responses": [
+                "Mineral Guide: 💎\n\n1. **Essential Minerals**\n   - Calcium: Bones, teeth\n   - Iron: Blood health\n   - Magnesium: Muscle function\n   - Zinc: Immunity\n   - Potassium: Heart health\n   - Sodium: Fluid balance\n\n2. **Food Sources**\n   - Calcium: Dairy, greens\n   - Iron: Meat, beans\n   - Magnesium: Nuts, seeds\n   - Zinc: Seafood, meat\n   - Potassium: Bananas, potatoes\n\n3. **Deficiency Signs**\n   - Weakness\n   - Cramps\n   - Fatigue\n   - Poor immunity\n\n4. **Balance Tips**\n   - Proper intake\n   - Absorption factors\n   - Interactions\n   - Timing\n\nRemember: Minerals are essential! 🌟",
+                
+                "Advanced Mineral Tips: 🥗\n\n1. **Mineral Combinations**\n   - Calcium + D3\n   - Iron + C\n   - Magnesium + B6\n   - Zinc + Copper\n\n2. **Absorption Factors**\n   - Food timing\n   - Cooking methods\n   - Storage\n   - Processing\n\n3. **Special Needs**\n   - Athletes\n   - Pregnancy\n   - Age groups\n   - Health conditions\n\n4. **Natural Sources**\n   - Whole foods\n   - Seasonal produce\n   - Local options\n   - Fresh choices\n\nWould you like specific meal plans or supplement recommendations? 💊"
+            ]
+        },
+        {
+            "tag": "herbal_remedies",
+            "patterns": [
+                "herbs",
+                "herbal remedies",
+                "natural remedies",
+                "herbal medicine",
+                "herbal tips",
+                "herbal health",
+                "herbal supplements"
+            ],
+            "responses": [
+                "Herbal Remedies Guide: 🌿\n\n1. **Common Herbs**\n   - Chamomile: Sleep, anxiety\n   - Ginger: Digestion, nausea\n   - Turmeric: Inflammation\n   - Echinacea: Immunity\n   - Peppermint: Digestion\n\n2. **Usage Methods**\n   - Teas\n   - Tinctures\n   - Capsules\n   - Essential oils\n\n3. **Safety Tips**\n   - Consult professional\n   - Start small\n   - Check interactions\n   - Quality matters\n\n4. **Common Uses**\n   - Stress relief\n   - Sleep support\n   - Digestive health\n   - Immune support\n\nRemember: Natural doesn't always mean safe! 🌟",
+                
+                "Advanced Herbal Tips: 🍵\n\n1. **Herb Combinations**\n   - Sleep blend\n   - Digestive mix\n   - Immune support\n   - Stress relief\n\n2. **Preparation Methods**\n   - Infusions\n   - Decoctions\n   - Tinctures\n   - Poultices\n\n3. **Storage Tips**\n   - Cool, dark place\n   - Airtight containers\n   - Label clearly\n   - Check expiry\n\n4. **Quality Sources**\n   - Organic certified\n   - Reputable brands\n   - Local growers\n   - Fresh herbs\n\nWould you like specific herbal combinations or preparation methods? 🌱"
+            ]
+        },
+        {
+            "tag": "detox_guide",
+            "patterns": [
+                "detox",
+                "detoxification",
+                "body cleanse",
+                "detox tips",
+                "detox health",
+                "detox plan",
+                "cleanse"
+            ],
+            "responses": [
+                "Detox Guide: 🧘‍♀️\n\n1. **Natural Detox Methods**\n   - Hydration\n   - Fiber-rich foods\n   - Exercise\n   - Sleep\n\n2. **Detox Foods**\n   - Leafy greens\n   - Citrus fruits\n   - Berries\n   - Cruciferous vegetables\n\n3. **Lifestyle Support**\n   - Reduce toxins\n   - Stress management\n   - Regular exercise\n   - Quality sleep\n\n4. **Common Practices**\n   - Water fasting\n   - Juice cleanse\n   - Raw food diet\n   - Elimination diet\n\nRemember: Your body detoxes naturally! 🌟",
+                
+                "Advanced Detox Tips: 🥗\n\n1. **Daily Practices**\n   - Morning lemon water\n   - Green smoothies\n   - Herbal teas\n   - Dry brushing\n\n2. **Exercise Support**\n   - Sweating\n   - Deep breathing\n   - Yoga\n   - Walking\n\n3. **Lifestyle Changes**\n   - Reduce processed foods\n   - Limit alcohol\n   - No smoking\n   - Clean environment\n\n4. **Professional Guidance**\n   - Consult doctor\n   - Nutritionist\n   - Health coach\n   - Specialist\n\nWould you like specific detox meal plans or routines? 🍵"
+            ]
+        },
+        {
+            "tag": "hormone_balance",
+            "patterns": [
+                "hormones",
+                "hormone balance",
+                "hormonal health",
+                "hormone tips",
+                "hormone health",
+                "hormone support",
+                "hormonal balance"
+            ],
+            "responses": [
+                "Hormone Balance Guide: ⚖️\n\n1. **Key Hormones**\n   - Thyroid\n   - Cortisol\n   - Insulin\n   - Sex hormones\n\n2. **Balance Tips**\n   - Regular sleep\n   - Stress management\n   - Exercise\n   - Healthy diet\n\n3. **Common Issues**\n   - Fatigue\n   - Weight changes\n   - Mood swings\n   - Sleep problems\n\n4. **Lifestyle Support**\n   - Regular exercise\n   - Quality sleep\n   - Stress reduction\n   - Healthy diet\n\nRemember: Balance is key! 🌟",
+                
+                "Advanced Hormone Tips: 🎯\n\n1. **Diet Support**\n   - Omega-3 foods\n   - Protein balance\n   - Fiber intake\n   - Healthy fats\n\n2. **Exercise Routine**\n   - Strength training\n   - Cardio\n   - Yoga\n   - Walking\n\n3. **Stress Management**\n   - Meditation\n   - Deep breathing\n   - Nature time\n   - Social support\n\n4. **Professional Care**\n   - Regular check-ups\n   - Blood tests\n   - Specialist consultation\n   - Treatment plans\n\nWould you like specific meal plans or exercise routines? 💪"
+            ]
+        },
+        {
+            "tag": "thyroid_health",
+            "patterns": [
+                "thyroid",
+                "thyroid health",
+                "thyroid function",
+                "thyroid tips",
+                "thyroid support",
+                "thyroid care",
+                "thyroid wellness"
+            ],
+            "responses": [
+                "Thyroid Health Guide: 🦋\n\n1. **Thyroid Function**\n   - Metabolism\n   - Energy levels\n   - Temperature\n   - Heart rate\n\n2. **Support Tips**\n   - Iodine-rich foods\n   - Selenium sources\n   - Zinc foods\n   - Vitamin D\n\n3. **Common Issues**\n   - Hypothyroidism\n   - Hyperthyroidism\n   - Goiter\n   - Nodules\n\n4. **Lifestyle Support**\n   - Regular exercise\n   - Stress management\n   - Quality sleep\n   - Healthy diet\n\nRemember: Your thyroid is vital! 🌟",
+                
+                "Advanced Thyroid Tips: 🥗\n\n1. **Diet Support**\n   - Sea vegetables\n   - Brazil nuts\n   - Fish\n   - Eggs\n\n2. **Exercise Routine**\n   - Moderate cardio\n   - Strength training\n   - Yoga\n   - Walking\n\n3. **Stress Management**\n   - Meditation\n   - Deep breathing\n   - Nature time\n   - Social support\n\n4. **Professional Care**\n   - Regular check-ups\n   - Blood tests\n   - Specialist consultation\n   - Treatment plans\n\nWould you like specific meal plans or exercise routines? 💪"
+            ]
+        },
+        {
+            "tag": "adrenal_health",
+            "patterns": [
+                "adrenal",
+                "adrenal health",
+                "adrenal fatigue",
+                "adrenal support",
+                "adrenal tips",
+                "adrenal care",
+                "adrenal wellness"
+            ],
+            "responses": [
+                "Adrenal Health Guide: 🎯\n\n1. **Adrenal Function**\n   - Stress response\n   - Energy levels\n   - Hormone balance\n   - Blood pressure\n\n2. **Support Tips**\n   - Stress management\n   - Quality sleep\n   - Regular exercise\n   - Healthy diet\n\n3. **Common Issues**\n   - Fatigue\n   - Sleep problems\n   - Weight changes\n   - Mood swings\n\n4. **Lifestyle Support**\n   - Regular routine\n   - Stress reduction\n   - Exercise balance\n   - Rest periods\n\nRemember: Your adrenals need care! 🌟",
+                
+                "Advanced Adrenal Tips: 🧘‍♀️\n\n1. **Stress Management**\n   - Meditation\n   - Deep breathing\n   - Nature time\n   - Social support\n\n2. **Sleep Support**\n   - Regular schedule\n   - Dark room\n   - Cool temperature\n   - No screens\n\n3. **Exercise Balance**\n   - Moderate intensity\n   - Regular timing\n   - Rest days\n   - Stress reduction\n\n4. **Professional Care**\n   - Regular check-ups\n   - Blood tests\n   - Specialist consultation\n   - Treatment plans\n\nWould you like specific stress management techniques or sleep routines? 💆‍♀️"
+            ]
+        },
+        {
+            "tag": "lymphatic_health",
+            "patterns": [
+                "lymphatic",
+                "lymphatic system",
+                "lymphatic health",
+                "lymphatic support",
+                "lymphatic tips",
+                "lymphatic care",
+                "lymphatic wellness"
+            ],
+            "responses": [
+                "Lymphatic Health Guide: 💧\n\n1. **Lymphatic Function**\n   - Immune support\n   - Waste removal\n   - Fluid balance\n   - Infection fighting\n\n2. **Support Tips**\n   - Regular exercise\n   - Hydration\n   - Dry brushing\n   - Massage\n\n3. **Common Issues**\n   - Swelling\n   - Immune weakness\n   - Fatigue\n   - Inflammation\n\n4. **Lifestyle Support**\n   - Movement\n   - Hydration\n   - Healthy diet\n   - Stress management\n\nRemember: Keep your lymph flowing! 🌟",
+                
+                "Advanced Lymphatic Tips: 🎯\n\n1. **Exercise Support**\n   - Rebounding\n   - Walking\n   - Yoga\n   - Swimming\n\n2. **Self-Care Practices**\n   - Dry brushing\n   - Massage\n   - Contrast showers\n   - Deep breathing\n\n3. **Diet Support**\n   - Hydration\n   - Leafy greens\n   - Berries\n   - Citrus fruits\n\n4. **Professional Care**\n   - Lymphatic massage\n   - Physical therapy\n   - Specialist consultation\n   - Treatment plans\n\nWould you like specific exercise routines or self-care practices? 💆‍♀️"
+            ]
+        },
+        {
+            "tag": "circulatory_health",
+            "patterns": [
+                "circulation",
+                "circulatory system",
+                "blood flow",
+                "circulation tips",
+                "circulatory health",
+                "circulatory support",
+                "circulatory care"
+            ],
+            "responses": [
+                "Circulatory Health Guide: ❤️\n\n1. **Circulation Support**\n   - Regular exercise\n   - Healthy diet\n   - Hydration\n   - Stress management\n\n2. **Common Issues**\n   - Poor circulation\n   - Cold extremities\n   - Swelling\n   - Varicose veins\n\n3. **Lifestyle Tips**\n   - Movement breaks\n   - Proper posture\n   - Compression wear\n   - Elevation\n\n4. **Exercise Support**\n   - Walking\n   - Swimming\n   - Cycling\n   - Yoga\n\nRemember: Keep your blood flowing! 🌟",
+                
+                "Advanced Circulation Tips: 💪\n\n1. **Exercise Routine**\n   - Cardio exercise\n   - Strength training\n   - Stretching\n   - Balance work\n\n2. **Diet Support**\n   - Omega-3 foods\n   - Nitrate-rich foods\n   - Antioxidants\n   - Hydration\n\n3. **Lifestyle Changes**\n   - Regular movement\n   - Stress reduction\n   - Quality sleep\n   - Healthy weight\n\n4. **Professional Care**\n   - Regular check-ups\n   - Specialist consultation\n   - Treatment plans\n   - Monitoring\n\nWould you like specific exercise routines or meal plans? 🏃‍♂️"
+            ]
+        },
+        {
+            "tag": "nervous_system",
+            "patterns": [
+                "nervous system",
+                "nervous health",
+                "nerve health",
+                "nervous tips",
+                "nerve support",
+                "nervous care",
+                "nerve wellness"
+            ],
+            "responses": [
+                "Nervous System Guide: 🧠\n\n1. **System Support**\n   - Quality sleep\n   - Stress management\n   - Healthy diet\n   - Regular exercise\n\n2. **Common Issues**\n   - Anxiety\n   - Depression\n   - Nerve pain\n   - Sleep problems\n\n3. **Lifestyle Tips**\n   - Meditation\n   - Deep breathing\n   - Nature time\n   - Social support\n\n4. **Nutrition Support**\n   - B vitamins\n   - Omega-3\n   - Magnesium\n   - Antioxidants\n\nRemember: Your nervous system needs care! 🌟",
+                
+                "Advanced Nervous System Tips: 🎯\n\n1. **Stress Management**\n   - Meditation\n   - Yoga\n   - Deep breathing\n   - Nature walks\n\n2. **Sleep Support**\n   - Regular schedule\n   - Dark room\n   - Cool temperature\n   - No screens\n\n3. **Exercise Routine**\n   - Yoga\n   - Tai Chi\n   - Walking\n   - Swimming\n\n4. **Professional Care**\n   - Regular check-ups\n   - Specialist consultation\n   - Treatment plans\n   - Therapy if needed\n\nWould you like specific stress management techniques or sleep routines? 🧘‍♀️"
+            ]
+        },
+        {
+            "tag": "common_illnesses",
+            "patterns": [
+                "cough", "fever", "cold", "flu", "headache", "sore throat", "runny nose", "common cold", "viral infection", "respiratory infection"
+            ],
+            "responses": [
+                "Common Illness Guide: 🤒\n\n1. **Common Cold & Flu**\n   - Symptoms:\n     * Runny/stuffy nose\n     * Sore throat\n     * Cough\n     * Fever\n     * Body aches\n   - Causes:\n     * Viral infection\n     * Weakened immunity\n     * Weather changes\n   - Prevention:\n     * Hand washing\n     * Rest\n     * Hydration\n     * Vitamin C\n\n2. **Fever**\n   - Symptoms:\n     * High temperature\n     * Chills\n     * Sweating\n     * Fatigue\n   - Causes:\n     * Infection\n     * Inflammation\n     * Heat exposure\n   - Management:\n     * Rest\n     * Hydration\n     * Fever reducers\n     * Cool compress\n\n3. **Cough**\n   - Types:\n     * Dry cough\n     * Wet cough\n     * Allergic cough\n   - Causes:\n     * Cold/flu\n     * Allergies\n     * Asthma\n     * Acid reflux\n   - Relief:\n     * Honey\n     * Steam\n     * Hydration\n     * Rest\n\nRemember: Seek medical help if symptoms worsen! 🏥",
+                
+                "Home Care Tips: 🏠\n\n1. **Rest & Recovery**\n   - Get plenty of sleep\n   - Stay hydrated\n   - Eat light meals\n   - Avoid stress\n\n2. **Comfort Measures**\n   - Warm liquids\n   - Steam inhalation\n   - Salt water gargle\n   - Humidifier use\n\n3. **When to Seek Help**\n   - High fever (over 103°F)\n   - Difficulty breathing\n   - Severe pain\n   - Symptoms lasting over 10 days\n\nWould you like specific remedies for any of these conditions? 💊"
+            ]
+        },
+        {
+            "tag": "chronic_conditions",
+            "patterns": [
+                "diabetes", "high blood pressure", "heart disease", "asthma", "arthritis", "cancer", "thyroid", "kidney disease", "liver disease", "chronic pain"
+            ],
+            "responses": [
+                "Chronic Conditions Guide: 🏥\n\n1. **Diabetes**\n   - Types:\n     * Type 1 (Autoimmune)\n     * Type 2 (Lifestyle)\n     * Gestational\n   - Symptoms:\n     * Increased thirst\n     * Frequent urination\n     * Fatigue\n     * Blurred vision\n   - Management:\n     * Blood sugar monitoring\n     * Diet control\n     * Regular exercise\n     * Medication\n\n2. **High Blood Pressure**\n   - Causes:\n     * Genetics\n     * Diet\n     * Stress\n     * Lifestyle\n   - Management:\n     * Low-sodium diet\n     * Regular exercise\n     * Stress reduction\n     * Medication\n\n3. **Cancer**\n   - Common Types:\n     * Breast\n     * Lung\n     * Prostate\n     * Colorectal\n   - Prevention:\n     * Regular screening\n     * Healthy lifestyle\n     * Avoid smoking\n     * Sun protection\n\n4. **Asthma**\n   - Triggers:\n     * Allergies\n     * Exercise\n     * Cold air\n     * Stress\n   - Management:\n     * Avoid triggers\n     * Medication\n     * Action plan\n     * Regular check-ups\n\nRemember: Early detection saves lives! 🌟",
+                
+                "Living with Chronic Conditions: 💪\n\n1. **Daily Management**\n   - Medication schedule\n   - Symptom tracking\n   - Regular check-ups\n   - Lifestyle modifications\n\n2. **Support System**\n   - Family support\n   - Support groups\n   - Healthcare team\n   - Mental health care\n\n3. **Emergency Plan**\n   - Emergency contacts\n   - Medication list\n   - Action plan\n   - Insurance information\n   - Medical history"
+            ]
+        },
+        {
+            "tag": "nutritional_deficiencies",
+            "patterns": [
+                "vitamin deficiency", "mineral deficiency", "iron deficiency", "calcium deficiency", "vitamin d deficiency", "b12 deficiency", "protein deficiency", "nutritional deficiency"
+            ],
+            "responses": [
+                "Nutritional Deficiencies Guide: 🥗\n\n1. **Iron Deficiency**\n   - Symptoms:\n     * Fatigue\n     * Pale skin\n     * Shortness of breath\n     * Dizziness\n   - Causes:\n     * Poor diet\n     * Blood loss\n     * Pregnancy\n     * Absorption issues\n   - Sources:\n     * Red meat\n     * Leafy greens\n     * Beans\n     * Fortified foods\n\n2. **Vitamin D Deficiency**\n   - Symptoms:\n     * Bone pain\n     * Muscle weakness\n     * Fatigue\n     * Depression\n   - Causes:\n     * Limited sun exposure\n     * Dark skin\n     * Age\n     * Diet\n   - Sources:\n     * Sunlight\n     * Fatty fish\n     * Fortified foods\n     * Supplements\n\n3. **B12 Deficiency**\n   - Symptoms:\n     * Numbness\n     * Memory problems\n     * Fatigue\n     * Balance issues\n   - Causes:\n     * Vegan diet\n     * Absorption issues\n     * Age\n     * Medications\n   - Sources:\n     * Animal products\n     * Fortified foods\n     * Supplements\n\n4. **Calcium Deficiency**\n   - Symptoms:\n     * Muscle cramps\n     * Weak bones\n     * Dental problems\n     * Numbness\n   - Causes:\n     * Poor diet\n     * Vitamin D deficiency\n     * Age\n     * Medications\n   - Sources:\n     * Dairy products\n     * Leafy greens\n     * Fortified foods\n     * Supplements\n\nRemember: A balanced diet is key! 🌟",
+                
+                "Preventing Deficiencies: 🎯\n\n1. **Diet Planning**\n   - Balanced meals\n   - Variety of foods\n   - Regular timing\n   - Portion control\n\n2. **Supplementation**\n   - Doctor's advice\n   - Quality products\n   - Proper dosage\n   - Regular testing\n\n3. **Lifestyle Support**\n   - Regular exercise\n   - Sun exposure\n   - Stress management\n   - Sleep hygiene\n\nWould you like specific meal plans or supplement recommendations? 💊"
+            ]
+        },
+        {
+            "tag": "mental_health_conditions",
+            "patterns": [
+                "depression", "anxiety", "stress", "panic attacks", "mood swings", "mental health", "emotional health", "psychological issues", "mental disorders"
+            ],
+            "responses": [
+                "Mental Health Conditions Guide: 🧠\n\n1. **Depression**\n   - Symptoms:\n     * Persistent sadness\n     * Loss of interest\n     * Sleep changes\n     * Appetite changes\n   - Causes:\n     * Genetics\n     * Life events\n     * Brain chemistry\n     * Medical conditions\n   - Management:\n     * Therapy\n     * Medication\n     * Lifestyle changes\n     * Support system\n\n2. **Anxiety**\n   - Symptoms:\n     * Excessive worry\n     * Restlessness\n     * Panic attacks\n     * Sleep problems\n   - Causes:\n     * Genetics\n     * Trauma\n     * Stress\n     * Medical conditions\n   - Management:\n     * Therapy\n     * Medication\n     * Relaxation techniques\n     * Lifestyle changes\n\n3. **Panic Attacks**\n   - Symptoms:\n     * Rapid heartbeat\n     * Shortness of breath\n     * Chest pain\n     * Dizziness\n   - Triggers:\n     * Stress\n     * Phobias\n     * Medical conditions\n     * Substances\n   - Management:\n     * Breathing techniques\n     * Therapy\n     * Medication\n     * Lifestyle changes\n\nRemember: Mental health matters! 💚",
+                
+                "Mental Health Support: 🤝\n\n1. **Professional Help**\n   - Therapy\n   - Psychiatry\n   - Support groups\n   - Crisis hotlines\n\n2. **Self-Care**\n   - Regular exercise\n   - Healthy diet\n   - Sleep hygiene\n   - Stress management\n\n3. **Support System**\n   - Family\n   - Friends\n   - Support groups\n   - Online communities\n\nWould you like specific coping strategies or professional resources? 🎯"
+            ]
+        },
+        {
+            "tag": "basic_health_problems",
+            "patterns": [
+                "basic health issues", "common health problems", "everyday health issues", "minor health problems", "basic ailments", "daily health issues", "routine health problems"
+            ],
+            "responses": [
+                "Basic Health Problems Guide: 🏥\n\n1. **Headaches & Migraines**\n   - Types:\n     * Tension headaches\n     * Migraines\n     * Sinus headaches\n     * Cluster headaches\n   - Causes:\n     * Stress\n     * Dehydration\n     * Poor posture\n     * Eye strain\n   - Solutions:\n     * Rest in dark room\n     * Hydration\n     * Pain relievers\n     * Stress management\n\n2. **Digestive Issues**\n   - Common Problems:\n     * Indigestion\n     * Bloating\n     * Constipation\n     * Diarrhea\n   - Causes:\n     * Poor diet\n     * Stress\n     * Food intolerances\n     * Medications\n   - Solutions:\n     * Dietary changes\n     * Probiotics\n     * Regular exercise\n     * Stress reduction\n\n3. **Sleep Problems**\n   - Types:\n     * Insomnia\n     * Sleep apnea\n     * Restless legs\n     * Night sweats\n   - Causes:\n     * Stress\n     * Poor sleep hygiene\n     * Medical conditions\n     * Lifestyle factors\n   - Solutions:\n     * Sleep schedule\n     * Bedroom environment\n     * Relaxation techniques\n     * Lifestyle changes\n\n4. **Skin Issues**\n   - Common Problems:\n     * Acne\n     * Eczema\n     * Dry skin\n     * Rashes\n   - Causes:\n     * Hormones\n     * Allergies\n     * Weather\n     * Products\n   - Solutions:\n     * Proper skincare\n     * Diet changes\n     * Stress management\n     * Medical treatment\n\nRemember: Prevention is better than cure! 🌟",
+                
+                "Daily Health Management: 💪\n\n1. **Prevention Tips**\n   - Regular check-ups\n   - Healthy diet\n   - Exercise routine\n   - Stress management\n\n2. **Home Remedies**\n   - Herbal teas\n   - Essential oils\n   - Natural supplements\n   - Lifestyle changes\n\n3. **When to Seek Help**\n   - Persistent symptoms\n   - Severe pain\n   - Sudden changes\n   - Multiple symptoms\n\nWould you like specific remedies for any condition? 🎯"
+            ]
+        },
+        {
+            "tag": "advanced_health_problems",
+            "patterns": [
+                "serious health issues", "advanced health problems", "complex health conditions", "severe health issues", "chronic health problems", "major health conditions", "advanced medical issues"
+            ],
+            "responses": [
+                "Advanced Health Problems Guide: 🏥\n\n1. **Autoimmune Disorders**\n   - Common Types:\n     * Rheumatoid arthritis\n     * Lupus\n     * Multiple sclerosis\n     * Hashimoto's\n   - Symptoms:\n     * Fatigue\n     * Joint pain\n     * Inflammation\n     * Organ damage\n   - Management:\n     * Medication\n     * Lifestyle changes\n     * Diet modifications\n     * Stress reduction\n\n2. **Neurological Conditions**\n   - Types:\n     * Parkinson's\n     * Alzheimer's\n     * Epilepsy\n     * Stroke\n   - Symptoms:\n     * Memory loss\n     * Movement issues\n     * Cognitive decline\n     * Seizures\n   - Management:\n     * Medication\n     * Therapy\n     * Lifestyle changes\n     * Support system\n\n3. **Cardiovascular Diseases**\n   - Types:\n     * Heart failure\n     * Arrhythmia\n     * Coronary artery disease\n     * Valve problems\n   - Symptoms:\n     * Chest pain\n     * Shortness of breath\n     * Fatigue\n     * Swelling\n   - Management:\n     * Medication\n     * Surgery\n     * Lifestyle changes\n     * Regular monitoring\n\n4. **Endocrine Disorders**\n   - Types:\n     * Thyroid disorders\n     * Diabetes\n     * Adrenal issues\n     * Pituitary problems\n   - Symptoms:\n     * Weight changes\n     * Energy issues\n     * Hormonal imbalance\n     * Metabolic problems\n   - Management:\n     * Hormone therapy\n     * Medication\n     * Diet control\n     * Regular testing\n\nRemember: Early detection is crucial! 🌟",
+                
+                "Advanced Health Management: 💪\n\n1. **Medical Care**\n   - Regular specialist visits\n   - Medication management\n   - Treatment plans\n   - Monitoring systems\n\n2. **Lifestyle Support**\n   - Specialized diet\n   - Exercise program\n   - Stress management\n   - Sleep optimization\n\n3. **Support System**\n   - Medical team\n   - Family support\n   - Support groups\n   - Mental health care\n\nWould you like specific management strategies for any condition? 🎯"
+            ]
+        },
+        {
+            "tag": "preventive_health",
+            "patterns": [
+                "preventive care", "health prevention", "disease prevention", "health screening", "preventive measures", "health maintenance", "preventive health care"
+            ],
+            "responses": [
+                "Preventive Health Guide: 🛡️\n\n1. **Regular Screenings**\n   - Age-appropriate tests:\n     * Blood pressure\n     * Cholesterol\n     * Blood sugar\n     * Cancer screening\n   - Frequency:\n     * Annual check-ups\n     * Specialist visits\n     * Dental exams\n     * Vision tests\n\n2. **Vaccinations**\n   - Essential vaccines:\n     * Flu shot\n     * COVID-19\n     * Tetanus\n     * Age-specific\n   - Schedule:\n     * Regular updates\n     * Travel vaccines\n     * Special conditions\n\n3. **Lifestyle Prevention**\n   - Diet:\n     * Balanced nutrition\n     * Portion control\n     * Hydration\n     * Food safety\n   - Exercise:\n     * Regular activity\n     * Strength training\n     * Flexibility\n     * Balance work\n\n4. **Environmental Health**\n   - Air quality\n   - Water safety\n   - Food handling\n   - Home safety\n\nRemember: Prevention is the best medicine! 🌟",
+                
+                "Preventive Health Tips: 🎯\n\n1. **Daily Practices**\n   - Healthy diet\n   - Regular exercise\n   - Stress management\n   - Sleep hygiene\n\n2. **Regular Monitoring**\n   - Vital signs\n   - Weight management\n   - Mental health\n   - Sleep quality\n\n3. **Risk Management**\n   - Family history\n   - Lifestyle factors\n   - Environmental risks\n   - Occupational hazards\n\nWould you like specific preventive measures for any condition? 💊"
+            ]
+        },
+        {
+            "tag": "emergency_health",
+            "patterns": [
+                "medical emergency", "emergency care", "urgent health", "emergency symptoms", "urgent medical", "emergency health", "critical health"
+            ],
+            "responses": [
+                "Emergency Health Guide: 🚑\n\n1. **Life-Threatening Symptoms**\n   - Chest pain/pressure\n   - Difficulty breathing\n   - Severe bleeding\n   - Loss of consciousness\n   - Stroke symptoms (FAST):\n     * Face drooping\n     * Arm weakness\n     * Speech difficulty\n     * Time to call 911\n\n2. **Emergency Response**\n   - Call 911 immediately\n   - Stay calm\n   - Keep person comfortable\n   - Follow dispatcher instructions\n   - Have medical information ready\n\n3. **First Aid Basics**\n   - CPR steps\n   - Bleeding control\n   - Burn care\n   - Choking response\n\n4. **Emergency Kit**\n   - First aid supplies\n   - Emergency contacts\n   - Medical information\n   - Insurance cards\n   - Medications list\n\nRemember: In emergencies, act quickly! 🚨",
+                
+                "Emergency Preparedness: 🎯\n\n1. **Emergency Plan**\n   - Emergency contacts\n   - Hospital preference\n   - Insurance information\n   - Medication list\n\n2. **First Aid Training**\n   - CPR certification\n   - Basic first aid\n   - Emergency response\n   - Regular updates\n\n3. **Emergency Supplies**\n   - First aid kit\n   - Medications\n   - Medical devices\n   - Emergency numbers\n\nWould you like specific emergency response training? 🏥"
+            ]
+        },
+        {
+            "tag": "specialized_health_issues",
+            "patterns": [
+                "specialized health problems", "specific health conditions", "medical specialties", "special health issues", "medical conditions", "health specialties", "medical problems"
+            ],
+            "responses": [
+                "Specialized Health Issues Guide: 🏥\n\n1. **Respiratory Conditions**\n   - Types:\n     * Asthma\n     * COPD\n     * Bronchitis\n     * Pneumonia\n   - Symptoms:\n     * Shortness of breath\n     * Wheezing\n     * Chest tightness\n     * Chronic cough\n   - Management:\n     * Inhalers\n     * Breathing exercises\n     * Air quality control\n     * Regular check-ups\n\n2. **Gastrointestinal Disorders**\n   - Types:\n     * IBS\n     * Crohn's disease\n     * Ulcerative colitis\n     * GERD\n   - Symptoms:\n     * Abdominal pain\n     * Digestive issues\n     * Weight changes\n     * Bowel changes\n   - Management:\n     * Diet modifications\n     * Medication\n     * Stress management\n     * Regular monitoring\n\n3. **Musculoskeletal Issues**\n   - Types:\n     * Osteoporosis\n     * Fibromyalgia\n     * Scoliosis\n     * Herniated discs\n   - Symptoms:\n     * Joint pain\n     * Muscle weakness\n     * Limited mobility\n     * Posture problems\n   - Management:\n     * Physical therapy\n     * Exercise program\n     * Pain management\n     * Posture correction\n\n4. **Dermatological Conditions**\n   - Types:\n     * Psoriasis\n     * Rosacea\n     * Vitiligo\n     * Hives\n   - Symptoms:\n     * Skin changes\n     * Itching\n     * Inflammation\n     * Discoloration\n   - Management:\n     * Topical treatments\n     * Light therapy\n     * Diet changes\n     * Stress reduction\n\nRemember: Specialized care is important! 🌟",
+                
+                "Specialized Care Tips: 💪\n\n1. **Finding Specialists**\n   - Research credentials\n   - Check reviews\n   - Insurance coverage\n   - Location convenience\n\n2. **Treatment Planning**\n   - Regular appointments\n   - Medication schedule\n   - Lifestyle changes\n   - Progress tracking\n\n3. **Support System**\n   - Specialist team\n   - Support groups\n   - Family involvement\n   - Mental health care\n\nWould you like specific management strategies for any condition? 🎯"
+            ]
+        },
+        {
+            "tag": "medical_metrics",
+            "patterns": [
+                "health metrics", "medical measurements", "health indicators", "medical numbers", "health statistics", "medical data", "health measurements"
+            ],
+            "responses": [
+                "Medical Metrics Guide: 📊\n\n1. **Vital Signs**\n   - Blood Pressure:\n     * Normal: 120/80 mmHg\n     * High: >140/90 mmHg\n     * Low: <90/60 mmHg\n   - Heart Rate:\n     * Normal: 60-100 bpm\n     * Resting: 40-60 bpm\n     * Exercise: Up to 220-age\n   - Temperature:\n     * Normal: 98.6°F (37°C)\n     * Fever: >100.4°F (38°C)\n   - Respiratory Rate:\n     * Normal: 12-20 breaths/min\n\n2. **Blood Tests**\n   - Complete Blood Count (CBC):\n     * Red blood cells\n     * White blood cells\n     * Platelets\n     * Hemoglobin\n   - Metabolic Panel:\n     * Glucose\n     * Electrolytes\n     * Kidney function\n     * Liver function\n   - Lipid Panel:\n     * Total cholesterol\n     * HDL/LDL\n     * Triglycerides\n\n3. **Body Measurements**\n   - BMI Categories:\n     * Underweight: <18.5\n     * Normal: 18.5-24.9\n     * Overweight: 25-29.9\n     * Obese: >30\n   - Waist Circumference:\n     * Men: <40 inches\n     * Women: <35 inches\n   - Body Fat Percentage:\n     * Men: 10-20%\n     * Women: 18-28%\n\n4. **Health Scores**\n   - Heart Health Score\n   - Sleep Quality Score\n   - Stress Level Score\n   - Fitness Assessment\n\nRemember: Regular monitoring is key! 🌟",
+                
+                "Understanding Your Numbers: 📈\n\n1. **Tracking Methods**\n   - Health apps\n   - Medical devices\n   - Regular check-ups\n   - Home monitoring\n\n2. **Goal Setting**\n   - Realistic targets\n   - Progress tracking\n   - Regular reviews\n   - Adjustments as needed\n\n3. **Professional Guidance**\n   - Doctor consultation\n   - Specialist input\n   - Regular testing\n   - Treatment plans\n\nWould you like specific tracking methods or goal-setting strategies? 🎯"
+            ]
+        },
+        {
+            "tag": "health_monitoring",
+            "patterns": [
+                "health tracking", "medical monitoring", "health check", "medical tracking", "health surveillance", "medical check", "health observation"
+            ],
+            "responses": [
+                "Health Monitoring Guide: 📱\n\n1. **Daily Monitoring**\n   - Vital Signs:\n     * Blood pressure\n     * Heart rate\n     * Temperature\n     * Oxygen levels\n   - Symptoms:\n     * Pain levels\n     * Energy levels\n     * Sleep quality\n     * Mood changes\n\n2. **Regular Check-ups**\n   - Frequency:\n     * Annual physical\n     * Specialist visits\n     * Dental exams\n     * Vision tests\n   - Tests:\n     * Blood work\n     * Imaging\n     * Screenings\n     * Vaccinations\n\n3. **Lifestyle Tracking**\n   - Exercise:\n     * Steps\n     * Workout duration\n     * Intensity\n     * Recovery\n   - Nutrition:\n     * Food intake\n     * Water consumption\n     * Supplements\n     * Meal timing\n\n4. **Mental Health**\n   - Stress levels\n   - Sleep patterns\n   - Mood tracking\n   - Anxiety symptoms\n\nRemember: Knowledge is power! 🌟",
+                
+                "Monitoring Tools: 🛠️\n\n1. **Digital Health**\n   - Health apps\n   - Wearable devices\n   - Smart scales\n   - Sleep trackers\n\n2. **Traditional Methods**\n   - Health journal\n   - Symptom diary\n   - Food log\n   - Exercise tracker\n\n3. **Professional Tools**\n   - Medical devices\n   - Lab tests\n   - Imaging\n   - Specialist equipment\n\nWould you like specific monitoring tools or tracking methods? 📊"
+            ]
+        },
+        {
+            "tag": "health_technology",
+            "patterns": [
+                "health tech", "medical technology", "health devices", "medical devices", "health gadgets", "medical gadgets", "health innovation"
+            ],
+            "responses": [
+                "Health Technology Guide: 💻\n\n1. **Wearable Devices**\n   - Smartwatches:\n     * Heart rate\n     * Sleep tracking\n     * Activity levels\n     * ECG monitoring\n   - Fitness Trackers:\n     * Steps\n     * Calories\n     * Exercise\n     * Sleep quality\n   - Medical Devices:\n     * Blood pressure\n     * Glucose monitors\n     * Pulse oximeters\n     * Thermometers\n\n2. **Health Apps**\n   - Fitness Apps:\n     * Workout tracking\n     * Nutrition logging\n     * Progress monitoring\n     * Goal setting\n   - Medical Apps:\n     * Medication reminders\n     * Symptom tracking\n     * Telehealth\n     * Medical records\n\n3. **Smart Home Health**\n   - Air quality monitors\n   - Sleep environment\n   - Exercise equipment\n   - Medical alert systems\n\n4. **Telehealth Services**\n   - Virtual consultations\n   - Remote monitoring\n   - Digital prescriptions\n   - Health education\n\nRemember: Technology is a tool! 🌟",
+                
+                "Tech Integration Tips: 📱\n\n1. **Device Selection**\n   - Research features\n   - Check compatibility\n   - Read reviews\n   - Consider needs\n\n2. **Data Management**\n   - Privacy settings\n   - Data backup\n   - Sharing options\n   - Security measures\n\n3. **Usage Guidelines**\n   - Regular updates\n   - Battery management\n   - Data accuracy\n   - Professional input\n\nWould you like specific device recommendations or usage tips? 🎯"
+            ]
+        },
+        {
+            "tag": "genetic_health",
+            "patterns": [
+                "genetic conditions", "inherited diseases", "genetic disorders", "hereditary health", "genetic health", "inherited conditions", "genetic testing"
+            ],
+            "responses": [
+                "Genetic Health Guide: 🧬\n\n1. **Common Genetic Conditions**\n   - Types:\n     * Cystic fibrosis\n     * Sickle cell anemia\n     * Huntington's disease\n     * Hemophilia\n   - Symptoms:\n     * Vary by condition\n     * Often chronic\n     * Progressive\n     * Multi-system\n   - Management:\n     * Specialized care\n     * Regular monitoring\n     * Genetic counseling\n     * Family planning\n\n2. **Genetic Testing**\n   - Types:\n     * Diagnostic testing\n     * Carrier testing\n     * Prenatal testing\n     * Predictive testing\n   - Benefits:\n     * Early detection\n     * Treatment planning\n     * Family decisions\n     * Risk assessment\n\n3. **Family History**\n   - Documentation:\n     * Medical conditions\n     * Age of onset\n     * Treatment history\n     * Family patterns\n   - Risk Assessment:\n     * Genetic counseling\n     * Screening tests\n     * Prevention plans\n     * Regular monitoring\n\n4. **Management Strategies**\n   - Medical Care:\n     * Specialist team\n     * Regular check-ups\n     * Treatment plans\n     * Emergency protocols\n   - Lifestyle:\n     * Diet modifications\n     * Exercise program\n     * Stress management\n     * Support system\n\nRemember: Knowledge is power! 🌟",
+                
+                "Genetic Health Support: 💪\n\n1. **Professional Care**\n   - Genetic counselor\n   - Specialist team\n   - Regular monitoring\n   - Treatment plans\n\n2. **Family Support**\n   - Education\n   - Counseling\n   - Support groups\n   - Resource access\n\n3. **Preventive Care**\n   - Regular screening\n   - Lifestyle management\n   - Risk reduction\n   - Early intervention\n\nWould you like specific management strategies or support resources? 🎯"
+            ]
+        },
+        {
+            "tag": "environmental_health",
+            "patterns": [
+                "environmental health", "environmental factors", "health environment", "environmental risks", "health hazards", "environmental impact", "health surroundings"
+            ],
+            "responses": [
+                "Environmental Health Guide: 🌍\n\n1. **Air Quality**\n   - Indoor Air:\n     * Ventilation\n     * Filtration\n     * Humidity control\n     * Pollutant sources\n   - Outdoor Air:\n     * Pollution levels\n     * Allergens\n     * Weather impact\n     * Activity timing\n\n2. **Water Quality**\n   - Drinking Water:\n     * Filtration\n     * Testing\n     * Storage\n     * Safety\n   - Recreational Water:\n     * Safety checks\n     * Chemical levels\n     * Bacterial content\n     * Usage guidelines\n\n3. **Home Environment**\n   - Safety:\n     * Fall prevention\n     * Fire safety\n     * Chemical storage\n     * Emergency exits\n   - Health Factors:\n     * Lighting\n     * Temperature\n     * Noise levels\n     * Cleanliness\n\n4. **Work Environment**\n   - Ergonomics:\n     * Workstation setup\n     * Posture\n     * Breaks\n     * Equipment\n   - Safety:\n     * Protective gear\n     * Ventilation\n     * Chemical exposure\n     * Stress management\n\nRemember: Your environment affects your health! 🌟",
+                
+                "Environmental Health Tips: 🏡\n\n1. **Home Improvements**\n   - Air purifiers\n   - Water filters\n   - Natural cleaning\n   - Green spaces\n\n2. **Daily Practices**\n   - Regular cleaning\n   - Ventilation\n   - Safety checks\n   - Maintenance\n\n3. **Professional Help**\n   - Environmental testing\n   - Safety inspection\n   - Health assessment\n   - Improvement plans\n\nWould you like specific environmental improvements or safety measures? 🎯"
+            ]
+        },
+        {
+            "tag": "occupational_health",
+            "patterns": [
+                "workplace health", "occupational safety", "work health", "job safety", "workplace safety", "occupational wellness", "work wellness"
+            ],
+            "responses": [
+                "Occupational Health Guide: 💼\n\n1. **Physical Health**\n   - Ergonomics:\n     * Proper posture\n     * Workstation setup\n     * Regular breaks\n     * Exercise routine\n   - Safety:\n     * Protective equipment\n     * Safety protocols\n     * Emergency procedures\n     * Risk assessment\n\n2. **Mental Health**\n   - Stress Management:\n     * Work-life balance\n     * Breaks\n     * Support system\n     * Stress reduction\n   - Workplace Culture:\n     * Communication\n     * Team support\n     * Conflict resolution\n     * Mental health resources\n\n3. **Health Hazards**\n   - Physical:\n     * Noise\n     * Vibration\n     * Radiation\n     * Temperature\n   - Chemical:\n     * Exposure limits\n     * Safety measures\n     * Protective gear\n     * Ventilation\n\n4. **Preventive Care**\n   - Regular check-ups\n   - Health screenings\n   - Safety training\n   - Emergency preparedness\n\nRemember: Your health at work matters! 🌟",
+                
+                "Workplace Wellness Tips: 💪\n\n1. **Daily Practices**\n   - Regular breaks\n   - Proper posture\n   - Stress management\n   - Exercise routine\n\n2. **Safety Measures**\n   - Safety training\n   - Protective gear\n   - Emergency protocols\n   - Regular updates\n\n3. **Health Resources**\n   - Employee assistance\n   - Health programs\n   - Support services\n   - Wellness initiatives\n\nWould you like specific workplace wellness strategies or safety measures? 🎯"
+            ]
+        },
+        {
+            "tag": "travel_health",
+            "patterns": [
+                "travel health", "travel medicine", "travel safety", "travel wellness", "travel precautions", "travel health tips", "travel medical"
+            ],
+            "responses": [
+                "Travel Health Guide: ✈️\n\n1. **Pre-Travel Preparation**\n   - Vaccinations:\n     * Required vaccines\n     * Recommended shots\n     * Timing\n     * Documentation\n   - Health Check:\n     * Medical clearance\n     * Medication review\n     * Insurance coverage\n     * Emergency contacts\n\n2. **During Travel**\n   - Health Maintenance:\n     * Medication schedule\n     * Hydration\n     * Rest\n     * Exercise\n   - Safety:\n     * Food safety\n     * Water quality\n     * Sun protection\n     * Insect protection\n\n3. **Destination Health**\n   - Local Health:\n     * Medical facilities\n     * Emergency services\n     * Health risks\n     * Safety concerns\n   - Climate:\n     * Temperature\n     * Humidity\n     * Altitude\n     * Air quality\n\n4. **Travel Kit**\n   - Medications:\n     * Prescriptions\n     * First aid\n     * Motion sickness\n     * Pain relief\n   - Supplies:\n     * Bandages\n     * Antiseptics\n     * Thermometer\n     * Emergency items\n\nRemember: Plan ahead for healthy travel! 🌟",
+                
+                "Travel Health Tips: 🎒\n\n1. **Preparation**\n   - Research destination\n   - Get vaccinations\n   - Pack health kit\n   - Plan medical care\n\n2. **During Trip**\n   - Stay hydrated\n   - Rest properly\n   - Eat safely\n   - Exercise regularly\n\n3. **Emergency Plan**\n   - Emergency contacts\n   - Insurance information\n   - Medical facilities\n   - Evacuation plan\n\nWould you like specific travel health preparations or safety measures? 🎯"
+            ]
+        },
+        {
+            "tag": "serious_health_concerns",
+            "patterns": [
+                "serious symptoms", "emergency warning signs", "dangerous symptoms", "severe health issues", "critical symptoms", "urgent health problems", "life threatening symptoms"
+            ],
+            "responses": [
+                "⚠️ SERIOUS HEALTH WARNING ⚠️\n\nIf you experience any of these symptoms, please consult a doctor IMMEDIATELY:\n\n1. **Life-Threatening Symptoms**\n   - Chest pain or pressure\n   - Difficulty breathing\n   - Severe bleeding\n   - Loss of consciousness\n   - Stroke symptoms (FAST):\n     * Face drooping\n     * Arm weakness\n     * Speech difficulty\n     * Time to call emergency\n\n2. **Severe Pain**\n   - Sudden severe headache\n   - Intense abdominal pain\n   - Severe back pain\n   - Unbearable joint pain\n   - Unexplained severe pain\n\n3. **Neurological Symptoms**\n   - Sudden confusion\n   - Seizures\n   - Paralysis\n   - Severe dizziness\n   - Vision changes\n\n4. **Other Serious Signs**\n   - High fever (over 103°F/39.4°C)\n   - Severe dehydration\n   - Sudden weight loss\n   - Persistent vomiting\n   - Blood in stool/urine\n\n🚨 IMMEDIATE ACTION REQUIRED:\n1. Call emergency services (911)\n2. Go to nearest emergency room\n3. Contact your doctor immediately\n4. Have medical information ready\n\nRemember: Better safe than sorry! Your health is priority! 🏥",
+                
+                "Emergency Response Guide: 🚑\n\n1. **When to Seek Immediate Help**\n   - Call 911 for:\n     * Chest pain\n     * Breathing problems\n     * Severe bleeding\n     * Loss of consciousness\n   - Go to ER for:\n     * Severe pain\n     * High fever\n     * Neurological symptoms\n     * Severe dehydration\n\n2. **Preparation**\n   - Keep emergency numbers handy\n   - Know nearest hospital location\n   - Have medical information ready\n   - Know your insurance details\n\n3. **After Emergency**\n   - Follow up with doctor\n   - Get proper diagnosis\n   - Follow treatment plan\n   - Monitor symptoms\n\nWould you like specific emergency response instructions? 🎯"
+            ]
+        },
+        {
+            "tag": "doctor_consultation",
+            "patterns": [
+                "when to see doctor", "doctor visit", "medical consultation", "health check", "doctor appointment", "medical advice", "professional help"
+            ],
+            "responses": [
+                "Doctor Consultation Guide: 👨‍⚕️\n\n1. **When to See a Doctor**\n   - Persistent Symptoms:\n     * Lasting more than 2 weeks\n     * Getting worse\n     * Interfering with daily life\n     * Unexplained changes\n   - New Symptoms:\n     * Sudden onset\n     * Unusual changes\n     * Multiple symptoms\n     * Recurring issues\n\n2. **Preparation for Visit**\n   - Document:\n     * Symptoms\n     * Duration\n     * Severity\n     * Triggers\n   - Bring:\n     * Medical history\n     * Current medications\n     * Test results\n     * Insurance information\n\n3. **During Consultation**\n   - Be honest\n   - Ask questions\n   - Take notes\n   - Get clarification\n\n4. **Follow-up**\n   - Follow instructions\n   - Take medications\n   - Schedule follow-up\n   - Monitor progress\n\nRemember: Regular check-ups are important! 🌟",
+                
+                "Making the Most of Your Doctor Visit: 💪\n\n1. **Before Visit**\n   - List symptoms\n   - Track patterns\n   - Gather records\n   - Prepare questions\n\n2. **During Visit**\n   - Be specific\n   - Share concerns\n   - Get explanations\n   - Understand next steps\n\n3. **After Visit**\n   - Follow treatment\n   - Monitor changes\n   - Keep appointments\n   - Report problems\n\nWould you like specific preparation tips for your doctor visit? 🎯"
+            ]
+        },
+        {
+            "tag": "health_expectations",
+            "patterns": [
+                "health expectations", "what to expect", "health assumptions", "health predictions", "health outcomes", "health prognosis", "health timeline"
+            ],
+            "responses": [
+                "Health Expectations Guide: 📋\n\n1. **Recovery Timelines**\n   - Common Illnesses:\n     * Cold: 7-10 days\n     * Flu: 1-2 weeks\n     * Minor injuries: 2-6 weeks\n     * Surgery recovery: Varies by type\n   - Chronic Conditions:\n     * Long-term management\n     * Regular monitoring\n     * Lifestyle adjustments\n     * Ongoing treatment\n\n2. **Treatment Expectations**\n   - Medication:\n     * Time to take effect\n     * Side effects\n     * Duration of treatment\n     * Follow-up requirements\n   - Therapy:\n     * Session frequency\n     * Progress timeline\n     * Home exercises\n     * Expected outcomes\n\n3. **Lifestyle Changes**\n   - Diet modifications\n   - Exercise routines\n   - Sleep patterns\n   - Stress management\n   - Work adjustments\n\n4. **Support Needs**\n   - Family assistance\n   - Professional help\n   - Community support\n   - Financial planning\n\nRemember: Every person's journey is unique! 🌟",
+                
+                "Understanding Health Outcomes: 🎯\n\n1. **Short-term Expectations**\n   - Immediate symptoms\n   - Initial treatment\n   - Early recovery\n   - First follow-up\n\n2. **Long-term Outlook**\n   - Recovery progress\n   - Maintenance needs\n   - Lifestyle changes\n   - Future planning\n\n3. **Quality of Life**\n   - Daily activities\n   - Work capacity\n   - Social life\n   - Mental health\n\nWould you like specific timelines for any condition? 📅"
+            ]
+        },
+        {
+            "tag": "health_assumptions",
+            "patterns": [
+                "health assumptions", "health myths", "health misconceptions", "health beliefs", "health facts", "health knowledge", "health understanding"
+            ],
+            "responses": [
+                "Health Assumptions Guide: 🧠\n\n1. **Common Myths**\n   - Exercise:\n     * No pain, no gain (False)\n     * Spot reduction works (False)\n     * More is always better (False)\n   - Nutrition:\n     * Carbs are bad (False)\n     * Fat-free is healthy (False)\n     * Supplements are necessary (False)\n\n2. **Medical Misconceptions**\n   - Antibiotics:\n     * Work for viruses (False)\n     * Always needed (False)\n   - Vaccines:\n     * Cause autism (False)\n     * Weaken immunity (False)\n\n3. **Lifestyle Assumptions**\n   - Sleep:\n     * Can catch up (False)\n     * Less is more (False)\n   - Stress:\n     * Always bad (False)\n     * Can't be managed (False)\n\n4. **Treatment Expectations**\n   - Instant results\n   - One-size-fits-all\n   - No side effects\n   - Permanent cure\n\nRemember: Question assumptions, seek facts! 🌟",
+                
+                "Health Facts vs Fiction: 📚\n\n1. **Exercise Myths**\n   - Proper form matters\n   - Rest is essential\n   - Progress takes time\n   - Individual needs vary\n\n2. **Nutrition Facts**\n   - Balance is key\n   - Whole foods matter\n   - Portion control\n   - Individual needs\n\n3. **Medical Truths**\n   - Prevention works\n   - Early detection helps\n   - Regular check-ups matter\n   - Professional advice counts\n\nWould you like specific facts about any health topic? 💡"
+            ]
+        },
+        {
+            "tag": "health_suggestions",
+            "patterns": [
+                "health suggestions", "health recommendations", "health advice", "health tips", "health guidance", "health solutions", "health strategies"
+            ],
+            "responses": [
+                "Comprehensive Health Suggestions: 💡\n\n1. **Preventive Measures**\n   - Regular Check-ups:\n     * Annual physical\n     * Dental exams\n     * Vision tests\n     * Age-appropriate screenings\n   - Vaccinations:\n     * Flu shot\n     * COVID-19\n     * Other recommended vaccines\n\n2. **Lifestyle Recommendations**\n   - Diet:\n     * Balanced meals\n     * Portion control\n     * Hydration\n     * Meal timing\n   - Exercise:\n     * 150 mins weekly\n     * Strength training\n     * Flexibility\n     * Balance work\n\n3. **Mental Health**\n   - Stress management\n   - Sleep hygiene\n   - Social connections\n   - Professional support\n\n4. **Environmental Health**\n   - Air quality\n   - Water safety\n   - Food handling\n   - Home safety\n\nRemember: Small changes make big differences! 🌟",
+                
+                "Health Optimization Tips: 🎯\n\n1. **Daily Practices**\n   - Morning routine\n   - Exercise schedule\n   - Meal planning\n   - Sleep routine\n\n2. **Weekly Goals**\n   - Exercise targets\n   - Social activities\n   - Rest days\n   - Progress tracking\n\n3. **Monthly Check-ins**\n   - Health metrics\n   - Goal review\n   - Habit assessment\n   - Plan adjustments\n\nWould you like specific suggestions for any health area? 💪"
+            ]
+        },
+        {
+            "tag": "health_monitoring_details",
+            "patterns": [
+                "health monitoring details", "health tracking specifics", "health measurement details", "health observation specifics", "health surveillance details", "health check specifics"
+            ],
+            "responses": [
+                "Detailed Health Monitoring Guide: 📊\n\n1. **Vital Signs Tracking**\n   - Blood Pressure:\n     * Morning/evening readings\n     * Before/after exercise\n     * During stress\n     * Regular patterns\n   - Heart Rate:\n     * Resting rate\n     * Exercise rate\n     * Recovery rate\n     * Variability\n\n2. **Symptom Monitoring**\n   - Pain Levels:\n     * Location\n     * Intensity (1-10)\n     * Duration\n     * Triggers\n   - Energy Levels:\n     * Daily patterns\n     * Sleep quality\n     * Activity impact\n     * Recovery time\n\n3. **Lifestyle Metrics**\n   - Exercise:\n     * Duration\n     * Intensity\n     * Type\n     * Recovery\n   - Nutrition:\n     * Food intake\n     * Water consumption\n     * Meal timing\n     * Hunger patterns\n\n4. **Mental Health Tracking**\n   - Mood patterns\n   - Stress levels\n   - Sleep quality\n   - Social interactions\n\nRemember: Knowledge is power! 🌟",
+                
+                "Advanced Monitoring Tips: 📱\n\n1. **Digital Tools**\n   - Health apps\n   - Wearable devices\n   - Smart scales\n   - Sleep trackers\n\n2. **Traditional Methods**\n   - Health journal\n   - Symptom diary\n   - Food log\n   - Exercise tracker\n\n3. **Professional Monitoring**\n   - Regular check-ups\n   - Lab tests\n   - Specialist visits\n   - Treatment tracking\n\nWould you like specific monitoring tools or methods? 🛠️"
+            ]
+        },
+        {
+            "tag": "health_education",
+            "patterns": [
+                "health education", "health learning", "health knowledge", "health information", "health understanding", "health awareness", "health literacy"
+            ],
+            "responses": [
+                "Health Education Guide: 📚\n\n1. **Basic Health Knowledge**\n   - Body Systems:\n     * Cardiovascular\n     * Respiratory\n     * Digestive\n     * Nervous\n   - Common Conditions:\n     * Symptoms\n     * Causes\n     * Prevention\n     * Treatment\n\n2. **Preventive Education**\n   - Lifestyle Factors:\n     * Diet\n     * Exercise\n     * Sleep\n     * Stress\n   - Risk Factors:\n     * Genetic\n     * Environmental\n     * Behavioral\n     * Social\n\n3. **Treatment Understanding**\n   - Medication:\n     * Purpose\n     * Side effects\n     * Interactions\n     * Compliance\n   - Therapy:\n     * Types\n     * Benefits\n     * Duration\n     * Expectations\n\n4. **Health Resources**\n   - Reliable sources\n   - Professional guidance\n   - Support groups\n   - Educational materials\n\nRemember: Knowledge empowers better health! 🌟",
+                
+                "Health Learning Resources: 🎓\n\n1. **Professional Sources**\n   - Medical websites\n   - Health organizations\n   - Research papers\n   - Expert blogs\n\n2. **Community Learning**\n   - Support groups\n   - Workshops\n   - Seminars\n   - Online courses\n\n3. **Practical Application**\n   - Daily practices\n   - Health tracking\n   - Goal setting\n   - Progress monitoring\n\nWould you like specific educational resources? 📖"
+            ]
+        },
+        {
+            "tag": "health_guide_detailed",
+            "patterns": [
+                "detailed health guide", "comprehensive health information", "health details", "health descriptions", "health explanations", "health breakdown", "health analysis"
+            ],
+            "responses": [
+                "📋 Comprehensive Health Guide (Point Form)\n\n1. **Physical Health**\n   • Daily Exercise (30-60 minutes)\n   • Balanced Diet (5 food groups)\n   • 7-9 hours sleep\n   • Regular check-ups\n   • Hydration (8-10 glasses)\n\n2. **Mental Health**\n   • Stress management\n   • Social connections\n   • Professional support\n   • Hobby time\n   • Relaxation techniques\n\n3. **Preventive Care**\n   • Vaccinations\n   • Screenings\n   • Dental care\n   • Vision checks\n   • Regular tests\n\n4. **Lifestyle Management**\n   • Work-life balance\n   • Time management\n   • Financial health\n   • Environmental factors\n   • Safety measures",
+                
+                "📚 Detailed Health Descriptions\n\n1. **Physical Wellness**\n   Physical health is the foundation of overall wellbeing. It involves maintaining a balanced lifestyle through regular exercise, proper nutrition, and adequate rest. Exercise should include a mix of cardio, strength training, and flexibility work. Nutrition requires a balanced intake of proteins, carbohydrates, healthy fats, vitamins, and minerals. Sleep is crucial for recovery and maintaining bodily functions.\n\n2. **Mental Wellbeing**\n   Mental health is equally important as physical health. It encompasses emotional, psychological, and social wellbeing. Regular stress management through meditation, exercise, and hobbies helps maintain mental balance. Building strong social connections and seeking professional help when needed are essential components of mental health care.\n\n3. **Preventive Healthcare**\n   Prevention is better than cure. Regular health screenings, vaccinations, and check-ups help catch potential issues early. This includes dental care, vision checks, and age-appropriate screenings. Maintaining a healthy lifestyle and being aware of family medical history are crucial for preventive care.\n\n4. **Lifestyle Balance**\n   A balanced lifestyle involves managing various aspects of life effectively. This includes maintaining a healthy work-life balance, managing time efficiently, and ensuring financial stability. Environmental factors like air quality, water safety, and home environment also play significant roles in overall health."
+            ]
+        },
+        {
+            "tag": "health_conditions_detailed",
+            "patterns": [
+                "health conditions details", "medical conditions explained", "health problems detailed", "medical issues explained", "health concerns detailed", "medical conditions breakdown"
+            ],
+            "responses": [
+                "🏥 Health Conditions Guide (Point Form)\n\n1. **Common Conditions**\n   • Cold & Flu\n   • Headaches\n   • Digestive issues\n   • Skin problems\n   • Sleep disorders\n\n2. **Chronic Conditions**\n   • Diabetes\n   • Hypertension\n   • Asthma\n   • Arthritis\n   • Heart disease\n\n3. **Mental Health**\n   • Anxiety\n   • Depression\n   • Stress disorders\n   • Sleep problems\n   • Mood disorders\n\n4. **Age-Related**\n   • Joint issues\n   • Memory concerns\n   • Vision changes\n   • Balance problems\n   • Energy levels",
+                
+                "📖 Detailed Condition Descriptions\n\n1. **Common Health Issues**\n   Common health conditions affect most people at some point in their lives. These include respiratory infections like colds and flu, which typically last 7-10 days and require rest and hydration. Headaches can be caused by stress, dehydration, or underlying conditions. Digestive issues often relate to diet, stress, or food intolerances. Skin problems may be due to allergies, infections, or environmental factors.\n\n2. **Chronic Health Conditions**\n   Chronic conditions require long-term management and care. Diabetes affects blood sugar regulation and requires careful monitoring of diet, exercise, and medication. Hypertension (high blood pressure) needs regular monitoring and lifestyle modifications. Asthma involves managing triggers and maintaining proper medication. Arthritis affects joint health and mobility, requiring specific exercise and pain management strategies.\n\n3. **Mental Health Conditions**\n   Mental health conditions affect thoughts, feelings, and behavior. Anxiety disorders involve excessive worry and fear, often requiring therapy and stress management techniques. Depression affects mood and daily functioning, necessitating professional support and lifestyle changes. Sleep disorders impact overall health and require specific sleep hygiene practices and possibly medical intervention.\n\n4. **Age-Related Health Concerns**\n   As we age, various health concerns become more common. Joint issues may develop due to wear and tear or conditions like arthritis. Memory concerns can range from normal aging to more serious conditions. Vision changes often require regular eye care and possible corrective measures. Balance problems need specific exercises and safety measures to prevent falls."
+            ]
+        },
+        {
+            "tag": "health_treatment_detailed",
+            "patterns": [
+                "treatment details", "medical treatment explained", "health treatment guide", "medical care details", "treatment options explained", "health care breakdown"
+            ],
+            "responses": [
+                "💊 Treatment Guide (Point Form)\n\n1. **Medical Treatments**\n   • Prescription medications\n   • Over-the-counter drugs\n   • Physical therapy\n   • Surgery options\n   • Alternative therapies\n\n2. **Lifestyle Treatments**\n   • Diet modifications\n   • Exercise programs\n   • Sleep improvements\n   • Stress management\n   • Environmental changes\n\n3. **Mental Health Care**\n   • Therapy sessions\n   • Medication management\n   • Support groups\n   • Self-care practices\n   • Crisis intervention\n\n4. **Preventive Measures**\n   • Regular check-ups\n   • Vaccinations\n   • Screenings\n   • Health monitoring\n   • Risk management",
+                
+                "📚 Detailed Treatment Descriptions\n\n1. **Medical Treatment Options**\n   Medical treatments vary based on the condition and individual needs. Prescription medications are carefully selected based on symptoms, medical history, and potential interactions. Physical therapy helps restore movement and function through specific exercises and techniques. Surgery may be necessary for certain conditions, with various options available depending on the situation. Alternative therapies like acupuncture or herbal medicine can complement traditional treatments.\n\n2. **Lifestyle-Based Treatments**\n   Lifestyle modifications play a crucial role in treatment and prevention. Diet modifications may involve specific nutritional plans or restrictions. Exercise programs are tailored to individual needs and conditions. Sleep improvements focus on establishing healthy sleep patterns and environments. Stress management techniques help reduce the impact of stress on health. Environmental changes may include improving air quality or reducing exposure to triggers.\n\n3. **Mental Health Treatment Approaches**\n   Mental health treatment involves a comprehensive approach. Therapy sessions provide professional support and coping strategies. Medication management requires careful monitoring and adjustment. Support groups offer peer support and shared experiences. Self-care practices help maintain mental wellbeing. Crisis intervention services provide immediate support when needed.\n\n4. **Preventive Healthcare Strategies**\n   Preventive measures are essential for maintaining health. Regular check-ups help catch issues early. Vaccinations protect against various diseases. Screenings detect potential problems before symptoms appear. Health monitoring tracks vital signs and symptoms. Risk management involves identifying and addressing potential health risks."
+            ]
+        },
+        {
+            "tag": "health_recovery_detailed",
+            "patterns": [
+                "recovery details", "healing process explained", "recovery guide", "healing details", "recovery process explained", "healing breakdown"
+            ],
+            "responses": [
+                "🔄 Recovery Guide (Point Form)\n\n1. **Recovery Phases**\n   • Acute phase\n   • Rehabilitation\n   • Maintenance\n   • Prevention\n   • Long-term care\n\n2. **Recovery Support**\n   • Medical team\n   • Family support\n   • Community resources\n   • Professional help\n   • Self-care\n\n3. **Recovery Timeline**\n   • Short-term goals\n   • Medium-term progress\n   • Long-term outcomes\n   • Milestone tracking\n   • Adjustment periods\n\n4. **Recovery Challenges**\n   • Physical limitations\n   • Emotional impact\n   • Social adjustments\n   • Financial concerns\n   • Lifestyle changes",
+                
+                "📖 Detailed Recovery Process\n\n1. **Understanding Recovery Phases**\n   Recovery is a complex process that involves multiple phases. The acute phase focuses on immediate medical needs and stabilization. Rehabilitation involves restoring function and mobility through specific exercises and therapies. The maintenance phase helps prevent relapse and maintain progress. Prevention strategies reduce the risk of future issues. Long-term care ensures ongoing support and monitoring.\n\n2. **Recovery Support Systems**\n   A strong support system is crucial for successful recovery. The medical team provides professional guidance and treatment. Family support offers emotional and practical assistance. Community resources provide additional support and services. Professional help ensures proper care and monitoring. Self-care practices help maintain progress and prevent relapse.\n\n3. **Recovery Timeline and Progress**\n   Recovery follows a unique timeline for each individual. Short-term goals focus on immediate improvements and basic functioning. Medium-term progress involves more significant improvements and lifestyle adjustments. Long-term outcomes aim for full recovery or optimal management. Regular milestone tracking helps monitor progress. Adjustment periods allow for necessary changes to treatment plans.\n\n4. **Managing Recovery Challenges**\n   Recovery often involves various challenges. Physical limitations may require adaptations and patience. Emotional impact needs proper support and coping strategies. Social adjustments help maintain relationships and support systems. Financial concerns may require planning and assistance. Lifestyle changes ensure long-term success and prevention."
+            ]
+        },
+        {
+            "tag": "health_details_comprehensive",
+            "patterns": [
+                "comprehensive health details", "detailed health information", "health in depth", "health specifics", "health particulars", "health minutiae", "health intricacies"
+            ],
+            "responses": [
+                "📚 Comprehensive Health Details Guide\n\n1. **Physical Health Fundamentals**\n   Physical health encompasses the entire body's functioning and maintenance. This includes:\n   • Cardiovascular System: Heart health, blood circulation, and vascular function\n   • Respiratory System: Lung capacity, breathing efficiency, and oxygen exchange\n   • Digestive System: Nutrient absorption, gut health, and waste elimination\n   • Musculoskeletal System: Bone density, muscle strength, and joint flexibility\n   • Nervous System: Brain function, nerve conduction, and sensory processing\n   • Immune System: Disease resistance, inflammation response, and healing capacity\n\n2. **Mental Health Components**\n   Mental health involves complex interactions between brain function and emotional wellbeing:\n   • Cognitive Function: Memory, attention, problem-solving, and decision-making\n   • Emotional Regulation: Stress management, mood stability, and emotional awareness\n   • Behavioral Patterns: Habits, routines, and response mechanisms\n   • Social Integration: Relationships, communication, and community involvement\n   • Psychological Resilience: Coping mechanisms, adaptability, and recovery capacity\n\n3. **Preventive Health Measures**\n   Prevention involves multiple layers of health protection:\n   • Primary Prevention: Vaccinations, health education, and lifestyle modifications\n   • Secondary Prevention: Early detection, screening programs, and risk assessment\n   • Tertiary Prevention: Disease management, rehabilitation, and quality of life maintenance\n   • Environmental Prevention: Air quality, water safety, and toxin reduction\n   • Occupational Prevention: Workplace safety, ergonomics, and stress management\n\n4. **Lifestyle Management**\n   Daily life choices significantly impact overall health:\n   • Nutrition Management: Meal planning, portion control, and nutrient balance\n   • Physical Activity: Exercise routines, movement patterns, and fitness goals\n   • Sleep Hygiene: Sleep cycles, rest quality, and recovery processes\n   • Stress Management: Relaxation techniques, mindfulness, and work-life balance\n   • Social Connection: Relationship building, community involvement, and support systems",
+                
+                "🔍 Detailed Health Analysis\n\n1. **Health Assessment Parameters**\n   Comprehensive health evaluation includes multiple aspects:\n   • Vital Signs: Blood pressure, heart rate, respiratory rate, and temperature\n   • Body Composition: BMI, body fat percentage, muscle mass, and hydration levels\n   • Metabolic Markers: Blood sugar, cholesterol, hormone levels, and nutrient status\n   • Functional Capacity: Strength, flexibility, balance, and endurance\n   • Mental Status: Cognitive function, emotional state, and behavioral patterns\n\n2. **Health Risk Factors**\n   Understanding potential health risks involves:\n   • Genetic Predisposition: Family history, inherited conditions, and genetic markers\n   • Environmental Exposures: Air quality, water safety, and chemical exposure\n   • Lifestyle Choices: Diet, exercise, sleep, and stress management\n   • Social Determinants: Economic status, education, and community resources\n   • Behavioral Patterns: Habits, routines, and decision-making processes\n\n3. **Health Maintenance Strategies**\n   Long-term health maintenance requires:\n   • Regular Monitoring: Health tracking, symptom observation, and progress assessment\n   • Preventive Care: Regular check-ups, screenings, and vaccinations\n   • Lifestyle Modifications: Diet adjustments, exercise programs, and stress reduction\n   • Environmental Optimization: Home safety, workplace ergonomics, and air quality\n   • Social Support: Family involvement, community resources, and professional guidance\n\n4. **Health Optimization Techniques**\n   Advanced health optimization includes:\n   • Performance Enhancement: Exercise programming, nutrition timing, and recovery strategies\n   • Stress Reduction: Meditation, breathing techniques, and relaxation methods\n   • Sleep Optimization: Sleep hygiene, circadian rhythm alignment, and rest quality\n   • Cognitive Enhancement: Brain training, memory exercises, and focus development\n   • Emotional Wellbeing: Therapy, support groups, and self-care practices"
+            ]
+        },
+        {
+            "tag": "medical_conditions_detailed",
+            "patterns": [
+                "medical conditions in detail", "health problems explained", "disease details", "illness specifics", "medical issues detailed", "health conditions explained"
+            ],
+            "responses": [
+                "🏥 Comprehensive Medical Conditions Guide\n\n1. **Cardiovascular Conditions**\n   Detailed explanation of heart and blood vessel disorders:\n   • Coronary Artery Disease: Plaque buildup, blood flow restriction, and heart muscle damage\n   • Hypertension: Blood pressure regulation, risk factors, and management strategies\n   • Heart Failure: Pumping efficiency, fluid retention, and circulation problems\n   • Arrhythmias: Electrical conduction, heart rhythm, and beat regulation\n   • Peripheral Vascular Disease: Blood vessel narrowing, circulation issues, and tissue damage\n\n2. **Respiratory Disorders**\n   In-depth coverage of lung and breathing conditions:\n   • Asthma: Airway inflammation, bronchial constriction, and trigger management\n   • COPD: Lung tissue damage, airflow limitation, and breathing difficulties\n   • Pneumonia: Lung infection, inflammation, and respiratory function\n   • Sleep Apnea: Breathing interruptions, oxygen levels, and sleep quality\n   • Bronchitis: Airway inflammation, mucus production, and infection management\n\n3. **Neurological Conditions**\n   Comprehensive overview of brain and nerve disorders:\n   • Alzheimer's Disease: Memory loss, cognitive decline, and brain function\n   • Parkinson's Disease: Movement control, dopamine levels, and motor function\n   • Multiple Sclerosis: Nerve damage, immune response, and symptom management\n   • Epilepsy: Seizure activity, brain function, and electrical patterns\n   • Migraine: Headache mechanisms, trigger factors, and pain management\n\n4. **Endocrine Disorders**\n   Detailed explanation of hormone-related conditions:\n   • Diabetes: Blood sugar regulation, insulin function, and metabolic control\n   • Thyroid Disorders: Hormone production, metabolic rate, and energy regulation\n   • Adrenal Issues: Stress response, hormone balance, and energy management\n   • Pituitary Disorders: Growth regulation, hormone control, and body function\n   • Metabolic Syndrome: Weight management, insulin resistance, and cardiovascular risk",
+                
+                "📋 Disease Management Strategies\n\n1. **Treatment Approaches**\n   Comprehensive treatment methods for various conditions:\n   • Medication Management: Drug selection, dosage timing, and side effect monitoring\n   • Lifestyle Modifications: Diet changes, exercise programs, and stress reduction\n   • Surgical Interventions: Procedure types, recovery process, and outcome expectations\n   • Alternative Therapies: Complementary treatments, natural remedies, and holistic approaches\n   • Rehabilitation Programs: Physical therapy, occupational therapy, and functional recovery\n\n2. **Symptom Management**\n   Detailed strategies for controlling symptoms:\n   • Pain Management: Medication options, physical therapy, and alternative treatments\n   • Fatigue Control: Energy conservation, rest periods, and activity pacing\n   • Mobility Issues: Assistive devices, exercise programs, and fall prevention\n   • Cognitive Symptoms: Memory aids, concentration techniques, and brain training\n   • Emotional Impact: Counseling, support groups, and stress management\n\n3. **Prevention Strategies**\n   Comprehensive prevention approaches:\n   • Risk Reduction: Lifestyle changes, environmental modifications, and safety measures\n   • Early Detection: Screening programs, symptom awareness, and regular monitoring\n   • Health Maintenance: Regular check-ups, preventive care, and wellness programs\n   • Education: Health literacy, self-management skills, and resource awareness\n   • Support Systems: Family involvement, community resources, and professional guidance\n\n4. **Quality of Life Enhancement**\n   Strategies for improving daily living:\n   • Daily Activities: Energy management, task modification, and independence maintenance\n   • Social Connection: Relationship building, community involvement, and support networks\n   • Mental Health: Emotional support, stress management, and psychological wellbeing\n   • Physical Function: Exercise programs, mobility aids, and functional adaptation\n   • Environmental Adaptation: Home modifications, workplace adjustments, and safety measures"
+            ]
+        },
+        {
+            "tag": "health_monitoring_detailed",
+            "patterns": [
+                "health monitoring details", "health tracking specifics", "medical monitoring explained", "health surveillance details", "health observation specifics"
+            ],
+            "responses": [
+                "📊 Comprehensive Health Monitoring Guide\n\n1. **Vital Signs Tracking**\n   Detailed monitoring of essential body functions:\n   • Blood Pressure: Systolic/diastolic readings, trends, and target ranges\n   • Heart Rate: Resting rate, exercise response, and recovery patterns\n   • Respiratory Rate: Breathing patterns, oxygen levels, and lung function\n   • Temperature: Body temperature, fever patterns, and environmental impact\n   • Oxygen Saturation: Blood oxygen levels, tissue perfusion, and respiratory efficiency\n\n2. **Physical Health Metrics**\n   Comprehensive body measurements and indicators:\n   • Body Composition: Weight, BMI, body fat percentage, and muscle mass\n   • Physical Function: Strength, flexibility, balance, and endurance\n   • Sleep Quality: Duration, efficiency, and sleep cycle patterns\n   • Activity Levels: Steps, exercise intensity, and movement patterns\n   • Pain Assessment: Location, intensity, duration, and impact\n\n3. **Mental Health Indicators**\n   Detailed tracking of psychological wellbeing:\n   • Mood Patterns: Emotional states, triggers, and coping strategies\n   • Stress Levels: Physical symptoms, emotional responses, and management techniques\n   • Cognitive Function: Memory, attention, and problem-solving abilities\n   • Sleep Patterns: Quality, duration, and impact on daily function\n   • Social Connection: Relationships, support systems, and community involvement\n\n4. **Lifestyle Factors**\n   Comprehensive monitoring of daily habits:\n   • Nutrition: Food intake, hydration, and nutrient balance\n   • Exercise: Activity type, duration, intensity, and recovery\n   • Sleep: Schedule, quality, and impact on daily function\n   • Stress Management: Coping strategies, relaxation techniques, and support systems\n   • Environmental Factors: Air quality, temperature, and safety measures",
+                
+                "📈 Advanced Health Tracking Methods\n\n1. **Digital Health Tools**\n   Modern technology for health monitoring:\n   • Wearable Devices: Smartwatches, fitness trackers, and health monitors\n   • Mobile Apps: Health tracking, symptom monitoring, and medication reminders\n   • Smart Home Devices: Air quality monitors, sleep trackers, and activity sensors\n   • Telehealth Platforms: Remote monitoring, virtual consultations, and data sharing\n   • Health Records: Electronic medical records, personal health data, and trend analysis\n\n2. **Professional Monitoring**\n   Medical supervision and assessment:\n   • Regular Check-ups: Physical exams, health screenings, and risk assessment\n   • Specialist Consultations: Expert evaluation, treatment planning, and progress monitoring\n   • Laboratory Tests: Blood work, imaging studies, and diagnostic procedures\n   • Functional Assessment: Physical capacity, cognitive function, and daily activities\n   • Treatment Response: Medication effectiveness, therapy progress, and outcome measures\n\n3. **Self-Monitoring Techniques**\n   Personal health tracking methods:\n   • Health Journaling: Symptom tracking, mood patterns, and lifestyle factors\n   • Measurement Tools: Home monitoring devices, assessment scales, and tracking apps\n   • Observation Skills: Symptom recognition, pattern identification, and change detection\n   • Documentation: Health records, medication logs, and treatment history\n   • Goal Setting: Health objectives, progress tracking, and achievement monitoring\n\n4. **Data Analysis and Interpretation**\n   Understanding health information:\n   • Trend Analysis: Pattern recognition, change detection, and progress assessment\n   • Risk Assessment: Factor identification, probability calculation, and prevention planning\n   • Goal Tracking: Objective measurement, progress evaluation, and adjustment strategies\n   • Health Insights: Data interpretation, decision support, and action planning\n   • Professional Review: Medical evaluation, expert interpretation, and treatment adjustment"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}Create User - Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>
+                <i class="fas fa-user-plus me-2"></i>Create New User
+            </h2>
+            <a href="{{ url_for('dashboard.admin_manage_users') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Users
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">User Information</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="createUserForm">
+                    {{ form.hidden_tag() }}
+                    
+                    <!-- Basic Information -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-user me-2"></i>Basic Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.username.label(class="form-label") }}
+                            {{ form.username(class="form-control") }}
+                            {% if form.username.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.username.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-control") }}
+                            {% if form.email.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.email.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.first_name.label(class="form-label") }}
+                            {{ form.first_name(class="form-control") }}
+                            {% if form.first_name.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.first_name.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.last_name.label(class="form-label") }}
+                            {{ form.last_name(class="form-control") }}
+                            {% if form.last_name.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.last_name.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.password.label(class="form-label") }}
+                            {{ form.password(class="form-control") }}
+                            {% if form.password.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.password.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.role.label(class="form-label") }}
+                            {{ form.role(class="form-select", id="roleSelect", onchange="toggleRoleFields()") }}
+                            {% if form.role.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.role.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.phone.label(class="form-label") }}
+                            {{ form.phone(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.date_of_birth.label(class="form-label") }}
+                            {{ form.date_of_birth(class="form-control") }}
+                        </div>
+                        <div class="col-12 mb-3">
+                            {{ form.address.label(class="form-label") }}
+                            {{ form.address(class="form-control", rows="3") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-check">
+                                {{ form.is_active(class="form-check-input") }}
+                                {{ form.is_active.label(class="form-check-label") }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Specific Fields -->
+                    <div id="doctorFields" class="row mb-4" style="display: none;">
+                        <div class="col-12">
+                            <h6 class="text-success mb-3">
+                                <i class="fas fa-user-md me-2"></i>Doctor Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.specialization.label(class="form-label") }}
+                            {{ form.specialization(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.license_number.label(class="form-label") }}
+                            {{ form.license_number(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.experience_years.label(class="form-label") }}
+                            {{ form.experience_years(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.consultation_fee.label(class="form-label") }}
+                            {{ form.consultation_fee(class="form-control") }}
+                        </div>
+                    </div>
+
+                    <!-- Patient Specific Fields -->
+                    <div id="patientFields" class="row mb-4" style="display: none;">
+                        <div class="col-12">
+                            <h6 class="text-info mb-3">
+                                <i class="fas fa-user-injured me-2"></i>Patient Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.blood_group.label(class="form-label") }}
+                            {{ form.blood_group(class="form-select") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.emergency_contact.label(class="form-label") }}
+                            {{ form.emergency_contact(class="form-control") }}
+                        </div>
+                        <div class="col-12 mb-3">
+                            {{ form.medical_history.label(class="form-label") }}
+                            {{ form.medical_history(class="form-control", rows="3") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.insurance_provider.label(class="form-label") }}
+                            {{ form.insurance_provider(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.insurance_number.label(class="form-label") }}
+                            {{ form.insurance_number(class="form-control") }}
+                        </div>
+                    </div>
+
+                    <!-- Admin Specific Fields -->
+                    <div id="adminFields" class="row mb-4" style="display: none;">
+                        <div class="col-12">
+                            <h6 class="text-warning mb-3">
+                                <i class="fas fa-crown me-2"></i>Admin Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.department.label(class="form-label") }}
+                            {{ form.department(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.employee_id.label(class="form-label") }}
+                            {{ form.employee_id(class="form-control") }}
+                        </div>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <div class="row">
+                        <div class="col-12">
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ url_for('dashboard.admin_manage_users') }}" class="btn btn-secondary">
+                                    <i class="fas fa-times me-2"></i>Cancel
+                                </a>
+                                {{ form.submit(class="btn btn-primary") }}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function toggleRoleFields() {
+    const roleSelect = document.getElementById('roleSelect');
+    const doctorFields = document.getElementById('doctorFields');
+    const patientFields = document.getElementById('patientFields');
+    const adminFields = document.getElementById('adminFields');
+    
+    // Hide all role-specific fields
+    doctorFields.style.display = 'none';
+    patientFields.style.display = 'none';
+    adminFields.style.display = 'none';
+    
+    // Show relevant fields based on selected role
+    if (roleSelect.value === 'doctor') {
+        doctorFields.style.display = 'block';
+    } else if (roleSelect.value === 'patient') {
+        patientFields.style.display = 'block';
+    } else if (roleSelect.value === 'admin') {
+        adminFields.style.display = 'block';
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    toggleRoleFields();
+});
+</script>
+{% endblock %}

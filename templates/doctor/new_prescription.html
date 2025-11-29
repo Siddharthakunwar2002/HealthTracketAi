@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}New Prescription - Doctor{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-prescription me-2"></i>Create New Prescription
+        </h2>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-prescription me-2"></i>Create New Prescription
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.patient_id.label(class="form-label") }}
+                            {{ form.patient_id(class="form-select" + (" is-invalid" if form.patient_id.errors else "")) }}
+                            {% if form.patient_id.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.patient_id.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.medication.label(class="form-label") }}
+                            {{ form.medication(class="form-control" + (" is-invalid" if form.medication.errors else "")) }}
+                            {% if form.medication.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.medication.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.dosage.label(class="form-label") }}
+                            {{ form.dosage(class="form-control" + (" is-invalid" if form.dosage.errors else "")) }}
+                            {% if form.dosage.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.dosage.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.frequency.label(class="form-label") }}
+                            {{ form.frequency(class="form-control" + (" is-invalid" if form.frequency.errors else "")) }}
+                            {% if form.frequency.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.frequency.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.duration.label(class="form-label") }}
+                            {{ form.duration(class="form-control" + (" is-invalid" if form.duration.errors else "")) }}
+                            {% if form.duration.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.duration.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.quantity.label(class="form-label") }}
+                            {{ form.quantity(class="form-control" + (" is-invalid" if form.quantity.errors else "")) }}
+                            {% if form.quantity.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.quantity.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.instructions.label(class="form-label") }}
+                        {{ form.instructions(class="form-control" + (" is-invalid" if form.instructions.errors else ""), rows="4") }}
+                        {% if form.instructions.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.instructions.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.notes.label(class="form-label") }}
+                        {{ form.notes(class="form-control" + (" is-invalid" if form.notes.errors else ""), rows="3") }}
+                        {% if form.notes.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.notes.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('dashboard.doctor_prescriptions') }}" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Create Prescription
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        
+        <!-- Prescription Guidelines -->
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>Prescription Guidelines
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success me-2"></i>
+                        <strong>Verify patient information</strong> before prescribing
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success me-2"></i>
+                        <strong>Check for drug interactions</strong> and allergies
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success me-2"></i>
+                        <strong>Include clear instructions</strong> for medication use
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success me-2"></i>
+                        <strong>Specify dosage and frequency</strong> precisely
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success me-2"></i>
+                        <strong>Add any special notes</strong> or warnings
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Emergency Information -->
+        <div class="card mt-4 border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Important Notes
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="fas fa-shield-alt text-danger me-2"></i>
+                        Always verify patient identity
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-pills text-danger me-2"></i>
+                        Check for contraindications
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-file-medical text-danger me-2"></i>
+                        Document prescription clearly
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

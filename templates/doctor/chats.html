@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}Chat History - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2><i class="fas fa-comments me-2"></i>Chat History</h2>
+            <p class="text-muted">View your chat history with patients and the AI health assistant.</p>
+
+            {% if chat_messages %}
+                <div class="row">
+                    {% for chat in chat_messages %}
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-robot me-1 text-primary"></i>
+                                    Chat Session
+                                </h6>
+                                <small class="text-muted">{{ chat.created_at.strftime('%B %d, %Y at %I:%M %p') }}</small>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-primary">
+                                            <i class="fas fa-user me-1"></i>Your Message
+                                        </h6>
+                                        <div class="bg-light p-3 rounded">
+                                            <p class="mb-0">{{ chat.message }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-success">
+                                            <i class="fas fa-robot me-1"></i>AI Response
+                                        </h6>
+                                        <div class="bg-success bg-opacity-10 p-3 rounded">
+                                            <p class="mb-0">{{ chat.response }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="btn-group w-100" role="group">
+                                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="viewChatDetails('{{ chat.id }}')">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success btn-sm" onclick="continueChat('{{ chat.id }}')">
+                                        <i class="fas fa-comment me-1"></i>Continue Chat
+                                    </button>
+                                    <button type="button" class="btn btn-outline-info btn-sm" onclick="shareChat('{{ chat.id }}')">
+                                        <i class="fas fa-share me-1"></i>Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">No Chat History</h4>
+                    <p class="text-muted">You haven't started any chat sessions with the AI health assistant yet.</p>
+                    <a href="{{ url_for('chat') }}" class="btn btn-primary">
+                        <i class="fas fa-comment me-1"></i>Start New Chat
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Chat Details Modal -->
+<div class="modal fade" id="chatModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-comments me-2"></i>Chat Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="chatDetails">
+                <!-- Chat details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="continueCurrentChat()">
+                    <i class="fas fa-comment me-1"></i>Continue This Chat
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function viewChatDetails(chatId) {
+    // This would typically load chat details via AJAX
+    document.getElementById('chatDetails').innerHTML = `
+        <div class="text-center py-3">
+            <i class="fas fa-spinner fa-spin fa-2x text-primary mb-3"></i>
+            <p>Loading chat details...</p>
+        </div>
+    `;
+
+    // Show modal
+    const modal = new bootstrap.Modal(document.getElementById('chatModal'));
+    modal.show();
+
+    // Simulate loading chat details
+    setTimeout(() => {
+        document.getElementById('chatDetails').innerHTML = `
+            <div class="chat-container">
+                <div class="message user-message mb-3">
+                    <div class="d-flex justify-content-end">
+                        <div class="message-content bg-primary text-white p-3 rounded">
+                            <p class="mb-0">What are the symptoms of diabetes?</p>
+                        </div>
+                    </div>
+                    <small class="text-muted text-end d-block mt-1">You - ${new Date().toLocaleTimeString()}</small>
+                </div>
+
+                <div class="message ai-message mb-3">
+                    <div class="d-flex justify-content-start">
+                        <div class="message-content bg-light p-3 rounded">
+                            <p class="mb-0">Common diabetes symptoms include:</p>
+                            <ul class="mb-0 mt-2">
+                                <li>Frequent urination</li>
+                                <li>Increased thirst</li>
+                                <li>Extreme hunger</li>
+                                <li>Unexplained weight loss</li>
+                                <li>Fatigue</li>
+                                <li>Slow-healing sores</li>
+                            </ul>
+                            <p class="mb-0 mt-2">If you suspect diabetes, please consult with a healthcare professional for proper diagnosis and treatment.</p>
+                        </div>
+                    </div>
+                    <small class="text-muted mt-1">AI Assistant - ${new Date().toLocaleTimeString()}</small>
+                </div>
+            </div>
+        `;
+    }, 1000);
+}
+
+function continueChat(chatId) {
+    // This would redirect to the chat page with the specific chat context
+    window.location.href = `{{ url_for('chat') }}?continue=${chatId}`;
+}
+
+function shareChat(chatId) {
+    // This would open a share dialog or copy link to clipboard
+    const shareUrl = `${window.location.origin}{{ url_for('chat') }}?share=${chatId}`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'AI Health Chat',
+            text: 'Check out this health chat conversation',
+            url: shareUrl
+        });
+    } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Chat link copied to clipboard!');
+        });
+    }
+}
+
+function continueCurrentChat() {
+    // This would continue the currently viewed chat
+    window.location.href = `{{ url_for('chat') }}?continue=current`;
+}
+</script>
+
+<style>
+.chat-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.message-content {
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message .message-content {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.ai-message .message-content {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+</style>
+{% endblock %}

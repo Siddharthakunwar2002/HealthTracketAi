@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Appointments - Admin{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>
+                <i class="fas fa-calendar me-2"></i>Manage Appointments
+            </h2>
+            <a href="{{ url_for('dashboard.new_appointment') }}" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Create Appointment
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Search & Filter Appointments</h5>
+            </div>
+            <div class="card-body">
+                <form method="GET" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="search" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="search" name="search" placeholder="Search by patient name, doctor name, or symptoms..." value="{{ search_query }}">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status">
+                            <option value="">All Statuses</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="doctor" class="form-label">Doctor</label>
+                        <select class="form-select" id="doctor" name="doctor">
+                            <option value="">All Doctors</option>
+                            <!-- Add doctor options here -->
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="date_from" class="form-label">From Date</label>
+                        <input type="date" class="form-control" id="date_from" name="date_from">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="date_to" class="form-label">To Date</label>
+                        <input type="date" class="form-control" id="date_to" name="date_to">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search me-2"></i>Search & Filter
+                        </button>
+                        <a href="{{ url_for('dashboard.admin_manage_appointments') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-2"></i>Clear
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">All Appointments</h5>
+                    <div class="btn-group" role="group" aria-label="Quick Access">
+                        <a href="{{ url_for('dashboard.admin_manage_appointments') }}" class="btn btn-primary">
+                            <i class="fas fa-calendar me-1"></i>All Appointments
+                        </a>
+                        <a href="{{ url_for('dashboard.admin_manage_prescriptions') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-prescription me-1"></i>Prescriptions
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                {% if appointments %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Doctor</th>
+                                    <th>Date & Time</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for appointment in appointments %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-sm bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                                    {{ appointment.patient.first_name[0] if appointment.patient.first_name else 'P' }}
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">{{ appointment.patient.get_full_name() }}</h6>
+                                                    <small class="text-muted">{{ appointment.patient.email }}</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <h6 class="mb-0">Dr. {{ appointment.doctor.get_full_name() }}</h6>
+                                                <small class="text-muted">{{ appointment.doctor.specialization or 'General' }}</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <strong>{{ appointment.appointment_date.strftime('%B %d, %Y') }}</strong>
+                                                <br><small class="text-muted">{{ appointment.appointment_date.strftime('%I:%M %p') }}</small>
+                                            </div>
+                                        </td>
+                                        <td>{{ appointment.duration }} minutes</td>
+                                        <td>
+                                            <span class="badge bg-{{ 'success' if appointment.status.value == 'confirmed' else 'warning' if appointment.status.value == 'scheduled' else 'danger' if appointment.status.value == 'cancelled' else 'info' }}">
+                                                {{ appointment.status.value.title() }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ url_for('dashboard.view_appointment', appointment_id=appointment.id) }}"
+                                                   class="btn btn-sm btn-outline-primary"
+                                                   title="View Details">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                {% if appointment.status.value != 'completed' %}
+                                                    <a href="{{ url_for('dashboard.view_appointment', appointment_id=appointment.id) }}"
+                                                       class="btn btn-sm btn-outline-warning"
+                                                       title="Edit Appointment">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                {% else %}
+                                                    <span class="text-muted small">Read Only</span>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-calendar fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No appointments found</h5>
+                        <p class="text-muted">Start by creating some appointments.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

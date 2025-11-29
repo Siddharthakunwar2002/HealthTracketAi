@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Predictions - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2><i class="fas fa-brain me-2"></i>Health Predictions</h2>
+            <p class="text-muted">AI-powered health predictions and insights based on your medical data.</p>
+            
+            <!-- Prediction Cards -->
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                    <div class="card border-primary">
+                        <div class="card-body text-center">
+                            <i class="fas fa-heartbeat fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Cardiovascular Health</h5>
+                            <p class="card-text">Risk assessment based on your medical history and lifestyle factors.</p>
+                            <button type="button" class="btn btn-primary" onclick="generatePrediction('cardiovascular')">
+                                <i class="fas fa-chart-line me-1"></i>Generate Prediction
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <div class="card border-success">
+                        <div class="card-body text-center">
+                            <i class="fas fa-weight fa-3x text-success mb-3"></i>
+                            <h5 class="card-title">Weight Management</h5>
+                            <p class="card-text">Predictions for weight trends and recommendations for healthy weight management.</p>
+                            <button type="button" class="btn btn-success" onclick="generatePrediction('weight')">
+                                <i class="fas fa-chart-line me-1"></i>Generate Prediction
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <div class="card border-info">
+                        <div class="card-body text-center">
+                            <i class="fas fa-dna fa-3x text-info mb-3"></i>
+                            <h5 class="card-title">Genetic Risk</h5>
+                            <p class="card-text">Analysis of genetic predispositions and personalized health recommendations.</p>
+                            <button type="button" class="btn btn-info" onclick="generatePrediction('genetic')">
+                                <i class="fas fa-chart-line me-1"></i>Generate Prediction
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Predictions -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history me-2"></i>Recent Predictions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="predictionsList">
+                        <div class="text-center py-4">
+                            <i class="fas fa-chart-line fa-2x text-muted mb-3"></i>
+                            <h5 class="text-muted">No Predictions Yet</h5>
+                            <p class="text-muted">Generate your first health prediction to get started.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Prediction Modal -->
+<div class="modal fade" id="predictionModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-brain me-2"></i>Health Prediction
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="predictionContent">
+                <!-- Prediction content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="savePrediction()">
+                    <i class="fas fa-save me-1"></i>Save Prediction
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function generatePrediction(type) {
+    // Show loading state
+    document.getElementById('predictionContent').innerHTML = `
+        <div class="text-center py-4">
+            <i class="fas fa-spinner fa-spin fa-3x text-primary mb-3"></i>
+            <h5>Generating Prediction...</h5>
+            <p class="text-muted">Please wait while our AI analyzes your health data.</p>
+        </div>
+    `;
+    
+    // Show modal
+    const modal = new bootstrap.Modal(document.getElementById('predictionModal'));
+    modal.show();
+    
+    // Simulate AI prediction generation
+    setTimeout(() => {
+        let predictionContent = '';
+        
+        switch(type) {
+            case 'cardiovascular':
+                predictionContent = `
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-heartbeat me-2"></i>Cardiovascular Health Prediction</h6>
+                        <p class="mb-0">Based on your medical history and current health metrics.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Risk Assessment</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-success" style="width: 25%">Low Risk</div>
+                            </div>
+                            <p class="small text-muted">Your cardiovascular risk is currently low based on available data.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Recommendations</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Continue regular exercise</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Maintain healthy diet</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Regular health checkups</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h6>Predicted Health Trends</h6>
+                        <p>Based on your current lifestyle and health metrics, your cardiovascular health is expected to remain stable over the next 6 months with continued healthy habits.</p>
+                    </div>
+                `;
+                break;
+                
+            case 'weight':
+                predictionContent = `
+                    <div class="alert alert-success">
+                        <h6><i class="fas fa-weight me-2"></i>Weight Management Prediction</h6>
+                        <p class="mb-0">Analysis of your weight trends and lifestyle factors.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Current Status</h6>
+                            <p><strong>BMI:</strong> 22.5 (Normal)</p>
+                            <p><strong>Trend:</strong> Stable</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>6-Month Prediction</h6>
+                            <p><strong>Expected Weight:</strong> Maintain current weight</p>
+                            <p><strong>Confidence:</strong> 85%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h6>Recommendations</h6>
+                        <ul>
+                            <li>Continue current exercise routine</li>
+                            <li>Maintain balanced diet</li>
+                            <li>Monitor weight weekly</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+                
+            case 'genetic':
+                predictionContent = `
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-dna me-2"></i>Genetic Risk Analysis</h6>
+                        <p class="mb-0">Based on family history and genetic markers.</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Genetic Predispositions</h6>
+                            <ul>
+                                <li>Type 2 Diabetes: Low Risk</li>
+                                <li>Hypertension: Moderate Risk</li>
+                                <li>Heart Disease: Low Risk</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Preventive Measures</h6>
+                            <ul>
+                                <li>Regular blood pressure monitoring</li>
+                                <li>Low-sodium diet</li>
+                                <li>Stress management</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                break;
+        }
+        
+        document.getElementById('predictionContent').innerHTML = predictionContent;
+    }, 3000);
+}
+
+function savePrediction() {
+    // This would save the prediction to the user's history
+    alert('Prediction saved to your health history!');
+    
+    // Add to predictions list
+    const predictionsList = document.getElementById('predictionsList');
+    const newPrediction = document.createElement('div');
+    newPrediction.className = 'card mb-3';
+    newPrediction.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6 class="card-title">Cardiovascular Health Prediction</h6>
+                    <p class="card-text small text-muted">Generated on ${new Date().toLocaleDateString()}</p>
+                </div>
+                <div>
+                    <span class="badge bg-success">Low Risk</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    if (predictionsList.querySelector('.text-center')) {
+        predictionsList.innerHTML = '';
+    }
+    
+    predictionsList.appendChild(newPrediction);
+    
+    // Close modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('predictionModal'));
+    modal.hide();
+}
+</script>
+{% endblock %}

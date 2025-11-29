@@ -1,0 +1,342 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Dashboard - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-user me-2"></i>Patient Dashboard
+        </h2>
+        <p class="text-muted">Welcome back, {{ current_user.get_full_name() }}!</p>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<div class="row mb-4">
+    <div class="col-md-4 mb-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ upcoming_appointments|length }}</h4>
+                        <p class="card-text">Upcoming Appointments</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-calendar fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ recent_reports|length }}</h4>
+                        <p class="card-text">Medical Reports</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-file-medical fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ unread_messages }}</h4>
+                        <p class="card-text">Unread Messages</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-envelope fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.new_appointment') }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-calendar-plus me-2"></i>Book Appointment
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.appointments') }}" class="btn btn-outline-success w-100">
+                            <i class="fas fa-calendar me-2"></i>My Appointments
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('dashboard.reports') }}" class="btn btn-outline-info w-100">
+                            <i class="fas fa-file-medical me-2"></i>Medical Reports
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('chat') }}" class="btn btn-outline-warning w-100">
+                            <i class="fas fa-robot me-2"></i>AI Health Assistant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Upcoming Appointments -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-calendar me-2"></i>Upcoming Appointments
+                </h5>
+                <a href="{{ url_for('dashboard.appointments') }}" class="btn btn-sm btn-outline-primary">
+                    View All
+                </a>
+            </div>
+            <div class="card-body">
+                {% if upcoming_appointments %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Doctor</th>
+                                    <th>Date & Time</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for appointment in upcoming_appointments %}
+                                    <tr>
+                                        <td>
+                                            <strong>Dr. {{ appointment.doctor.get_full_name() }}</strong>
+                                            <br>
+                                            <small class="text-muted">{{ appointment.doctor.specialization }}</small>
+                                        </td>
+                                        <td>
+                                            {{ appointment.appointment_date.strftime('%B %d, %Y') }}
+                                            <br>
+                                            <small class="text-muted">{{ appointment.appointment_date.strftime('%I:%M %p') }}</small>
+                                        </td>
+                                        <td>{{ appointment.duration }} minutes</td>
+                                        <td>
+                                            <span class="badge bg-{{ 'success' if appointment.status.value == 'confirmed' else 'warning' if appointment.status.value == 'scheduled' else 'danger' }}">
+                                                {{ appointment.status.value.title() }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('dashboard.view_appointment', appointment_id=appointment.id) }}" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center">No upcoming appointments</p>
+                    <div class="text-center">
+                        <a href="{{ url_for('dashboard.new_appointment') }}" class="btn btn-primary">
+                            <i class="fas fa-calendar-plus me-2"></i>Book Your First Appointment
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Medical Reports -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-file-medical me-2"></i>Recent Medical Reports
+                </h5>
+                <a href="{{ url_for('dashboard.reports') }}" class="btn btn-sm btn-outline-primary">
+                    View All
+                </a>
+            </div>
+            <div class="card-body">
+                {% if recent_reports %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Report Type</th>
+                                    <th>Title</th>
+                                    <th>Created By</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for report in recent_reports %}
+                                    <tr>
+                                        <td>
+                                            <span class="badge bg-{{ 'primary' if report.report_type.value == 'lab_report' else 'success' if report.report_type.value == 'consultation_report' else 'info' }}">
+                                                {{ report.report_type.value.replace('_', ' ').title() }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <strong>{{ report.title }}</strong>
+                                            {% if report.description %}
+                                                <br>
+                                                <small class="text-muted">{{ report.description[:50] }}...</small>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ report.created_by.get_full_name() }}</td>
+                                        <td>{{ report.created_at.strftime('%B %d, %Y') }}</td>
+                                        <td>
+                                            <a href="{{ url_for('dashboard.view_report', report_id=report.id) }}" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center">No medical reports available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Health Information -->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-heartbeat me-2"></i>Health Information
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <p><strong>Blood Group:</strong></p>
+                        <p><strong>Emergency Contact:</strong></p>
+                        <p><strong>Phone:</strong></p>
+                        <p><strong>Date of Birth:</strong></p>
+                    </div>
+                    <div class="col-6">
+                        <p>{{ current_user.blood_group or 'Not specified' }}</p>
+                        <p>{{ current_user.emergency_contact or 'Not specified' }}</p>
+                        <p>{{ current_user.phone or 'Not specified' }}</p>
+                        <p>{{ current_user.date_of_birth.strftime('%B %d, %Y') if current_user.date_of_birth else 'Not specified' }}</p>
+                    </div>
+                </div>
+                {% if current_user.medical_history %}
+                    <hr>
+                    <h6>Medical History</h6>
+                    <p class="text-muted">{{ current_user.medical_history }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>Health Summary
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6 mb-3">
+                        <i class="fas fa-calendar-check fa-2x text-success mb-2"></i>
+                        <h6>Total Appointments</h6>
+                        <p class="text-muted">{{ upcoming_appointments|length + (recent_reports|length * 2) }}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <i class="fas fa-file-medical fa-2x text-info mb-2"></i>
+                        <h6>Medical Reports</h6>
+                        <p class="text-muted">{{ recent_reports|length }}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <i class="fas fa-user-md fa-2x text-primary mb-2"></i>
+                        <h6>Doctors Consulted</h6>
+                        <p class="text-muted">{{ upcoming_appointments|map(attribute='doctor')|unique|list|length }}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                        <h6>Last Visit</h6>
+                        <p class="text-muted">{{ 'Recently' if upcoming_appointments else 'Not available' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Health Tips -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>Health Tips
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-water fa-2x text-info mb-2"></i>
+                            <h6>Stay Hydrated</h6>
+                            <p class="text-muted small">Drink 8 glasses of water daily</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-walking fa-2x text-success mb-2"></i>
+                            <h6>Exercise Regularly</h6>
+                            <p class="text-muted small">30 minutes of daily activity</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-bed fa-2x text-primary mb-2"></i>
+                            <h6>Get Enough Sleep</h6>
+                            <p class="text-muted small">7-9 hours per night</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-apple-alt fa-2x text-warning mb-2"></i>
+                            <h6>Eat Healthy</h6>
+                            <p class="text-muted small">Balanced diet is key</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

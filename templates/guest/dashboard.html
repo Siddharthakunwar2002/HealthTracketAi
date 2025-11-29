@@ -1,0 +1,395 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Healthcare AI System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section bg-primary text-white py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-heartbeat me-3"></i>
+                    Healthcare AI System
+                </h1>
+                <p class="lead mb-4">
+                    Experience the future of healthcare with our intelligent AI-powered system. 
+                    Get personalized care, instant medical assistance, and seamless healthcare management.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Get Started
+                    </a>
+                    <a href="{{ url_for('chat') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-robot me-2"></i>Try AI Chat
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ url_for('static', filename='img/healthcare-hero.svg') }}" alt="Healthcare" class="img-fluid" style="max-height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold mb-3">Why Choose Our Healthcare System?</h2>
+            <p class="lead text-muted">Discover the benefits of our comprehensive healthcare platform</p>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-robot fa-2x"></i>
+                    </div>
+                    <h4 class="card-title">AI-Powered Assistant</h4>
+                    <p class="card-text text-muted">
+                        Get instant medical advice and health information from our intelligent AI chatbot. 
+                        24/7 support for your health queries.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-calendar-check fa-2x"></i>
+                    </div>
+                    <h4 class="card-title">Easy Appointment Booking</h4>
+                    <p class="card-text text-muted">
+                        Book appointments with qualified doctors instantly. 
+                        Manage your schedule and get reminders automatically.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-shield-alt fa-2x"></i>
+                    </div>
+                    <h4 class="card-title">Secure & Private</h4>
+                    <p class="card-text text-muted">
+                        Your health data is protected with industry-standard security. 
+                        HIPAA compliant and completely confidential.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="bg-light py-5 mb-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold mb-3">Our Services</h2>
+                <p class="lead text-muted">Comprehensive healthcare services for everyone</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-user-md fa-3x text-primary mb-3"></i>
+                    <h5>Expert Doctors</h5>
+                    <p class="text-muted">Access to qualified healthcare professionals across various specialties</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-pills fa-3x text-success mb-3"></i>
+                    <h5>Digital Prescriptions</h5>
+                    <p class="text-muted">Get prescriptions digitally and manage your medications easily</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-file-medical fa-3x text-info mb-3"></i>
+                    <h5>Medical Reports</h5>
+                    <p class="text-muted">Store and access your medical reports and health records securely</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center p-4">
+                    <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
+                    <h5>Direct Messaging</h5>
+                    <p class="text-muted">Communicate directly with your healthcare providers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Section -->
+<div class="container mb-5">
+    <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="stat-card">
+                <h2 class="display-4 fw-bold text-primary">500+</h2>
+                <p class="text-muted">Happy Patients</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="stat-card">
+                <h2 class="display-4 fw-bold text-success">50+</h2>
+                <p class="text-muted">Expert Doctors</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="stat-card">
+                <h2 class="display-4 fw-bold text-info">1000+</h2>
+                <p class="text-muted">Appointments</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="stat-card">
+                <h2 class="display-4 fw-bold text-warning">24/7</h2>
+                <p class="text-muted">AI Support</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="bg-light py-5 mb-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold mb-3">How It Works</h2>
+                <p class="lead text-muted">Simple steps to get started with your healthcare journey</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center">
+                    <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">1</span>
+                    </div>
+                    <h5>Register</h5>
+                    <p class="text-muted">Create your account and complete your health profile</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center">
+                    <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">2</span>
+                    </div>
+                    <h5>Book Appointment</h5>
+                    <p class="text-muted">Choose your doctor and schedule an appointment</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center">
+                    <div class="step-number bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">3</span>
+                    </div>
+                    <h5>Get Care</h5>
+                    <p class="text-muted">Receive medical care and prescriptions from your doctor</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="step-card text-center">
+                    <div class="step-number bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <span class="fw-bold">4</span>
+                    </div>
+                    <h5>Follow Up</h5>
+                    <p class="text-muted">Track your health and communicate with your healthcare team</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-gradient text-white text-center p-5" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);">
+                <h2 class="display-5 fw-bold mb-4">Ready to Get Started?</h2>
+                <p class="lead mb-4">
+                    Join thousands of patients who trust our healthcare system for their medical needs.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Create Account
+                    </a>
+                    <a href="{{ url_for('dashboard.guest_contact') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="bg-light py-5 mb-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold mb-3">What Our Patients Say</h2>
+                <p class="lead text-muted">Real feedback from our satisfied patients</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">Patient</small>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            "The AI chatbot helped me understand my symptoms before my appointment. 
+                            The system is so easy to use and the doctors are very professional."
+                        </p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Michael Chen</h6>
+                                <small class="text-muted">Patient</small>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            "Booking appointments is incredibly simple. 
+                            I love how I can access my medical records and prescriptions all in one place."
+                        </p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Emily Davis</h6>
+                                <small class="text-muted">Patient</small>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            "The direct messaging feature allows me to communicate with my doctor easily. 
+                            The system has made managing my health so much more convenient."
+                        </p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+.service-card {
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card {
+    padding: 2rem;
+}
+
+.step-card {
+    padding: 2rem 1rem;
+}
+
+.step-number {
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-number {
+    transform: scale(1.1);
+}
+
+.avatar {
+    font-size: 1.2rem;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}

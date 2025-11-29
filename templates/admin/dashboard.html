@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">
+            <i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard
+        </h2>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ total_users }}</h4>
+                        <p class="card-text">Total Users</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ total_doctors }}</h4>
+                        <p class="card-text">Doctors</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-user-md fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ total_patients }}</h4>
+                        <p class="card-text">Patients</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-user fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">{{ total_appointments }}</h4>
+                        <p class="card-text">Appointments</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-calendar fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_manage_users') }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-users me-2"></i>Manage Users
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_create_user') }}" class="btn btn-outline-success w-100">
+                            <i class="fas fa-user-plus me-2"></i>Create User
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_manage_appointments') }}" class="btn btn-outline-info w-100">
+                            <i class="fas fa-calendar me-2"></i>Appointments
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_manage_reports') }}" class="btn btn-outline-warning w-100">
+                            <i class="fas fa-file-medical me-2"></i>Reports
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_messages') }}" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-envelope me-2"></i>My Messages
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_notifications') }}" class="btn btn-outline-danger w-100">
+                            <i class="fas fa-bell me-2"></i>Notifications
+                        </a>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.messages') }}" class="btn btn-outline-info w-100">
+                            <i class="fas fa-comments me-2"></i>Messages
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_chats') }}" class="btn btn-outline-success w-100">
+                            <i class="fas fa-comment-dots me-2"></i>Chats
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_system_logs') }}" class="btn btn-outline-warning w-100">
+                            <i class="fas fa-file-alt me-2"></i>System Logs
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_settings') }}" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-sliders-h me-2"></i>Settings
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_manage_payments') }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-credit-card me-2"></i>Payments
+                        </a>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="{{ url_for('dashboard.admin_analytics') }}" class="btn btn-outline-danger w-100">
+                            <i class="fas fa-chart-line me-2"></i>Analytics
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activities -->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-calendar me-2"></i>Recent Appointments
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if recent_appointments %}
+                    <div class="list-group list-group-flush">
+                        {% for appointment in recent_appointments %}
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">
+                                            {{ appointment.patient.get_full_name() }} → Dr. {{ appointment.doctor.get_full_name() }}
+                                        </h6>
+                                        <small class="text-muted">
+                                            {{ appointment.appointment_date.strftime('%B %d, %Y at %I:%M %p') }}
+                                        </small>
+                                    </div>
+                                    <span class="badge bg-{{ 'success' if appointment.status.value == 'confirmed' else 'warning' if appointment.status.value == 'scheduled' else 'danger' }}">
+                                        {{ appointment.status.value.title() }}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No recent appointments</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-users me-2"></i>Recent Users
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if recent_users %}
+                    <div class="list-group list-group-flush">
+                        {% for user in recent_users %}
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">{{ user.get_full_name() }}</h6>
+                                        <small class="text-muted">{{ user.email }}</small>
+                                    </div>
+                                    <span class="badge bg-{{ 'success' if user.role.value == 'doctor' else 'info' if user.role.value == 'patient' else 'primary' }}">
+                                        {{ user.role.value.title() }}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No recent users</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- System Status -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-server me-2"></i>System Status
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-database fa-2x text-success mb-2"></i>
+                            <h6>Database</h6>
+                            <span class="badge bg-success">Online</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-robot fa-2x text-info mb-2"></i>
+                            <h6>AI Chatbot</h6>
+                            <span class="badge bg-success">Active</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-envelope fa-2x text-warning mb-2"></i>
+                            <h6>Email Service</h6>
+                            <span class="badge bg-success">Ready</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                            <h6>Security</h6>
+                            <span class="badge bg-success">Protected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

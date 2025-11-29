@@ -1,0 +1,474 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Dashboard - Healthcare AI System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">
+            <i class="fas fa-user-injured me-2"></i>Patient Dashboard
+        </h1>
+        <p class="text-muted">Welcome back, {{ current_user.get_full_name() }}!</p>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<div class="row mb-4">
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Upcoming Appointments
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ upcoming_appointments.count() }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar-check fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Medical Reports
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ recent_reports.count() }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-file-medical fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Active Prescriptions
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ recent_prescriptions.count() }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-pills fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Unread Messages
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ unread_messages }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.patient_book_appointment') }}" class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-plus me-2"></i>Book Appointment
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.patient_appointments') }}" class="btn btn-success btn-block">
+                            <i class="fas fa-calendar-check me-2"></i>My Appointments
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.patient_history') }}" class="btn btn-info btn-block">
+                            <i class="fas fa-history me-2"></i>Medical History
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.patient_messages') }}" class="btn btn-warning btn-block">
+                            <i class="fas fa-envelope me-2"></i>Messages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="row">
+    <!-- Upcoming Appointments -->
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Upcoming Appointments</h6>
+                <a href="{{ url_for('dashboard.patient_appointments') }}" class="btn btn-sm btn-primary">
+                    View All
+                </a>
+            </div>
+            <div class="card-body">
+                {% if upcoming_appointments %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Doctor</th>
+                                    <th>Date & Time</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for appointment in upcoming_appointments %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-2">
+                                                Dr. {{ appointment.doctor.first_name[0] }}{{ appointment.doctor.last_name[0] }}
+                                            </div>
+                                            <div>
+                                                <strong>Dr. {{ appointment.doctor.get_full_name() }}</strong>
+                                                <br>
+                                                <small class="text-muted">{{ appointment.doctor.specialization }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <strong>{{ appointment.appointment_date.strftime('%b %d, %Y') }}</strong>
+                                        <br>
+                                        <small class="text-muted">{{ appointment.appointment_date.strftime('%I:%M %p') }}</small>
+                                    </td>
+                                    <td>{{ appointment.duration }} min</td>
+                                    <td>
+                                        <span class="badge bg-{{ 'success' if appointment.status.value == 'confirmed' else 'warning' if appointment.status.value == 'scheduled' else 'secondary' }}">
+                                            {{ appointment.status.value.title() }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ url_for('dashboard.view_appointment', appointment_id=appointment.id) }}" 
+                                               class="btn btn-sm btn-outline-primary" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{{ url_for('dashboard.patient_message_doctor', doctor_id=appointment.doctor.id) }}" 
+                                               class="btn btn-sm btn-outline-info" title="Message Doctor">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No upcoming appointments</h5>
+                        <p class="text-muted">You don't have any scheduled appointments.</p>
+                        <a href="{{ url_for('dashboard.patient_book_appointment') }}" class="btn btn-primary">
+                            <i class="fas fa-calendar-plus me-2"></i>Book an Appointment
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Information -->
+    <div class="col-xl-4 col-lg-5">
+        <!-- Personal Health Info -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Health Information</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-tint fa-2x text-danger mb-2"></i>
+                            <h6>Blood Group</h6>
+                            <p class="text-muted">{{ current_user.blood_group or 'Not specified' }}</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-phone fa-2x text-success mb-2"></i>
+                            <h6>Emergency Contact</h6>
+                            <p class="text-muted">{{ current_user.emergency_contact or 'Not specified' }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if current_user.insurance_provider %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt fa-2x text-info mb-2"></i>
+                            <h6>Insurance</h6>
+                            <p class="text-muted">{{ current_user.insurance_provider }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Recent Medical Reports -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Reports</h6>
+                <a href="{{ url_for('dashboard.patient_reports') }}" class="btn btn-sm btn-primary">
+                    View All
+                </a>
+            </div>
+            <div class="card-body">
+                {% if recent_reports %}
+                    <div class="list-group list-group-flush">
+                        {% for report in recent_reports %}
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                    <i class="fas fa-file-medical"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">{{ report.title }}</h6>
+                                    <small class="text-muted">{{ report.report_type.value.title() }}</small>
+                                    <br>
+                                    <small class="text-muted">{{ report.created_at.strftime('%b %d, %Y') }}</small>
+                                </div>
+                                <a href="{{ url_for('dashboard.view_report', report_id=report.id) }}" 
+                                   class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-3">
+                        <i class="fas fa-file-medical fa-2x text-muted mb-2"></i>
+                        <p class="text-muted">No medical reports yet</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Recent Prescriptions -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Prescriptions</h6>
+                <a href="{{ url_for('dashboard.patient_prescriptions') }}" class="btn btn-sm btn-primary">
+                    View All
+                </a>
+            </div>
+            <div class="card-body">
+                {% if recent_prescriptions %}
+                    <div class="list-group list-group-flush">
+                        {% for prescription in recent_prescriptions %}
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Prescription</h6>
+                                    <small class="text-muted">Dr. {{ prescription.doctor.get_full_name() }}</small>
+                                    <br>
+                                    <small class="text-muted">{{ prescription.created_at.strftime('%b %d, %Y') }}</small>
+                                    {% if prescription.is_active %}
+                                        <br>
+                                        <span class="badge bg-success">Active</span>
+                                    {% endif %}
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-warning">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-3">
+                        <i class="fas fa-pills fa-2x text-muted mb-2"></i>
+                        <p class="text-muted">No prescriptions yet</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Health Tips -->
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Health Tips</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-left-success h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-heart text-success fa-2x me-3"></i>
+                                    <h6 class="mb-0">Stay Active</h6>
+                                </div>
+                                <p class="text-muted small">Regular exercise helps maintain a healthy heart and improves overall well-being.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-left-info h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-apple-alt text-info fa-2x me-3"></i>
+                                    <h6 class="mb-0">Healthy Diet</h6>
+                                </div>
+                                <p class="text-muted small">A balanced diet rich in fruits, vegetables, and whole grains supports good health.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-left-warning h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-bed text-warning fa-2x me-3"></i>
+                                    <h6 class="mb-0">Get Enough Sleep</h6>
+                                </div>
+                                <p class="text-muted small">Quality sleep is essential for physical and mental health recovery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Health Check -->
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Quick Health Check</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>How are you feeling today?</h6>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-success" onclick="updateHealthStatus('excellent')">
+                                <i class="fas fa-smile"></i> Excellent
+                            </button>
+                            <button type="button" class="btn btn-outline-info" onclick="updateHealthStatus('good')">
+                                <i class="fas fa-meh"></i> Good
+                            </button>
+                            <button type="button" class="btn btn-outline-warning" onclick="updateHealthStatus('fair')">
+                                <i class="fas fa-frown"></i> Fair
+                            </button>
+                            <button type="button" class="btn btn-outline-danger" onclick="updateHealthStatus('poor')">
+                                <i class="fas fa-sad-tear"></i> Poor
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Need immediate help?</h6>
+                        <p class="text-muted">If you're experiencing a medical emergency, please call emergency services immediately.</p>
+                        <a href="{{ url_for('chat') }}" class="btn btn-primary">
+                            <i class="fas fa-robot me-2"></i>Ask AI Assistant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.border-left-primary {
+    border-left: 4px solid #007bff !important;
+}
+
+.border-left-success {
+    border-left: 4px solid #28a745 !important;
+}
+
+.border-left-info {
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.border-left-warning {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.text-gray-800 {
+    color: #5a5c69 !important;
+}
+
+.text-gray-300 {
+    color: #dddfeb !important;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function updateHealthStatus(status) {
+    // This would typically send the health status to the server
+    console.log('Health status updated:', status);
+    
+    // Show a confirmation message
+    const messages = {
+        'excellent': 'Great! Keep up the good work!',
+        'good': 'Good! Stay healthy!',
+        'fair': 'Take care of yourself. Consider scheduling a checkup.',
+        'poor': 'Please consider contacting your doctor if symptoms persist.'
+    };
+    
+    alert(messages[status]);
+}
+
+// Auto-refresh dashboard every 5 minutes
+setInterval(function() {
+    location.reload();
+}, 300000);
+</script>
+{% endblock %}

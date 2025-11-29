@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}View Report - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="fas fa-file-medical me-2"></i>Report Details</h2>
+                <a href="{{ url_for('dashboard.reports') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Reports
+                </a>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-file-medical me-2"></i>{{ report.title }}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Report Information</h6>
+                                    <p><strong>Type:</strong> {{ report.report_type.value.replace('_', ' ').title() }}</p>
+                                    <p><strong>Date:</strong> {{ report.created_at.strftime('%B %d, %Y') }}</p>
+                                    <p><strong>Created by:</strong> {{ report.created_by.get_full_name() }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Patient Information</h6>
+                                    <p><strong>Name:</strong> {{ report.user.get_full_name() }}</p>
+                                    <p><strong>Email:</strong> {{ report.user.email }}</p>
+                                    <p><strong>Phone:</strong> {{ report.user.phone or 'Not provided' }}</p>
+                                </div>
+                            </div>
+                            
+                            {% if report.description %}
+                                <hr>
+                                <h6>Description</h6>
+                                <p>{{ report.description }}</p>
+                            {% endif %}
+                            
+                            {% if report.file_path %}
+                                <hr>
+                                <h6>Attached File</h6>
+                                <div class="alert alert-success">
+                                    <i class="fas fa-file me-2"></i>
+                                    <strong>File Available:</strong> {{ report.file_path.split('/')[-1] or report.file_path.split('\\')[-1] }}
+                                    <div class="mt-2">
+                                        <button type="button" class="btn btn-success btn-sm" onclick="downloadFile('{{ report.file_path }}')">
+                                            <i class="fas fa-download me-1"></i>Download File
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="viewFile('{{ report.file_path }}')">
+                                            <i class="fas fa-eye me-1"></i>View File
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <!-- Report Actions -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <i class="fas fa-tools me-2"></i>Actions
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-outline-primary" onclick="printReport()">
+                                    <i class="fas fa-print me-1"></i>Print Report
+                                </button>
+                                <button type="button" class="btn btn-outline-success" onclick="shareReport()">
+                                    <i class="fas fa-share me-1"></i>Share Report
+                                </button>
+                                {% if current_user.is_admin() or report.created_by == current_user %}
+                                    <button type="button" class="btn btn-outline-warning" onclick="editReport()">
+                                        <i class="fas fa-edit me-1"></i>Edit Report
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Report Metadata -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <i class="fas fa-info-circle me-2"></i>Metadata
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Report ID:</strong><br><code>{{ report.id }}</code></p>
+                            <p><strong>Created:</strong><br>{{ report.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+                            <p><strong>Last Updated:</strong><br>{{ report.updated_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function downloadFile(filePath) {
+    // Trigger download using the secure download endpoint
+    // Remove 'uploads/' prefix from filePath
+    const relativePath = filePath.replace(/^uploads[\/\\]/, '').replace(/\\/g, '/');
+    const downloadUrl = '/dashboard/uploads/' + relativePath + '/download';
+    window.location.href = downloadUrl;
+}
+
+function viewFile(filePath) {
+    // Open file in new tab using the secure view endpoint
+    // Remove 'uploads/' prefix from filePath
+    const relativePath = filePath.replace(/^uploads[\/\\]/, '').replace(/\\/g, '/');
+    const viewUrl = '/uploads/' + relativePath;
+    window.open(viewUrl, '_blank');
+}
+
+function printReport() {
+    // This would open print dialog
+    window.print();
+}
+
+function shareReport() {
+    // This would open share dialog or copy link to clipboard
+    const shareUrl = window.location.href;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: '{{ report.title }}',
+            text: 'Medical Report',
+            url: shareUrl
+        });
+    } else {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Report link copied to clipboard!');
+        });
+    }
+}
+
+function editReport() {
+    // This would redirect to edit report page
+    alert('Edit report feature would be implemented here.');
+}
+</script>
+{% endblock %}

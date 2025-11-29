@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}View Appointment - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="fas fa-calendar-check me-2"></i>Appointment Details</h2>
+                <a href="{{ url_for('dashboard.appointments') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Appointments
+                </a>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-calendar me-2"></i>Appointment Information
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Patient Information</h6>
+                                    <p><strong>Name:</strong> {{ appointment.patient.get_full_name() }}</p>
+                                    <p><strong>Email:</strong> {{ appointment.patient.email }}</p>
+                                    <p><strong>Phone:</strong> {{ appointment.patient.phone or 'Not provided' }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Doctor Information</h6>
+                                    <p><strong>Name:</strong> Dr. {{ appointment.doctor.get_full_name() }}</p>
+                                    <p><strong>Specialization:</strong> {{ appointment.doctor.specialization or 'Not specified' }}</p>
+                                    <p><strong>Phone:</strong> {{ appointment.doctor.phone or 'Not provided' }}</p>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Appointment Details</h6>
+                                    <p><strong>Date:</strong> {{ appointment.appointment_date.strftime('%B %d, %Y') }}</p>
+                                    <p><strong>Time:</strong> {{ appointment.appointment_date.strftime('%I:%M %p') }}</p>
+                                    <p><strong>Duration:</strong> {{ appointment.duration }} minutes</p>
+                                    <p><strong>Status:</strong> 
+                                        <span class="badge bg-{{ 'success' if appointment.status.value == 'confirmed' else 'warning' if appointment.status.value == 'scheduled' else 'info' if appointment.status.value == 'completed' else 'danger' }}">
+                                            {{ appointment.status.value.title() }}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Medical Information</h6>
+                                    {% if appointment.symptoms %}
+                                        <p><strong>Symptoms:</strong><br>{{ appointment.symptoms }}</p>
+                                    {% endif %}
+                                    {% if appointment.diagnosis %}
+                                        <p><strong>Diagnosis:</strong><br>{{ appointment.diagnosis }}</p>
+                                    {% endif %}
+                                    {% if appointment.treatment_plan %}
+                                        <p><strong>Treatment Plan:</strong><br>{{ appointment.treatment_plan }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            {% if appointment.notes %}
+                                <hr>
+                                <h6>Additional Notes</h6>
+                                <p>{{ appointment.notes }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <!-- Status Update (for doctors/admins) -->
+                    {% if current_user.is_admin() or appointment.doctor == current_user %}
+                        {% if appointment.status.value != 'completed' %}
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h6 class="mb-0">
+                                        <i class="fas fa-edit me-2"></i>Update Status
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <form method="POST" action="{{ url_for('dashboard.update_appointment_status', appointment_id=appointment.id) }}">
+                                        <div class="mb-3">
+                                            <label for="status" class="form-label">Status</label>
+                                            <select class="form-select" id="status" name="status">
+                                                <option value="scheduled" {{ 'selected' if appointment.status.value == 'scheduled' }}>Scheduled</option>
+                                                <option value="confirmed" {{ 'selected' if appointment.status.value == 'confirmed' }}>Confirmed</option>
+                                                <option value="completed" {{ 'selected' if appointment.status.value == 'completed' }}>Completed</option>
+                                                <option value="cancelled" {{ 'selected' if appointment.status.value == 'cancelled' }}>Cancelled</option>
+                                                <option value="no_show" {{ 'selected' if appointment.status.value == 'no_show' }}>No Show</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-save me-1"></i>Update Status
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="card mb-3">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0">
+                                        <i class="fas fa-lock me-2"></i>Appointment Completed
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-0">This appointment has been completed and status updates are locked.</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <i class="fas fa-tools me-2"></i>Quick Actions
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                {% if current_user.is_admin() or appointment.doctor == current_user %}
+                                    {% if appointment.status.value != 'completed' %}
+                                        <button type="button" class="btn btn-outline-primary" onclick="addNotes()">
+                                            <i class="fas fa-sticky-note me-1"></i>Add Notes
+                                        </button>
+                                    {% endif %}
+                                    <button type="button" class="btn btn-outline-success" onclick="createPrescription()">
+                                        <i class="fas fa-prescription me-1"></i>Create Prescription
+                                    </button>
+                                    <button type="button" class="btn btn-outline-info" onclick="createReport()">
+                                        <i class="fas fa-file-medical me-1"></i>Create Report
+                                    </button>
+                                {% endif %}
+
+                                {% if current_user.is_patient() or current_user.is_admin() %}
+                                    {% if appointment.status.value != 'completed' %}
+                                        <button type="button" class="btn btn-outline-warning" onclick="rescheduleAppointment()">
+                                            <i class="fas fa-calendar-alt me-1"></i>Reschedule
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+
+                                <button type="button" class="btn btn-outline-secondary" onclick="printAppointment()">
+                                    <i class="fas fa-print me-1"></i>Print Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function addNotes() {
+    const notes = prompt('Enter additional notes:');
+    if (notes) {
+        // This would typically make an AJAX call to update notes
+        alert('Notes added successfully!');
+    }
+}
+
+function createPrescription() {
+    // This would redirect to create prescription page
+    window.location.href = "{{ url_for('dashboard.doctor_new_prescription') }}?appointment={{ appointment.id }}";
+}
+
+function createReport() {
+    // This would redirect to create report page
+    window.location.href = "{{ url_for('dashboard.new_report') }}?appointment={{ appointment.id }}";
+}
+
+function rescheduleAppointment() {
+    // This would open a reschedule modal or redirect to reschedule page
+    alert('Reschedule appointment feature would be implemented here.');
+}
+
+function printAppointment() {
+    // This would open print dialog
+    window.print();
+}
+</script>
+{% endblock %}

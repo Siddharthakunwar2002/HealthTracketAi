@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ - Healthcare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 text-primary mb-3">
+                    <i class="fas fa-question-circle me-2"></i>Frequently Asked Questions
+                </h1>
+                <p class="lead text-muted">Find answers to common questions about our healthcare platform</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                    How do I register for an account?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    To register for an account, click on the "Register" button in the top navigation. You can choose to register as a patient or doctor. Fill out the required information and verify your email address to complete the registration process.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                    Is my health information secure?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we use enterprise-grade encryption and follow HIPAA compliance standards to ensure your health information is completely secure and private. All data is encrypted both in transit and at rest.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                    How do I book an appointment?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    After logging in as a patient, go to the "Book Appointment" section. Select your preferred doctor, choose a date and time, and provide details about your visit. You'll receive a confirmation email once your appointment is scheduled.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                    Can I use the AI chatbot without registering?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, you can use our AI health assistant without registering. However, registering allows you to save your chat history, access personalized recommendations, and use additional features like health predictions.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                    How accurate are the health predictions?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our health predictions are based on advanced AI models and are provided for informational purposes only. They should not replace professional medical advice. Always consult with healthcare professionals for medical concerns and decisions.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                                    What if I have technical issues?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our technical support team is available 24/7. You can contact us through the contact form, email support@healthcareai.com, or use the live chat feature for immediate assistance.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7">
+                                    How do I cancel or reschedule an appointment?
+                                </button>
+                            </h2>
+                            <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can cancel or reschedule appointments through your patient dashboard. Go to "My Appointments" and click on the appointment you want to modify. Please note that cancellations must be made at least 24 hours in advance.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8">
+                                    Is there a mobile app available?
+                                </button>
+                            </h2>
+                            <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our platform is fully responsive and works great on mobile devices. We're currently developing dedicated mobile apps for iOS and Android, which will be available soon.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Still have questions?</h5>
+                            <p class="card-text">Can't find the answer you're looking for? Our support team is here to help.</p>
+                            <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>Contact Support
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
